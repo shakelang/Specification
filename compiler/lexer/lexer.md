@@ -6,22 +6,22 @@ tags: [lexer, token, specification, spec, compiler]
 
 # Shake Lexer Spec
 
-## Definition
+## § 1 Definition
 
-### § 1 Lexer
+### § 1.1 Lexer
 
 The lexer is the first step in the compilation process. It takes the source code as input and outputs a list of tokens. The lexer is also called a tokenizer. The lexer is also responsible for removing comments and whitespace.
 
-### § 2 Tokens
+### § 1.2 Tokens
 
 A token is a sequence of characters that form a meaningful unit in a program. It holds the following information:
 [Learn more about tokens](./tokens)
 
-### § 3 Lexer Implementation
+### § 2 Lexer Implementation
 
 The lexer is implemented in the [`lexer` package](https://github.com/shakelang/shake/tree/master/shake/compiler/lexer). The main lexing logic ist implemented in [ShakeLexingBase](https://github.com/shakelang/shake/blob/master/shake/compiler/lexer/src/commonMain/kotlin/io/github/shakelang/shake/lexer/ShakeLexingBase.kt)
 
-#### § 3.1 Token Ranking
+#### § 2.1 Token Ranking
 
 _Ranking will make some difference in the lexer implementation, e.g. `*=` must be checked before `*`. This is a sample ranking. Note that this is not the only possible ranking, but it is the one used in the lexer implementation._
 

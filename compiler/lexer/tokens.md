@@ -6,9 +6,9 @@ tags: [lexer, token, specification, spec, compiler, tokens]
 
 # Shake Lexer Token Specification
 
-## Definition
+## § 1 Definition
 
-### § 1 Tokens
+### § 1.1 Tokens
 
 A token is a sequence of characters that form a meaningful unit in a program. It holds the following information:
 
@@ -16,11 +16,13 @@ A token is a sequence of characters that form a meaningful unit in a program. It
 - The position of the token in the source code (Start and End index in the source code)
 - The value of the token (if applicable)
 
-### §2 Token Types
+### § 1.2 Token Types
 
 There are two variants of token types, there are types that always have the same value and therefore do not need to store the value in the token (e.g. `SEMICOLON` or any keyword) and there are types that can have different values (e.g. `INTEGER` or `IDENTIFIER`). The latter ones store the value in the token. [They are implemented as an enum in the `lexer` package](https://github.com/shakelang/shake/blob/master/shake/compiler/lexer/src/commonMain/kotlin/io/github/shakelang/shake/lexer/token/ShakeTokenType.kt).
 
-_"fixed"_ token types:
+## § 2 Token Types
+
+### § 2.1 _"fixed"_ token types:
 
 | Token Type           | Description               | Value          |
 | -------------------- | ------------------------- | -------------- |
@@ -107,12 +109,12 @@ _"fixed"_ token types:
 | SUB                  | Subtraction               | `-`            |
 | SUB_ASSIGN           | Subtraction Assignment    | `-=`           |
 
-_"variable"_ token types:
+### § 2.2 _"variable"_ token types:
 
-| Token Type | Description | Value    |
-| ---------- | ----------- | -------- |
-| CHARACTER  | Character   | e.g. 'a' |
-| DOUBLE     | Double      | e.g. 1.0 |
-| IDENTIFIER | Identifier  | e.g. a   |
-| INTEGER    | Integer     | e.g. 1   |
-| STRING     | String      | e.g. "a" |
+| Token Type | Description | Value      |
+| ---------- | ----------- | ---------- |
+| CHARACTER  | Character   | e.g. `'a'` |
+| DOUBLE     | Double      | e.g. `1.0` |
+| IDENTIFIER | Identifier  | e.g. `a`   |
+| INTEGER    | Integer     | e.g. `1`   |
+| STRING     | String      | e.g. `"a"` |
