@@ -62,7 +62,7 @@ _Sample code:_
 
 _Token Definition:_
 
-```txt
+```tokens
 <INTEGER> | <FLOAT>
 ```
 
@@ -78,7 +78,7 @@ _Sample code:_
 
 _Token Definition:_
 
-```txt
+```tokens
 <STRInG>
 ```
 
@@ -94,7 +94,7 @@ hello
 
 _Token Definition:_
 
-```txt
+```tokens
 <IDENTIFIER>
 ```
 
@@ -108,7 +108,7 @@ If your identifier contains special characters, you can use the following syntax
 
 _Token Definition:_
 
-```txt
+```tokens
 `<IDENTIFIER>`
 ```
 
@@ -124,7 +124,7 @@ _Sample code:_
 
 _Token Definition:_
 
-```txt
+```tokens
 <LPAREN> {§2.2 Values} <RPAREN>
 ```
 
@@ -142,7 +142,7 @@ _Sample code:_
 
 _Token Definition:_
 
-```txt
+```tokens
 {§2.2 Values} <ADD> {§2.2 Values}
 ```
 
@@ -158,7 +158,7 @@ _Sample code:_
 
 _Token Definition:_
 
-```txt
+```tokens
 {§2.2 Values} <SUB> {§2.2 Values}
 ```
 
@@ -174,7 +174,7 @@ _Sample code:_
 
 _Token Definition:_
 
-```txt
+```tokens
 {§2.2 Values} <MUL> {§2.2 Values}
 ```
 
@@ -190,7 +190,7 @@ _Sample code:_
 
 _Token Definition:_
 
-```txt
+```tokens
 {§2.2 Values} <DIV> {§2.2 Values}
 ```
 
@@ -206,7 +206,7 @@ _Sample code:_
 
 _Token Definition:_
 
-```txt
+```tokens
 {§2.2 Values} <MOD> {§2.2 Values}
 ```
 
@@ -222,7 +222,7 @@ _Sample code:_
 
 _Token Definition:_
 
-```txt
+```tokens
 {§2.2 Values} <POW> {§2.2 Values}
 ```
 
@@ -238,7 +238,7 @@ _Sample code:_
 
 _Token Definition:_
 
-```txt
+```tokens
 {§2.2 Values} <BIT_AND> {§2.2 Values}
 ```
 
@@ -254,7 +254,7 @@ _Sample code:_
 
 _Token Definition:_
 
-```txt
+```tokens
 {§2.2 Values} <BIT_OR> {§2.2 Values}
 ```
 
@@ -270,7 +270,7 @@ _Sample code:_
 
 _Token Definition:_
 
-```txt
+```tokens
 {§2.2 Values} <BIT_XOR> {§2.2 Values}
 ```
 
@@ -286,7 +286,7 @@ _Sample code:_
 
 _Token Definition:_
 
-```txt
+```tokens
 <BIT_NOT> {§2.2 Values}
 ```
 
@@ -302,7 +302,7 @@ _Sample code:_
 
 _Token Definition:_
 
-```txt
+```tokens
 {§2.2 Values} <BIT_SHIFT_LEFT> {§2.2 Values}
 ```
 
@@ -318,7 +318,7 @@ _Sample code:_
 
 _Token Definition:_
 
-```txt
+```tokens
 {§2.2 Values} <BIT_SHIFT_RIGHT> {§2.2 Values}
 ```
 
@@ -334,7 +334,7 @@ _Sample code:_
 
 _Token Definition:_
 
-```txt
+```tokens
 <ADD> {§2.2 Values}
 ```
 
@@ -350,7 +350,7 @@ _Sample code:_
 
 _Token Definition:_
 
-```txt
+```tokens
 <SUB> {§2.2 Values}
 ```
 
@@ -366,7 +366,7 @@ _Sample code:_
 
 _Token Definition:_
 
-```txt
+```tokens
 {§2.2 Values} <LOGICAL_AND> {§2.2 Values}
 ```
 
@@ -382,7 +382,7 @@ _Sample code:_
 
 _Token Definition:_
 
-```txt
+```tokens
 {§2.2 Values} <LOGICAL_OR> {§2.2 Values}
 ```
 
@@ -398,7 +398,7 @@ _Sample code:_
 
 _Token Definition:_
 
-```txt
+```tokens
 <LOGICAL_NOT> {§2.2 Values}
 ```
 
@@ -414,7 +414,7 @@ _Sample code:_
 
 _Token Definition:_
 
-```txt
+```tokens
 {§2.2 Values} <EQUALS> {§2.2 Values}
 ```
 
@@ -430,7 +430,7 @@ _Sample code:_
 
 _Token Definition:_
 
-```txt
+```tokens
 {§2.2 Values} <NOT_EQUALS> {§2.2 Values}
 ```
 
@@ -446,7 +446,7 @@ _Sample code:_
 
 _Token Definition:_
 
-```txt
+```tokens
 {§2.2 Values} <GREATER_THAN> {§2.2 Values}
 ```
 
@@ -462,7 +462,7 @@ _Sample code:_
 
 _Token Definition:_
 
-```txt
+```tokens
 {§2.2 Values} <GREATER_THAN_OR_EQUALS> {§2.2 Values}
 ```
 
@@ -478,7 +478,7 @@ _Sample code:_
 
 _Token Definition:_
 
-```txt
+```tokens
 {§2.2 Values} <LESS_THAN> {§2.2 Values}
 ```
 
@@ -494,7 +494,7 @@ _Sample code:_
 
 _Token Definition:_
 
-```txt
+```tokens
 {§2.2 Values} <LESS_THAN_OR_EQUALS> {§2.2 Values}
 ```
 
@@ -511,13 +511,13 @@ int b = 1
 
 _Token Definition:_
 
-```txt
-([KEYWORD_UNSIGNED]) [KEYWORD_BYTE] [IDENTIFIER] ([ASSIGN] {§2.2 Values})?
-([KEYWORD_UNSIGNED]) [KEYWORD_SHORT] [IDENTIFIER] ([ASSIGN] {§2.2 Values})?
-([KEYWORD_UNSIGNED]) [KEYWORD_INT] [IDENTIFIER] ([ASSIGN] {§2.2 Values})?
-([KEYWORD_UNSIGNED]) [KEYWORD_LONG] [IDENTIFIER] ([ASSIGN] {§2.2 Values})?
-[KEYWORD_FLOAT] [IDENTIFIER] ([ASSIGN] {§2.2 Values})?
-[KEYWORD_DOUBLE] [IDENTIFIER] ([ASSIGN] {§2.2 Values})?
-[KEYWORD_BOOLEAN] [IDENTIFIER] ([ASSIGN] {§2.2 Values})?
-[KEYWORD_CHAR] [IDENTIFIER] ([ASSIGN] {§2.2 Values})?
+```tokens
+(<KEYWORD_UNSIGNED>) <KEYWORD_BYTE> <IDENTIFIER> (<ASSIGN> {§2.2 Values})?
+(<KEYWORD_UNSIGNED>) <KEYWORD_SHORT> <IDENTIFIER> (<ASSIGN> {§2.2 Values})?
+(<KEYWORD_UNSIGNED>) <KEYWORD_INT> <IDENTIFIER> (<ASSIGN> {§2.2 Values})?
+(<KEYWORD_UNSIGNED>) <KEYWORD_LONG> <IDENTIFIER> (<ASSIGN> {§2.2 Values})?
+<KEYWORD_FLOAT> <IDENTIFIER> (<ASSIGN> {§2.2 Values})?
+<KEYWORD_DOUBLE> <IDENTIFIER> (<ASSIGN> {§2.2 Values})?
+<KEYWORD_BOOLEAN> <IDENTIFIER> (<ASSIGN> {§2.2 Values})?
+<KEYWORD_CHAR> <IDENTIFIER> (<ASSIGN> {§2.2 Values})?
 ```
