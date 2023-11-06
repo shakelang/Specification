@@ -31,7 +31,7 @@ A structure is a sequence of tokens that form a meaningful unit in a program.
 ## § 2 Structures
 
 In this section we will define all the different structures that we refer to in the parser.
-When we describe structures, we wil wrap token types in square brackets (`[]`) to indicate that they are tokens.
+When we describe structures, we wil wrap token types in square brackets (`<>`) to indicate that they are tokens.
 We will refer to other structures by their name and paragraph number and wrap them in curly brackets (`{}`).
 
 ### § 2.1 Statements
@@ -63,7 +63,7 @@ _Sample code:_
 _Token Definition:_
 
 ```txt
-[INTEGER] | [FLOAT]
+<INTEGER> | <FLOAT>
 ```
 
 #### § 2.3.2 String
@@ -79,7 +79,7 @@ _Sample code:_
 _Token Definition:_
 
 ```txt
-[STRING]
+<STRInG>
 ```
 
 #### § 2.3.3 Identifier
@@ -95,7 +95,7 @@ hello
 _Token Definition:_
 
 ```txt
-[IDENTIFIER]
+<IDENTIFIER>
 ```
 
 #### § 2.3.3.2 Identifier 2
@@ -109,7 +109,7 @@ If your identifier contains special characters, you can use the following syntax
 _Token Definition:_
 
 ```txt
-`[IDENTIFIER]`
+`<IDENTIFIER>`
 ```
 
 #### § 2.3.4 Group
@@ -125,7 +125,7 @@ _Sample code:_
 _Token Definition:_
 
 ```txt
-[LPAREN] {§2.2 Values} [RPAREN]
+<LPAREN> {§2.2 Values} <RPAREN>
 ```
 
 #### § 2.3.5 Operators
@@ -143,7 +143,7 @@ _Sample code:_
 _Token Definition:_
 
 ```txt
-{§2.2 Values} [ADD] {§2.2 Values}
+{§2.2 Values} <ADD> {§2.2 Values}
 ```
 
 ##### § Subtraction
@@ -159,7 +159,7 @@ _Sample code:_
 _Token Definition:_
 
 ```txt
-{§2.2 Values} [SUB] {§2.2 Values}
+{§2.2 Values} <SUB> {§2.2 Values}
 ```
 
 ##### § Multiplication
@@ -175,7 +175,7 @@ _Sample code:_
 _Token Definition:_
 
 ```txt
-{§2.2 Values} [MUL] {§2.2 Values}
+{§2.2 Values} <MUL> {§2.2 Values}
 ```
 
 ##### § Division
@@ -191,7 +191,7 @@ _Sample code:_
 _Token Definition:_
 
 ```txt
-{§2.2 Values} [DIV] {§2.2 Values}
+{§2.2 Values} <DIV> {§2.2 Values}
 ```
 
 ##### § Modulo
@@ -207,7 +207,7 @@ _Sample code:_
 _Token Definition:_
 
 ```txt
-{§2.2 Values} [MOD] {§2.2 Values}
+{§2.2 Values} <MOD> {§2.2 Values}
 ```
 
 ##### § Power
@@ -223,7 +223,7 @@ _Sample code:_
 _Token Definition:_
 
 ```txt
-{§2.2 Values} [POW] {§2.2 Values}
+{§2.2 Values} <POW> {§2.2 Values}
 ```
 
 ##### § Bitwise And
@@ -239,7 +239,7 @@ _Sample code:_
 _Token Definition:_
 
 ```txt
-{§2.2 Values} [BIT_AND] {§2.2 Values}
+{§2.2 Values} <BIT_AND> {§2.2 Values}
 ```
 
 ##### § Bitwise Or
@@ -255,7 +255,7 @@ _Sample code:_
 _Token Definition:_
 
 ```txt
-{§2.2 Values} [BIT_OR] {§2.2 Values}
+{§2.2 Values} <BIT_OR> {§2.2 Values}
 ```
 
 ##### § Bitwise Xor
@@ -271,7 +271,7 @@ _Sample code:_
 _Token Definition:_
 
 ```txt
-{§2.2 Values} [BIT_XOR] {§2.2 Values}
+{§2.2 Values} <BIT_XOR> {§2.2 Values}
 ```
 
 ##### § Bitwise Not
@@ -287,7 +287,7 @@ _Sample code:_
 _Token Definition:_
 
 ```txt
-[BIT_NOT] {§2.2 Values}
+<BIT_NOT> {§2.2 Values}
 ```
 
 ##### § Bitwise Shift Left
@@ -303,7 +303,7 @@ _Sample code:_
 _Token Definition:_
 
 ```txt
-{§2.2 Values} [BIT_SHIFT_LEFT] {§2.2 Values}
+{§2.2 Values} <BIT_SHIFT_LEFT> {§2.2 Values}
 ```
 
 ##### § Bitwise Shift Right
@@ -319,7 +319,7 @@ _Sample code:_
 _Token Definition:_
 
 ```txt
-{§2.2 Values} [BIT_SHIFT_RIGHT] {§2.2 Values}
+{§2.2 Values} <BIT_SHIFT_RIGHT> {§2.2 Values}
 ```
 
 ##### § Unary Plus
@@ -335,7 +335,7 @@ _Sample code:_
 _Token Definition:_
 
 ```txt
-[ADD] {§2.2 Values}
+<ADD> {§2.2 Values}
 ```
 
 ##### § Unary Minus
@@ -351,7 +351,7 @@ _Sample code:_
 _Token Definition:_
 
 ```txt
-[SUB] {§2.2 Values}
+<SUB> {§2.2 Values}
 ```
 
 ##### § Logical And
@@ -367,7 +367,7 @@ _Sample code:_
 _Token Definition:_
 
 ```txt
-{§2.2 Values} [LOGICAL_AND] {§2.2 Values}
+{§2.2 Values} <LOGICAL_AND> {§2.2 Values}
 ```
 
 ##### § Logical Or
@@ -383,7 +383,7 @@ _Sample code:_
 _Token Definition:_
 
 ```txt
-{§2.2 Values} [LOGICAL_OR] {§2.2 Values}
+{§2.2 Values} <LOGICAL_OR> {§2.2 Values}
 ```
 
 ##### § Logical Not
@@ -399,7 +399,7 @@ _Sample code:_
 _Token Definition:_
 
 ```txt
-[LOGICAL_NOT] {§2.2 Values}
+<LOGICAL_NOT> {§2.2 Values}
 ```
 
 ##### § Equals
@@ -415,7 +415,7 @@ _Sample code:_
 _Token Definition:_
 
 ```txt
-{§2.2 Values} [EQUALS] {§2.2 Values}
+{§2.2 Values} <EQUALS> {§2.2 Values}
 ```
 
 ##### § Not Equals
@@ -431,7 +431,7 @@ _Sample code:_
 _Token Definition:_
 
 ```txt
-{§2.2 Values} [NOT_EQUALS] {§2.2 Values}
+{§2.2 Values} <NOT_EQUALS> {§2.2 Values}
 ```
 
 ##### § Greater Than
@@ -447,7 +447,7 @@ _Sample code:_
 _Token Definition:_
 
 ```txt
-{§2.2 Values} [GREATER_THAN] {§2.2 Values}
+{§2.2 Values} <GREATER_THAN> {§2.2 Values}
 ```
 
 ##### § Greater Than Or Equals
@@ -463,7 +463,7 @@ _Sample code:_
 _Token Definition:_
 
 ```txt
-{§2.2 Values} [GREATER_THAN_OR_EQUALS] {§2.2 Values}
+{§2.2 Values} <GREATER_THAN_OR_EQUALS> {§2.2 Values}
 ```
 
 ##### § Less Than
@@ -479,7 +479,7 @@ _Sample code:_
 _Token Definition:_
 
 ```txt
-{§2.2 Values} [LESS_THAN] {§2.2 Values}
+{§2.2 Values} <LESS_THAN> {§2.2 Values}
 ```
 
 ##### § Less Than Or Equals
@@ -495,5 +495,16 @@ _Sample code:_
 _Token Definition:_
 
 ```txt
-{§2.2 Values} [LESS_THAN_OR_EQUALS] {§2.2 Values}
+{§2.2 Values} <LESS_THAN_OR_EQUALS> {§2.2 Values}
+```
+
+### § 2.4 Variable Declaration
+
+A variable declaration is a sequence of tokens that declare a variable. It consists of a type, a name and an optional value.
+
+_Sample code:_
+
+```shake
+int a
+int b = 1
 ```
