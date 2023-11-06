@@ -1,0 +1,8 @@
+{
+  "label": "Parser",
+  "position": 1,
+  "link": {
+    "type": "generated-index",
+    "description": "The Specification of the Shake Compiler Api"
+  }
+}
