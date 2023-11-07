@@ -44,7 +44,7 @@ public
 
 _Token Definition:_
 
-```antlr4
+```tokens
 <KEYWORD_PUBLIC> | <KEYWORD_PRIVATE> | <KEYWORD_PROTECTED>
 ```
 
