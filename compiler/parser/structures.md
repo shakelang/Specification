@@ -30,6 +30,41 @@ A structure is a sequence of tokens that form a meaningful unit in a program.
 
 ## § 2 Structures
 
+### § 2.0.1 Help Structures
+
+#### § Access Modifier
+
+An access modifier is a sequence of tokens that define the access modifier of a structure. It can be either `public` or `private`, `protected`.
+
+_Sample code:_
+
+```shake
+public
+```
+
+_Token Definition:_
+
+```tokens
+<KEYWORD_PUBLIC> | <KEYWORD_PRIVATE> | <KEYWORD_PROTECTED>
+```
+
+#### § Type
+
+A type is a sequence of tokens that define the type of a structure. It can be either `byte`, `short`, `int`, `long`, `float`, `double`, `boolean` or `char`. Additionally it can be unsigned (if it is a `byte`, `short`, `int` or `long`).
+It can also be an `identifier` to reference object oriented types.
+
+_Sample code:_
+
+```shake
+int
+```
+
+_Token Definition:_
+
+```tokens
+(<KEYWORD_UNSIGNED>) <KEYWORD_BYTE> | (<KEYWORD_UNSIGNED>) <KEYWORD_SHORT> | (<KEYWORD_UNSIGNED>) <KEYWORD_INT> | (<KEYWORD_UNSIGNED>) <KEYWORD_LONG> | <KEYWORD_FLOAT> | <KEYWORD_DOUBLE> | <KEYWORD_BOOLEAN> | <KEYWORD_CHAR> | <IDENTIFIER>
+```
+
 In this section we will define all the different structures that we refer to in the parser.
 When we describe structures, we wil wrap token types in square brackets (`<>`) to indicate that they are tokens.
 We will refer to other structures by their name and paragraph number and wrap them in curly brackets (`{}`).
@@ -498,7 +533,7 @@ _Token Definition:_
 {§2.2 Values} <LESS_THAN_OR_EQUALS> {§2.2 Values}
 ```
 
-### § 2.4 Variable Declaration
+### § 2.4 Variable Declaration [Local]
 
 A variable declaration is a sequence of tokens that declare a variable. It consists of a type, a name and an optional value.
 
@@ -512,12 +547,22 @@ int b = 1
 _Token Definition:_
 
 ```tokens
-(<KEYWORD_UNSIGNED>) <KEYWORD_BYTE> <IDENTIFIER> (<ASSIGN> {§2.2 Values})?
-(<KEYWORD_UNSIGNED>) <KEYWORD_SHORT> <IDENTIFIER> (<ASSIGN> {§2.2 Values})?
-(<KEYWORD_UNSIGNED>) <KEYWORD_INT> <IDENTIFIER> (<ASSIGN> {§2.2 Values})?
-(<KEYWORD_UNSIGNED>) <KEYWORD_LONG> <IDENTIFIER> (<ASSIGN> {§2.2 Values})?
-<KEYWORD_FLOAT> <IDENTIFIER> (<ASSIGN> {§2.2 Values})?
-<KEYWORD_DOUBLE> <IDENTIFIER> (<ASSIGN> {§2.2 Values})?
-<KEYWORD_BOOLEAN> <IDENTIFIER> (<ASSIGN> {§2.2 Values})?
-<KEYWORD_CHAR> <IDENTIFIER> (<ASSIGN> {§2.2 Values})?
+{Type} <IDENTIFIER> (<ASSIGN> {§2.2 Values})?
+```
+
+### § 2.5 Field Declaration [Global]
+
+A field declaration is a sequence of tokens that declare a field. It consists of a type, a name and an optional value.
+
+_Sample code:_
+
+```shake
+int a
+int b = 1
+```
+
+_Token Definition_
+
+```tokens
+{Access} {Type} <IDENTIFIER> (<ASSIGN> {§2.2 Values})?
 ```
