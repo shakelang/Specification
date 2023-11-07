@@ -44,7 +44,7 @@ public
 
 _Token Definition:_
 
-```tokens
+```antlr4
 <KEYWORD_PUBLIC> | <KEYWORD_PRIVATE> | <KEYWORD_PROTECTED>
 ```
 
@@ -565,4 +565,61 @@ _Token Definition_
 
 ```tokens
 {Access} {Type} <IDENTIFIER> (<ASSIGN> {§2.2 Values})?
+```
+
+### § 2.6 Function Declaration
+
+A function declaration is a sequence of tokens that declare a function. It consists of an optional access modifier, a type, a name, a list of parameters and a body.
+
+_Sample code:_
+
+```shake
+public int add(int a, int b) {
+    return a + b
+}
+```
+
+_Token Definition:_
+
+```tokens
+{Access}
+{Type}
+<IDENTIFIER>
+<LPAREN>
+    (
+        {§2.4 Variable Declaration [Local]}
+        (
+            <COMMA>
+            {§2.4 Variable Declaration [Local]}
+        )*
+    )?
+ <RPAREN> {Block}
+```
+
+### 2.7 Class Declaration
+
+A class declaration is a sequence of tokens that declare a class. It consists of an optional access modifier, a name, a list of fields and a list of functions.
+
+_Sample code:_
+
+```shake
+public class Test {
+    int a
+    int b = 1
+
+    public int add(int a, int b) {
+        return a + b
+    }
+}
+```
+
+_Token Definition:_
+
+```tokens
+{Access}
+<KEYWORD_CLASS>
+<IDENTIFIER>
+<LCURLY>
+    ({§2.5 Field Declaration [Global]} | {§2.6 Function Declaration})*
+<RCURLY>
 ```
