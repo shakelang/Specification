@@ -30,7 +30,7 @@ A structure is a sequence of tokens that form a meaningful unit in a program.
 
 ## § 2 Structures
 
-### § 2.0.1 Help Structures
+### § 2.0 Help Structures
 
 #### § Access Modifier
 
@@ -81,7 +81,7 @@ A value refers to a structure that can be used as a value.
 
 _Lets talk about all the different structures that we refer to as expressions_
 
-#### § 2.3.1 Number
+#### § Number
 
 A number is a sequence of digits that form a number. It can be either an integer or a floating point number. It is represented by either an `INTEGER` or a `FLOAT` token.
 
@@ -101,7 +101,7 @@ _Token Definition:_
 <INTEGER> | <FLOAT>
 ```
 
-#### § 2.3.2 String
+#### § String
 
 A string is a sequence of characters that form a string. It is represented by a `STRING` token.
 
@@ -117,7 +117,7 @@ _Token Definition:_
 <STRInG>
 ```
 
-#### § 2.3.3 Identifier
+#### § Identifier
 
 An identifier is a sequence of characters that form a name. It is represented by an `IDENTIFIER` token.
 
@@ -133,7 +133,7 @@ _Token Definition:_
 <IDENTIFIER>
 ```
 
-#### § 2.3.3.2 Identifier 2
+#### § Identifier 2
 
 If your identifier contains special characters, you can use the following syntax:
 
@@ -147,7 +147,7 @@ _Token Definition:_
 `<IDENTIFIER>`
 ```
 
-#### § 2.3.4 Group
+#### § Group
 
 A group is a sequence of tokens that are surrounded by parentheses.
 
@@ -163,7 +163,7 @@ _Token Definition:_
 <LPAREN> {§2.2 Values} <RPAREN>
 ```
 
-#### § 2.3.5 Operators
+#### § Operators
 
 ##### § Addition
 
@@ -309,6 +309,48 @@ _Token Definition:_
 {§2.2 Values} <BIT_XOR> {§2.2 Values}
 ```
 
+##### § Bitwise NAND
+
+A bitwise nand is a sequence of two values that are separated by a `~&` token.
+
+_Sample code:_
+
+```shake
+1 ~& 2
+```
+
+_Token Definition:_
+
+```tokens
+{§2.2 Values} <BIT_NAND> {§2.2 Values}
+```
+
+##### § Bitwise NOR
+
+A bitwise nor is a sequence of two values that are separated by a `~|` token.
+
+_Sample code:_
+
+```shake
+1 ~| 2
+```
+
+_Token Definition:_
+
+```tokens
+{§2.2 Values} <BIT_NOR> {§2.2 Values}
+```
+
+##### § Bitwise XNOR
+
+A bitwise xnor is a sequence of two values that are separated by a `~^` token.
+
+_Sample code:_
+
+```shake
+1 ~^ 2
+```
+
 ##### § Bitwise Not
 
 A bitwise not is a sequence of two values that are separated by a `~` token.
@@ -325,7 +367,7 @@ _Token Definition:_
 <BIT_NOT> {§2.2 Values}
 ```
 
-##### § Bitwise Shift Left
+##### § Bitwise Shift Left (shl)
 
 A bitwise shift left is a sequence of two values that are separated by a `<<` token.
 
@@ -341,7 +383,7 @@ _Token Definition:_
 {§2.2 Values} <BIT_SHIFT_LEFT> {§2.2 Values}
 ```
 
-##### § Bitwise Shift Right
+##### § Bitwise Shift Right (shr)
 
 A bitwise shift right is a sequence of two values that are separated by a `>>` token.
 
@@ -419,6 +461,22 @@ _Token Definition:_
 
 ```tokens
 {§2.2 Values} <LOGICAL_OR> {§2.2 Values}
+```
+
+##### § Logical Xor
+
+A logical xor is a sequence of two values that are separated by a `^^` token.
+
+_Sample code:_
+
+```shake
+1 ^^ 2
+```
+
+_Token Definition:_
+
+```tokens
+{§2.2 Values} <LOGICAL_XOR> {§2.2 Values}
 ```
 
 ##### § Logical Not
@@ -575,7 +633,7 @@ _Sample code:_
 
 ```shake
 public int add(int a, int b) {
-    return a + b
+  return a + b
 }
 ```
 
@@ -586,14 +644,14 @@ _Token Definition:_
 {Type}
 <IDENTIFIER>
 <LPAREN>
+  (
+    {§2.4 Variable Declaration [Local]}
     (
-        {§2.4 Variable Declaration [Local]}
-        (
-            <COMMA>
-            {§2.4 Variable Declaration [Local]}
-        )*
-    )?
- <RPAREN> {Block}
+      <COMMA>
+      {§2.4 Variable Declaration [Local]}
+    )*
+  )?
+<RPAREN> {Block}
 ```
 
 ### 2.7 Class Declaration
@@ -604,12 +662,12 @@ _Sample code:_
 
 ```shake
 public class Test {
-    int a
-    int b = 1
+  int a
+  int b = 1
 
-    public int add(int a, int b) {
-        return a + b
-    }
+  public int add(int a, int b) {
+    return a + b
+  }
 }
 ```
 
@@ -620,6 +678,6 @@ _Token Definition:_
 <KEYWORD_CLASS>
 <IDENTIFIER>
 <LCURLY>
-    ({§2.5 Field Declaration [Global]} | {§2.6 Function Declaration})*
+  ({§2.5 Field Declaration [Global]} | {§2.6 Function Declaration})*
 <RCURLY>
 ```
