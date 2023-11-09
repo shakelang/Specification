@@ -681,3 +681,128 @@ _Token Definition:_
   ({§2.5 Field Declaration [Global]} | {§2.6 Function Declaration})*
 <RCURLY>
 ```
+
+### § 2.8 Block
+
+A block is a sequence of tokens that form a block. It consists of a list of statements. It can either start with a `{` token and contain a list of statements and end with a `}` token or it can be a single statement.
+
+_Sample code:_
+
+```shake
+{
+  int a = 1
+  int b = 2
+}
+```
+
+_Token Definition:_
+
+```tokens
+<LCURLY>
+  ({§2.1 Statements})*
+<RCURLY>
+```
+
+### § 2.9 If Statement
+
+An if statement is a sequence of tokens that form an if statement. It consists of a condition and a body. It can also have an else branch.
+
+_Sample code:_
+
+```shake
+if (a == 1) {
+  return 1
+} else {
+  return 2
+}
+```
+
+_Token Definition:_
+
+```tokens
+<KEYWORD_IF> <LPAREN> {§2.2 Values} <RPAREN> {Block} (<KEYWORD_ELSE> {Block})?
+```
+
+### § 2.10 While Statement
+
+A while statement is a sequence of tokens that form a while statement. It consists of a condition and a body.
+
+_Sample code:_
+
+```shake
+while (a == 1) {
+  return 1
+}
+```
+
+_Token Definition:_
+
+```tokens
+<KEYWORD_WHILE> <LPAREN> {§2.2 Values} <RPAREN> {Block}
+```
+
+### § 2.11 For Statement
+
+A for statement is a sequence of tokens that form a for statement. It consists of a variable declaration, a condition, an increment and a body.
+
+_Sample code:_
+
+```shake
+for (int i = 0; i < 10; i = i + 1) {
+  return i
+}
+```
+
+_Token Definition:_
+
+```tokens
+<KEYWORD_FOR> <LPAREN> {§2.1 Statements} <SEMICOLON> {§2.2 Values} <SEMICOLON> {§2.1 Statements} <RPAREN> {Block}
+```
+
+### § 2.12 Return Statement
+
+A return statement is a sequence of tokens that form a return statement. It consists of a value.
+
+_Sample code:_
+
+```shake
+return 1
+```
+
+_Token Definition:_
+
+```tokens
+<KEYWORD_RETURN> {§2.2 Values}
+```
+
+### § 2.13 Break Statement
+
+A break statement is a sequence of tokens that form a break statement.
+
+_Sample code:_
+
+```shake
+break
+```
+
+_Token Definition:_
+
+```tokens
+<KEYWORD_BREAK>
+```
+
+### § 2.14 Continue Statement
+
+A continue statement is a sequence of tokens that form a continue statement.
+
+_Sample code:_
+
+```shake
+continue
+```
+
+_Token Definition:_
+
+```tokens
+<KEYWORD_CONTINUE>
+```
