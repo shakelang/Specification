@@ -62,6 +62,10 @@ Literals are the highest precedence and are parsed first. They could be identifi
 
 `&&`
 
+### Logical XOR
+
+`^^`
+
 ### Logical OR
 
 `||`
