@@ -4,6 +4,12 @@ title: Order of Operators
 tags: [parser, operator, order, parsing token, specification, spec, compiler]
 ---
 
+## Theoretical Order of Operators
+
+### Literals
+
+Literals are the highest precedence and are parsed first. They could be identifiers, numbers, strings, characters, true, false, null.
+
 ### Parentheses
 
 `(` `)`: Parentheses are used to group expressions and have the highest precedence.
