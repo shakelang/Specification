@@ -76,4 +76,4 @@ Literals are the highest precedence and are parsed first. They could be identifi
 
 ### Assignment Operators
 
-`=`, `+=`, `-=`, `\*=`, `/=`, `%=`, `<<=`, `>>=`, `&=`, `^=`, `|=`
+`=`, `+=`, `-=`, `*=`, `/=`, `%=`, `<<=`, `>>=`, `&=`, `^=`, `|=`
