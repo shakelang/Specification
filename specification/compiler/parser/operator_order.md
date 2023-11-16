@@ -18,6 +18,10 @@ Literals are the highest precedence and are parsed first. They could be identifi
 
 `+`, `-` (positive and negative), ! (logical NOT), ~ (bitwise NOT).
 
+### Call Operator and Property Access
+
+`.` (dot), `[]` (brackets), `()` (call).
+
 ### Cast Operator
 
 `as` (cast).
