@@ -50,17 +50,17 @@ Literals are the highest precedence and are parsed first. They could be identifi
 
 `==` (equal to), `!=` (not equal to).
 
-### Bitwise AND
+### Bitwise AND / NAND
 
-`&`
+`&` (bitwise AND), `&~` (bitwise NAND).
 
-### Bitwise XOR
+### Bitwise XOR / XNOR
 
-`^`
+`^` (bitwise XOR), `^~` (bitwise XNOR).
 
-### Bitwise OR
+### Bitwise OR / NOR
 
-`|`
+`|` (bitwise OR), `|~` (bitwise NOR).
 
 ### Logical AND
 
