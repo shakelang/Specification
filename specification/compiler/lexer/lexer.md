@@ -54,7 +54,7 @@ _Ranking will make some difference in the lexer implementation, e.g. `*=` must b
 | 25.  | Subtraction                                            | `-`                              |
 | 26.  | Addition                                               | `+`                              |
 | 27.  | Logical XOR                                            | `^^`                             |
-| 28.  | Logical OR                                             | `&#124;&#124;`                   |
+| 28.  | Logical OR                                             | `||`                             |
 | 29.  | Logical AND                                            | `&&`                             |
 | 30.  | Equals                                                 | `==`                             |
 | 31.  | Greater Than Or Equal                                  | `>=`                             |
