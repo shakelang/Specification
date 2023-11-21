@@ -31,6 +31,16 @@ There are two variants of token types, there are types that always have the same
 | ASSIGN               | Assignment                | `=`            |
 | BIGGER               | Bigger                    | `>`            |
 | BIGGER_EQUALS        | Bigger Equals             | `>=`           |
+| BITWISE_AND          | Bitwise And               | `&`            |
+| BITWISE_AND_ASSIGN   | Bitwise And Assignment    | `&=`           |
+| BITWISE_NOT          | Bitwise Not               | `~`            |
+| BITWISE_NAND         | Bitwise Not And           | `~&`           |
+| BITWISE_NOR          | Bitwise Not Or            | `~&#124;`      |
+| BITWISE_XNOR         | Bitwise Not Xor           | `~^`           |
+| BITWISE_OR           | Bitwise Or                | `&#124;`       |
+| BITWISE_OR_ASSIGN    | Bitwise Or Assignment     | `&#124;=`      |
+| BITWISE_XOR          | Bitwise Xor               | `^`            |
+| BITWISE_XOR_ASSIGN   | Bitwise Xor Assignment    | `^=`           |
 | COMMA                | Comma                     | `,`            |
 | DECR                 | Decrement                 | `--`           |
 | DIV                  | Division                  | `/`            |
@@ -89,7 +99,7 @@ There are two variants of token types, there are types that always have the same
 | LCURL                | Left Curly Brace          | `{`            |
 | LINE_SEPARATOR       | Line Separator            | `\n`           |
 | LOGICAL_AND          | Logical And               | `&&`           |
-| LOGICAL_OR           | Logical Or                | `\|\|`         |
+| LOGICAL_OR           | Logical Or                | `&#124;&#124;` |
 | LOGICAL_XOR          | Logical Xor               | `^`            |
 | LPAREN               | Left Parenthesis          | `(`            |
 | LSQBR                | Left Square Bracket       | `[`            |
