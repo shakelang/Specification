@@ -654,7 +654,7 @@ _Token Definition:_
 <RPAREN> {Block}
 ```
 
-### 2.7 Class Declaration
+### § 2.7 Class Declaration
 
 A class declaration is a sequence of tokens that declare a class. It consists of an optional access modifier, a name, a list of fields and a list of functions.
 
