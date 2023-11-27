@@ -350,6 +350,60 @@ Syntax: `inot` - Bitwise not an integer from the stack and push the result onto 
 
 Syntax: `lnot` - Bitwise not a long from the stack and push the result onto the stack.
 
+#### § 3.5 Bitwise shift left
+
+#### § 3.5.1 `bshl`
+
+Syntax: `bshl` - Bitwise shift left a byte from the stack and push the result onto the stack.
+
+#### § 3.5.2 `sshl`
+
+Syntax: `sshl` - Bitwise shift left a short from the stack and push the result onto the stack.
+
+#### § 3.5.3 `ishl`
+
+Syntax: `ishl` - Bitwise shift left an integer from the stack and push the result onto the stack.
+
+#### § 3.5.4 `lshl`
+
+Syntax: `lshl` - Bitwise shift left a long from the stack and push the result onto the stack.
+
+#### § 3.6 Bitwise shift right
+
+#### § 3.6.1 `bshr`
+
+Syntax: `bshr` - Bitwise shift right a byte from the stack and push the result onto the stack.
+
+#### § 3.6.2 `sshr`
+
+Syntax: `sshr` - Bitwise shift right a short from the stack and push the result onto the stack.
+
+#### § 3.6.3 `ishr`
+
+Syntax: `ishr` - Bitwise shift right an integer from the stack and push the result onto the stack.
+
+#### § 3.6.4 `lshr`
+
+Syntax: `lshr` - Bitwise shift right a long from the stack and push the result onto the stack.
+
+#### § 3.7 Bitwise shift right unsigned
+
+#### § 3.7.1 `bshru`
+
+Syntax: `bshru` - Bitwise shift right unsigned a byte from the stack and push the result onto the stack.
+
+#### § 3.7.2 `sshr`
+
+Syntax: `sshr` - Bitwise shift right unsigned a short from the stack and push the result onto the stack.
+
+#### § 3.7.3 `ishru`
+
+Syntax: `ishru` - Bitwise shift right unsigned an integer from the stack and push the result onto the stack.
+
+#### § 3.7.4 `lshru`
+
+Syntax: `lshru` - Bitwise shift right unsigned a long from the stack and push the result onto the stack.
+
 ## § 4 CMP Expressions
 
 ### § 4.1 CMP
