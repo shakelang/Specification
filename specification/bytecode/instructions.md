@@ -1,3 +1,9 @@
+---
+position: 1
+title: Bytecode Instructions
+tags: [specification, spec, interpreter, bytecode, instructions]
+---
+
 # The shake bytecode code instructions
 
 ## Stack and variable manipulation
