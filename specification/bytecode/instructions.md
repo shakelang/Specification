@@ -280,73 +280,73 @@ Syntax: `lneg` - Negate a long from the stack and push the result onto the stack
 
 ### § 3.1 Bitwise and
 
-#### § 2.6.1 `band`
+#### § 3.1.1 `band`
 
 Syntax: `band` - Bitwise and two bytes from the stack and push the result onto the stack.
 
-#### § 2.6.2 `sand`
+#### § 3.1.2 `sand`
 
 Syntax: `sand` - Bitwise and two shorts from the stack and push the result onto the stack.
 
-#### § 2.6.3 `iand`
+#### § 3.1.3 `iand`
 
 Syntax: `iand` - Bitwise and two integers from the stack and push the result onto the stack.
 
-#### § 2.6.4 `land`
+#### § 3.1.4 `land`
 
 Syntax: `land` - Bitwise and two longs from the stack and push the result onto the stack.
 
 ### § 3.2 Bitwise or
 
-#### § 2.7.1 `bor`
+#### § 3.2.1 `bor`
 
 Syntax: `bor` - Bitwise or two bytes from the stack and push the result onto the stack.
 
-#### § 2.7.2 `sor`
+#### § 3.2.2 `sor`
 
 Syntax: `sor` - Bitwise or two shorts from the stack and push the result onto the stack.
 
-#### § 2.7.3 `ior`
+#### § 3.2.3 `ior`
 
 Syntax: `ior` - Bitwise or two integers from the stack and push the result onto the stack.
 
-#### § 2.7.4 `lor`
+#### § 3.2.4 `lor`
 
 Syntax: `lor` - Bitwise or two longs from the stack and push the result onto the stack.
 
 ### § 3.3 Bitwise xor
 
-#### § 2.8.1 `bxor`
+#### § 3.3.1 `bxor`
 
 Syntax: `bxor` - Bitwise xor two bytes from the stack and push the result onto the stack.
 
-#### § 2.8.2 `sxor`
+#### § 3.3.2 `sxor`
 
 Syntax: `sxor` - Bitwise xor two shorts from the stack and push the result onto the stack.
 
-#### § 2.8.3 `ixor`
+#### § 3.3.3 `ixor`
 
 Syntax: `ixor` - Bitwise xor two integers from the stack and push the result onto the stack.
 
-#### § 2.8.4 `lxor`
+#### § 3.3.4 `lxor`
 
 Syntax: `lxor` - Bitwise xor two longs from the stack and push the result onto the stack.
 
 ### § 3.4 Bitwise not
 
-#### § 2.9.1 `bnot`
+#### § 3.4.1 `bnot`
 
 Syntax: `bnot` - Bitwise not a byte from the stack and push the result onto the stack.
 
-#### § 2.9.2 `snot`
+#### § 3.4.2 `snot`
 
 Syntax: `snot` - Bitwise not a short from the stack and push the result onto the stack.
 
-#### § 2.9.3 `inot`
+#### § 3.4.3 `inot`
 
 Syntax: `inot` - Bitwise not an integer from the stack and push the result onto the stack.
 
-#### § 2.9.4 `lnot`
+#### § 3.4.4 `lnot`
 
 Syntax: `lnot` - Bitwise not a long from the stack and push the result onto the stack.
 
