@@ -1,26 +1,28 @@
 # The shake bytecode code instructions
 
-## § 1.1 Pushing constants onto the stack
+## Stack and variable manipulation
 
-### § 1.1.1 `bpush`
+### § 1.1 Pushing constants onto the stack
+
+#### § 1.1.1 `bpush`
 
 Syntax: `bpush <u1 value>` - Push a single byte (or any 8-bit-value) onto the stack. Can also be used for a boolean or ubyte.
 
-### § 1.1.2 `spush`
+#### § 1.1.2 `spush`
 
 Syntax: `spush <u2 value>` - Push a short (or any 16-bit-value) onto the stack. Can also be used for a char or ushort.
 
-### § 1.1.3 `ipush`
+#### § 1.1.3 `ipush`
 
 Syntax: `ipush <u4 value>` - Push an integer (or any 32-bit-value) onto the stack. Can also be used for a float or uint.
 
-### § 1.1.4 `lpush`
+#### § 1.1.4 `lpush`
 
 Syntax: `lpush <u8 value>` - Push a long (or any 64-bit-value) onto the stack. Can also be used for a double or ulong.
 
 ### § 1.2 Loading data from the local variable table
 
-### § 1.2.1 `bload`
+#### § 1.2.1 `bload`
 
 Syntax: `bload <u2 index>` - Load a byte from the local variable table onto the stack.
 
@@ -272,73 +274,73 @@ Syntax: `lneg` - Negate a long from the stack and push the result onto the stack
 
 ### § 3.1 Bitwise and
 
-### § 2.6.1 `band`
+#### § 2.6.1 `band`
 
 Syntax: `band` - Bitwise and two bytes from the stack and push the result onto the stack.
 
-### § 2.6.2 `sand`
+#### § 2.6.2 `sand`
 
 Syntax: `sand` - Bitwise and two shorts from the stack and push the result onto the stack.
 
-### § 2.6.3 `iand`
+#### § 2.6.3 `iand`
 
 Syntax: `iand` - Bitwise and two integers from the stack and push the result onto the stack.
 
-### § 2.6.4 `land`
+#### § 2.6.4 `land`
 
 Syntax: `land` - Bitwise and two longs from the stack and push the result onto the stack.
 
 ### § 3.2 Bitwise or
 
-### § 2.7.1 `bor`
+#### § 2.7.1 `bor`
 
 Syntax: `bor` - Bitwise or two bytes from the stack and push the result onto the stack.
 
-### § 2.7.2 `sor`
+#### § 2.7.2 `sor`
 
 Syntax: `sor` - Bitwise or two shorts from the stack and push the result onto the stack.
 
-### § 2.7.3 `ior`
+#### § 2.7.3 `ior`
 
 Syntax: `ior` - Bitwise or two integers from the stack and push the result onto the stack.
 
-### § 2.7.4 `lor`
+#### § 2.7.4 `lor`
 
 Syntax: `lor` - Bitwise or two longs from the stack and push the result onto the stack.
 
 ### § 3.3 Bitwise xor
 
-### § 2.8.1 `bxor`
+#### § 2.8.1 `bxor`
 
 Syntax: `bxor` - Bitwise xor two bytes from the stack and push the result onto the stack.
 
-### § 2.8.2 `sxor`
+#### § 2.8.2 `sxor`
 
 Syntax: `sxor` - Bitwise xor two shorts from the stack and push the result onto the stack.
 
-### § 2.8.3 `ixor`
+#### § 2.8.3 `ixor`
 
 Syntax: `ixor` - Bitwise xor two integers from the stack and push the result onto the stack.
 
-### § 2.8.4 `lxor`
+#### § 2.8.4 `lxor`
 
 Syntax: `lxor` - Bitwise xor two longs from the stack and push the result onto the stack.
 
 ### § 3.4 Bitwise not
 
-### § 2.9.1 `bnot`
+#### § 2.9.1 `bnot`
 
 Syntax: `bnot` - Bitwise not a byte from the stack and push the result onto the stack.
 
-### § 2.9.2 `snot`
+#### § 2.9.2 `snot`
 
 Syntax: `snot` - Bitwise not a short from the stack and push the result onto the stack.
 
-### § 2.9.3 `inot`
+#### § 2.9.3 `inot`
 
 Syntax: `inot` - Bitwise not an integer from the stack and push the result onto the stack.
 
-### § 2.9.4 `lnot`
+#### § 2.9.4 `lnot`
 
 Syntax: `lnot` - Bitwise not a long from the stack and push the result onto the stack.
 
@@ -346,26 +348,26 @@ Syntax: `lnot` - Bitwise not a long from the stack and push the result onto the 
 
 ### § 4.1 CMP
 
-### § 4.1.1 `bcmp`
+#### § 4.1.1 `bcmp`
 
 Syntax: `bcmp` - Compare two bytes from the stack and push the result onto the stack.
 
-### § 4.1.2 `scmp`
+#### § 4.1.2 `scmp`
 
 Syntax: `scmp` - Compare two shorts from the stack and push the result onto the stack.
 
-### § 4.1.3 `icmp`
+#### § 4.1.3 `icmp`
 
 Syntax: `icmp` - Compare two integers from the stack and push the result onto the stack.
 
-### § 4.1.4 `lcmp`
+#### § 4.1.4 `lcmp`
 
 Syntax: `lcmp` - Compare two longs from the stack and push the result onto the stack.
 
-### § 4.1.5 `fcmp`
+#### § 4.1.5 `fcmp`
 
 Syntax: `fcmp` - Compare two floats from the stack and push the result onto the stack.
 
-### § 4.1.6 `dcmp`
+#### § 4.1.6 `dcmp`
 
 Syntax: `dcmp` - Compare two doubles from the stack and push the result onto the stack.
