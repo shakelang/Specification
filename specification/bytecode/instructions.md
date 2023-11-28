@@ -679,9 +679,9 @@ If the top byte is greater than the second, the result will be -1, if they are e
 top byte is smaller than the second, the result will be -1. The result will be a byte.
 
 ```txt
-1 1 1 1 1 1 1 1 // -1, the top byte is greater than the second
-0 0 0 0 0 0 0 0 // 0, the top byte is equal to the second
-0 0 0 0 0 0 0 1 // 1, the top byte is smaller than the second
+0 0 0 0 0 0 0 0 // 0, the top byte is greater than the second
+0 0 0 0 0 0 0 1 // 1, the top byte is equal to the second
+0 0 0 0 0 0 1 0 // 2, the top byte is smaller than the second
 ```
 
 Syntax: `bcmp`
@@ -694,9 +694,9 @@ If the top short is greater than the second, the result will be -1, if they are 
 top short is smaller than the second, the result will be -1. The result will be a byte.
 
 ```txt
-1 1 1 1 1 1 1 1 // -1, the top short is greater than the second
-0 0 0 0 0 0 0 0 // 0, the top short is equal to the second
-0 0 0 0 0 0 0 1 // 1, the top short is smaller than the second
+0 0 0 0 0 0 0 0 // 0, the top short is greater than the second
+0 0 0 0 0 0 0 1 // 1, the top short is equal to the second
+0 0 0 0 0 0 1 0 // 2, the top short is smaller than the second
 ```
 
 Syntax: `scmp`
@@ -709,9 +709,9 @@ If the top integer is greater than the second, the result will be -1, if they ar
 top integer is smaller than the second, the result will be -1. The result will be a byte.
 
 ```txt
-1 1 1 1 1 1 1 1 // -1, the top integer is greater than the second
-0 0 0 0 0 0 0 0 // 0, the top integer is equal to the second
-0 0 0 0 0 0 0 1 // 1, the top integer is smaller than the second
+0 0 0 0 0 0 0 0 // 0, the top integer is greater than the second
+0 0 0 0 0 0 0 1 // 1, the top integer is equal to the second
+0 0 0 0 0 0 1 0 // 2, the top integer is smaller than the second
 ```
 
 Syntax: `icmp`
@@ -724,9 +724,9 @@ If the top long is greater than the second, the result will be -1, if they are e
 top long is smaller than the second, the result will be -1. The result will be a byte.
 
 ```txt
-1 1 1 1 1 1 1 1 // -1, the top long is greater than the second
-0 0 0 0 0 0 0 0 // 0, the top long is equal to the second
-0 0 0 0 0 0 0 1 // 1, the top long is smaller than the second
+0 0 0 0 0 0 0 0 // 0, the top long is greater than the second
+0 0 0 0 0 0 0 1 // 1, the top long is equal to the second
+0 0 0 0 0 0 1 0 // 2, the top long is smaller than the second
 ```
 
 Syntax: `lcmp`
@@ -739,9 +739,9 @@ If the top float is greater than the second, the result will be -1, if they are 
 top float is smaller than the second, the result will be -1. The result will be a byte.
 
 ```txt
-1 1 1 1 1 1 1 1 // -1, the top float is greater than the second
-0 0 0 0 0 0 0 0 // 0, the top float is equal to the second
-0 0 0 0 0 0 0 1 // 1, the top float is smaller than the second
+0 0 0 0 0 0 0 0 // 0, the top float is greater than the second
+0 0 0 0 0 0 0 1 // 1, the top float is equal to the second
+0 0 0 0 0 0 1 0 // 2, the top float is smaller than the second
 ```
 
 Syntax: `fcmp`
@@ -755,9 +755,9 @@ If the top double is greater than the second, the result will be -1, if they are
 top double is smaller than the second, the result will be -1. The result will be a byte.
 
 ```txt
-1 1 1 1 1 1 1 1 // -1, the top double is greater than the second
-0 0 0 0 0 0 0 0 // 0, the top double is equal to the second
-0 0 0 0 0 0 0 1 // 1, the top double is smaller than the second
+0 0 0 0 0 0 0 0 // 0, the top double is greater than the second
+0 0 0 0 0 0 0 1 // 1, the top double is equal to the second
+0 0 0 0 0 0 1 0 // 2, the top double is smaller than the second
 ```
 
 Syntax: `dcmp`
@@ -776,7 +776,7 @@ Overall instruction length: `5 bytes`.
 
 #### § 5.1.4 `je`
 
-Jump to the instruction at the given address if the the comparison result is 0 (the two values are equal).
+Jump to the instruction at the given address if the the comparison result is 1 (00000001) (the two compared values are equal).
 
 Syntax: `je <u4 address>`
 
@@ -784,7 +784,7 @@ Overall instruction length: `5 bytes`.
 
 #### § 5.1.5 `jne`
 
-Jump to the instruction at the given address if the the comparison result is not 0 (the two values are not equal).
+Jump to the instruction at the given address if the the comparison result is not 1 (00000001) (the two values are not equal).
 
 Syntax: `jne <u4 address>`
 
@@ -792,7 +792,7 @@ Overall instruction length: `5 bytes`.
 
 #### § 5.1.6 `jg`
 
-Jump to the instruction at the given address if the the comparison result is -1 (the first value is greater than the second).
+Jump to the instruction at the given address if the the comparison result is 0 (00000000) (the first value is greater than the second).
 
 Syntax: `jg <u4 address>`
 
@@ -800,7 +800,7 @@ Overall instruction length: `5 bytes`.
 
 #### § 5.1.7 `jge`
 
-Jump to the instruction at the given address if the the comparison result is -1 or 0 (the first value is greater than or equal to the second).
+Jump to the instruction at the given address if the the comparison result is 0 (00000000) or 1 (00000001) (the first value is greater than or equal to the second).
 
 Syntax: `jge <u4 address>`
 
@@ -808,7 +808,7 @@ Overall instruction length: `5 bytes`.
 
 #### § 5.1.8 `jl`
 
-Jump to the instruction at the given address if the the comparison result is 1 (the first value is smaller than the second).
+Jump to the instruction at the given address if the the comparison result is 2 (00000010) (the first value is smaller than the second).
 
 Syntax: `jl <u4 address>`
 
@@ -816,7 +816,7 @@ Overall instruction length: `5 bytes`.
 
 #### § 5.1.9 `jle`
 
-Jump to the instruction at the given address if the the comparison result is 1 or 0 (the first value is smaller than or equal to the second).
+Jump to the instruction at the given address if the the comparison result is 2 (00000010) or 1 (00000001) (the first value is smaller than or equal to the second).
 
 Syntax: `jle <u4 address>`
 
