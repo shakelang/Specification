@@ -448,6 +448,94 @@ Negate a long from the stack and push the result (long) onto the stack.
 Syntax: `lneg`
 Overall instruction length: `1 byte`.
 
+#### § 2.6.5 `fneg`
+
+Negate a float from the stack and push the result (float) onto the stack.
+Syntax: `fneg`
+Overall instruction length: `1 byte`.
+
+#### § 2.6.6 `dneg`
+
+Negate a double from the stack and push the result (double) onto the stack.
+Syntax: `dneg`
+Overall instruction length: `1 byte`.
+
+### § 2.7 Increment
+
+#### § 2.7.1 `binc`
+
+Increment a byte from the stack and push the result (byte) onto the stack.
+Syntax: `binc`
+Overall instruction length: `1 byte`.
+
+#### § 2.7.2 `sinc`
+
+Increment a short from the stack and push the result (short) onto the stack.
+Syntax: `sinc`
+Overall instruction length: `1 byte`.
+
+#### § 2.7.3 `iinc`
+
+Increment an integer from the stack and push the result (integer) onto the stack.
+Syntax: `iinc`
+Overall instruction length: `1 byte`.
+
+#### § 2.7.4 `linc`
+
+Increment a long from the stack and push the result (long) onto the stack.
+Syntax: `linc`
+Overall instruction length: `1 byte`.
+
+#### § 2.7.5 `finc`
+
+Increment a float from the stack and push the result (float) onto the stack.
+Syntax: `finc`
+Overall instruction length: `1 byte`.
+
+#### § 2.7.6 `dinc`
+
+Increment a double from the stack and push the result (double) onto the stack.
+Syntax: `dinc`
+Overall instruction length: `1 byte`.
+
+### § 2.8 Decrement
+
+#### § 2.8.1 `bdec`
+
+Decrement a byte from the stack and push the result (byte) onto the stack.
+Syntax: `bdec`
+Overall instruction length: `1 byte`.
+
+#### § 2.8.2 `sdec`
+
+Decrement a short from the stack and push the result (short) onto the stack.
+Syntax: `sdec`
+Overall instruction length: `1 byte`.
+
+#### § 2.8.3 `idec`
+
+Decrement an integer from the stack and push the result (integer) onto the stack.
+Syntax: `idec`
+Overall instruction length: `1 byte`.
+
+#### § 2.8.4 `ldec`
+
+Decrement a long from the stack and push the result (long) onto the stack.
+Syntax: `ldec`
+Overall instruction length: `1 byte`.
+
+#### § 2.8.5 `fdec`
+
+Decrement a float from the stack and push the result (float) onto the stack.
+Syntax: `fdec`
+Overall instruction length: `1 byte`.
+
+#### § 2.8.6 `ddec`
+
+Decrement a double from the stack and push the result (double) onto the stack.
+Syntax: `ddec`
+Overall instruction length: `1 byte`.
+
 ## § 3 Bitwise Expressions
 
 ### § 3.1 Bitwise and
@@ -793,6 +881,8 @@ Overall instruction length: `5 bytes`.
 #### § 5.1.6 `jg`
 
 Jump to the instruction at the given address if the the comparison result is 0 (00000000) (the first value is greater than the second).
+
+This has no actual byte code, it is here for completeness. Use [`jz`](#§-5110-jz) instead, as it does the same.
 
 Syntax: `jg <u4 address>`
 
