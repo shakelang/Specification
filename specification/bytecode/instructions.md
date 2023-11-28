@@ -862,6 +862,22 @@ Jump to the instruction at the given address.
 Syntax: `jmp <u4 address>`
 Overall instruction length: `5 bytes`.
 
+#### § 5.1.2 `jz`
+
+Jump to the instruction at the given address if the the comparison result is 1 (00000001) (the two values are equal).
+
+Syntax: `jz <u4 address>`
+
+Overall instruction length: `5 bytes`.
+
+#### § 5.1.3 `jnz`
+
+Jump to the instruction at the given address if the the comparison result is not 1 (00000001) (the two values are not equal).
+
+Syntax: `jnz <u4 address>`
+
+Overall instruction length: `5 bytes`.
+
 #### § 5.1.4 `je`
 
 Jump to the instruction at the given address if the the comparison result is 1 (00000001) (the two compared values are equal).
@@ -882,7 +898,7 @@ Overall instruction length: `5 bytes`.
 
 Jump to the instruction at the given address if the the comparison result is 0 (00000000) (the first value is greater than the second).
 
-This has no actual byte code, it is here for completeness. Use [`jz`](#§-5110-jz) instead, as it does the same.
+This has no actual byte code, it is here for completeness. Use [`jz`](#-512-jz) instead, as it does the same.
 
 Syntax: `jg <u4 address>`
 
