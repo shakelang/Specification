@@ -50,7 +50,7 @@ badd
 
 Now we will look at the local variable table. The local variable table is a table of 8-bit-values. We can store a byte in
 the local variable table and we can load a byte from the local variable table. The local variable table is a table of
-bytes, so we can only store a byte in the local variable table. When we want to store a short in the local variable table,
+bytes, so we can only store a byte one position. If we wan't to store a 16-bit-value, we have to store it in two indices. So a `short` occupies two bytes, an `int` four and so on.
 
 ### § 1.1 Pushing constants onto the stack
 
@@ -75,40 +75,60 @@ Syntax: `ipush <u4 value>`, so we have the byte signing a ipush instruction and 
 
 #### § 1.1.4 `lpush`
 
-An `lpush` instruction pushes a long (or any 64-bit-value) onto the stack. It can also be used for a double or ulong.
+A `lpush` instruction pushes a long (or any 64-bit-value) onto the stack. It can also be used for a double or ulong.
 Syntax: `lpush <u8 value>`, so we have the byte signing a lpush instruction and then directly after that the long we want to push onto the stack. Overall instruction length: `9 bytes`.
 
 ### § 1.2 Loading data from the local variable table
 
 #### § 1.2.1 `bload`
 
-Syntax: `bload <u2 index>` - Load a byte from the local variable table onto the stack.
+A `bload` instruction loads a byte from the local variable table onto the stack. The index stores the index of the byte in
+the local variable table.
+Syntax: `bload <u2 index>`
+Overall instruction length: `3 bytes`.
 
 #### § 1.2.2 `sload`
 
-Syntax: `sload <u2 index>` - Load a short from the local variable table onto the stack. The index points to the bottom byte of the short. The short occupies two bytes (2 indices) in the local variable table.
+A `sload` instruction loads a short from the local variable table onto the stack. The index stores the index of the bottom
+byte of the short in the local variable table. The short will be loaded onto the stack. Overall instruction length: `3 bytes`.
+Syntax: `sload <u2 index>`
+Overall instruction length: `3 bytes`.
 
 #### § 1.2.3 `iload`
 
-Syntax: `iload <u2 index>` - Load an integer from the local variable table onto the stack. The index points to the bottom byte of the integer. The integer occupies four bytes (4 indices) in the local variable table.
+A `iload` instruction loads an integer from the local variable table onto the stack. The index stores the index of the bottom
+byte of the integer in the local variable table. The integer will be loaded onto the stack.
+Syntax: `iload <u2 index>`
+Overall instruction length: `3 bytes`.
 
 #### § 1.2.4 `lload`
 
-Syntax: `lload <u2 index>` - Load a long from the local variable table onto the stack. The index points to the bottom byte of the long. The long occupies eight bytes (8 indices) in the local variable table.
+A `lload` instruction loads a long from the local variable table onto the stack. The index stores the index of the bottom
+byte of the long in the local variable table. The long will be loaded onto the stack.
+Syntax: `lload <u2 index>`
+Overall instruction length: `3 bytes`.
 
 ### § 1.3 Storing data in the local variable table
 
 #### § 1.3.1 `bstore`
 
-Syntax: `bstore <u2 index>` - Store a byte from the stack in the local variable table.
+Store a byte from the stack in the local variable table. The index points to the byte in the local variable table.
+Syntax: `bstore <u2 index>` -
+Overall instruction length: `3 bytes`.
 
 #### § 1.3.2 `sstore`
 
-Syntax: `sstore <u2 index>` - Store a short from the stack in the local variable table. The index points to the bottom byte of the short. The short occupies two bytes (2 indices) in the local variable table.
+Store a short from the stack in the local variable table. The index points to the bottom byte of the short. The short
+occupies two bytes (2 indices) in the local variable table.
+Syntax: `sstore <u2 index>`
+Overall instruction length: `3 bytes`.
 
 #### § 1.3.3 `istore`
 
-Syntax: `istore <u2 index>` - Store an integer from the stack in the local variable table. The index points to the bottom byte of the integer. The integer occupies four bytes (4 indices) in the local variable table.
+Store an integer from the stack in the local variable table. The index points to the bottom byte of the integer. The integer
+occupies four bytes (4 indices) in the local variable table.
+Syntax: `istore <u2 index>`
+Overall instruction length: `3 bytes`.
 
 #### § 1.3.4 `lstore`
 
@@ -120,213 +140,313 @@ Syntax: `lstore <u2 index>` - Store a long from the stack in the local variable 
 
 #### § 2.1.1 `badd`
 
-Syntax: `badd` - Add two bytes from the stack and push the result onto the stack.
+Add the two bytes from the stack and push the result (byte) onto the stack.
+Syntax: `badd`
+Overall instruction length: `1 byte`.
 
 #### § 2.1.2 `sadd`
 
-Syntax: `sadd` - Add two shorts from the stack and push the result onto the stack.
+Add the two shorts from the stack and push the result (short) onto the stack.
+Syntax: `sadd`
+Overall instruction length: `1 byte`.
 
 #### § 2.1.3 `iadd`
 
-Syntax: `iadd` - Add two integers from the stack and push the result onto the stack.
+Add two integers from the stack and push the result (integer) onto the stack.
+Syntax: `iadd`
+Overall instruction length: `1 byte`.
 
 #### § 2.1.4 `ladd`
 
-Syntax: `ladd` - Add two longs from the stack and push the result onto the stack.
+Add two longs from the stack and push the result (long) onto the stack.
+Syntax: `ladd`
+Overall instruction length: `1 byte`.
 
 #### § 2.1.5 `fadd`
 
-Syntax: `fadd` - Add two floats from the stack and push the result onto the stack.
+Add two floats from the stack and push the result (float) onto the stack.
+Syntax: `fadd`
+Overall instruction length: `1 byte`.
 
 #### § 2.1.6 `dadd`
 
-Syntax: `dadd` - Add two doubles from the stack and push the result onto the stack.
+Add two doubles from the stack and push the result (double) onto the stack.
+Syntax: `dadd`
+Overall instruction length: `1 byte`.
 
 ### § 2.2 Subtraction
 
 #### § 2.2.1 `bsub`
 
-Syntax: `bsub` - Subtract two bytes from the stack and push the result onto the stack.
+Subtract two bytes from the stack and push the result (byte) onto the stack.
+Syntax: `bsub`
+Overall instruction length: `1 byte`.
 
 #### § 2.2.2 `ssub`
 
-Syntax: `ssub` - Subtract two shorts from the stack and push the result onto the stack.
+Subtract two shorts from the stack and push the result (short) onto the stack.
+Syntax: `ssub`
+Overall instruction length: `1 byte`.
 
 #### § 2.2.3 `isub`
 
-Syntax: `isub` - Subtract two integers from the stack and push the result onto the stack.
+Subtract two integers from the stack and push the result (integer) onto the stack.
+Syntax: `isub`
+Overall instruction length: `1 byte`.
 
 #### § 2.2.4 `lsub`
 
-Syntax: `lsub` - Subtract two longs from the stack and push the result onto the stack.
+Subtract two longs from the stack and push the result (long) onto the stack.
+Syntax: `lsub`
+Overall instruction length: `1 byte`.
 
 #### § 2.2.5 `fsub`
 
-Syntax: `fsub` - Subtract two floats from the stack and push the result onto the stack.
+Subtract two floats from the stack and push the result (float) onto the stack.
+Syntax: `fsub`
+Overall instruction length: `1 byte`.
 
 #### § 2.2.6 `dsub`
 
-Syntax: `dsub` - Subtract two doubles from the stack and push the result onto the stack.
+Subtract two doubles from the stack and push the result (double) onto the stack.
+Syntax: `dsub`
+Overall instruction length: `1 byte`.
 
 #### §2.2.7 `ubsub`
 
-Syntax: `ubsub` - Subtract two unsigned bytes from the stack and push the result onto the stack.
+Subtract two unsigned bytes from the stack and push the result (unsigned byte) onto the stack.
+Syntax: `ubsub`
+Overall instruction length: `1 byte`.
 
 #### § 2.2.8 `ussub`
 
-Syntax: `ussub` - Subtract two unsigned shorts from the stack and push the result onto the stack.
+Subtract two unsigned shorts from the stack and push the result (unsigned short) onto the stack.
+Syntax: `ussub`
+Overall instruction length: `1 byte`.
 
 #### § 2.2.9 `uisub`
 
-Syntax: `uisub` - Subtract two unsigned integers from the stack and push the result onto the stack.
+Subtract two unsigned integers from the stack and push the result (unsigned integer) onto the stack.
+Syntax: `uisub`
+Overall instruction length: `1 byte`.
 
 #### § 2.2.10 `ulsub`
 
-Syntax: `ulsub` - Subtract two unsigned longs from the stack and push the result onto the stack.
+Subtract two unsigned longs from the stack and push the result (unsigned long) onto the stack.
+Syntax: `ulsub`
+Overall instruction length: `1 byte`.
 
 ### § 2.3 Multiplication
 
 #### § 2.3.1 `bmul`
 
-Syntax: `bmul` - Multiply two bytes from the stack and push the result onto the stack.
+Multiply two bytes from the stack and push the result (byte) onto the stack.
+Syntax: `bmul`
+Overall instruction length: `1 byte`.
 
 #### § 2.3.2 `smul`
 
-Syntax: `smul` - Multiply two shorts from the stack and push the result onto the stack.
+Multiply two shorts from the stack and push the result (short) onto the stack.
+Syntax: `smul`
+Overall instruction length: `1 byte`.
 
 #### § 2.3.3 `imul`
 
-Syntax: `imul` - Multiply two integers from the stack and push the result onto the stack.
+Multiply two integers from the stack and push the result (integer) onto the stack.
+Syntax: `imul`
+Overall instruction length: `1 byte`.
 
 #### § 2.3.4 `lmul`
 
-Syntax: `lmul` - Multiply two longs from the stack and push the result onto the stack.
+Multiply two longs from the stack and push the result (long) onto the stack.
+Syntax: `lmul`
+Overall instruction length: `1 byte`.
 
 #### § 2.3.5 `fmul`
 
-Syntax: `fmul` - Multiply two floats from the stack and push the result onto the stack.
+Multiply two floats from the stack and push the result (float) onto the stack.
+Syntax: `fmul`
+Overall instruction length: `1 byte`.
 
 #### § 2.3.6 `dmul`
 
-Syntax: `dmul` - Multiply two doubles from the stack and push the result onto the stack.
+Multiply two doubles from the stack and push the result (double) onto the stack.
+Syntax: `dmul`
+Overall instruction length: `1 byte`.
 
 #### § 2.3.7 `ubmul`
 
-Syntax: `ubmul` - Multiply two unsigned bytes from the stack and push the result onto the stack.
+Multiply two unsigned bytes from the stack and push the result (unsigned byte) onto the stack.
+Syntax: `ubmul`
+Overall instruction length: `1 byte`.
 
 #### § 2.3.8 `usmul`
 
-Syntax: `usmul` - Multiply two unsigned shorts from the stack and push the result onto the stack.
+Multiply two unsigned shorts from the stack and push the result (unsigned short) onto the stack.
+Syntax: `usmul`
+Overall instruction length: `1 byte`.
 
 #### § 2.3.9 `uimul`
 
-Syntax: `uimul` - Multiply two unsigned integers from the stack and push the result onto the stack.
+Multiply two unsigned integers from the stack and push the result (unsigned integer) onto the stack.
+Syntax: `uimul`
+Overall instruction length: `1 byte`.
 
 #### § 2.3.10 `ulmul`
 
-Syntax: `ulmul` - Multiply two unsigned longs from the stack and push the result onto the stack.
+Multiply two unsigned longs from the stack and push the result (unsigned long) onto the stack.
+Syntax: `ulmul`
+Overall instruction length: `1 byte`.
 
 ### § 2.4 Division
 
 #### § 2.4.1 `bdiv`
 
-Syntax: `bdiv` - Divide two bytes from the stack and push the result onto the stack.
+Divide two bytes from the stack and push the result (byte) onto the stack.
+Syntax: `bdiv`
+Overall instruction length: `1 byte`.
 
 #### § 2.4.2 `sdiv`
 
-Syntax: `sdiv` - Divide two shorts from the stack and push the result onto the stack.
+Divide two shorts from the stack and push the result (short) onto the stack.
+Syntax: `sdiv`
+Overall instruction length: `1 byte`.
 
 #### § 2.4.3 `idiv`
 
-Syntax: `idiv` - Divide two integers from the stack and push the result onto the stack.
+Divide two integers from the stack and push the result (integer) onto the stack.
+Syntax: `idiv`
+Overall instruction length: `1 byte`.
 
 #### § 2.4.4 `ldiv`
 
-Syntax: `ldiv` - Divide two longs from the stack and push the result onto the stack.
+Divide two longs from the stack and push the result (long) onto the stack.
+Syntax: `ldiv`
+Overall instruction length: `1 byte`.
 
 #### § 2.4.5 `fdiv`
 
-Syntax: `fdiv` - Divide two floats from the stack and push the result onto the stack.
+Divide two floats from the stack and push the result (float) onto the stack.
+Syntax: `fdiv`
+Overall instruction length: `1 byte`.
 
 #### § 2.4.6 `ddiv`
 
-Syntax: `ddiv` - Divide two doubles from the stack and push the result onto the stack.
+Divide two doubles from the stack and push the result (double) onto the stack.
+Syntax: `ddiv`
+Overall instruction length: `1 byte`.
 
 #### § 2.4.7 `ubdiv`
 
-Syntax: `ubdiv` - Divide two unsigned bytes from the stack and push the result onto the stack.
+Divide two unsigned bytes from the stack and push the result (unsigned byte) onto the stack.
+Syntax: `ubdiv`
+Overall instruction length: `1 byte`.
 
 #### § 2.4.8 `usdiv`
 
-Syntax: `usdiv` - Divide two unsigned shorts from the stack and push the result onto the stack.
+Divide two unsigned shorts from the stack and push the result (unsigned short) onto the stack.
+Syntax: `usdiv`
+Overall instruction length: `1 byte`.
 
 #### § 2.4.9 `uidiv`
 
-Syntax: `uidiv` - Divide two unsigned integers from the stack and push the result onto the stack.
+Divide two unsigned integers from the stack and push the result (unsigned integer) onto the stack.
+Syntax: `uidiv`
+Overall instruction length: `1 byte`.
 
 #### § 2.4.10 `uldiv`
 
-Syntax: `uldiv` - Divide two unsigned longs from the stack and push the result onto the stack.
+Divide two unsigned longs from the stack and push the result (unsigned long) onto the stack.
+Syntax: `uldiv`
+Overall instruction length: `1 byte`.
 
 ### § 2.5 Modulo
 
 #### § 2.5.1 `bmod`
 
-Syntax: `bmod` - Modulo two bytes from the stack and push the result onto the stack.
+Modulo two bytes from the stack and push the result (byte) onto the stack.
+Syntax: `bmod`
+Overall instruction length: `1 byte`.
 
 #### § 2.5.2 `smod`
 
-Syntax: `smod` - Modulo two shorts from the stack and push the result onto the stack.
+Modulo two shorts from the stack and push the result (short) onto the stack.
+Syntax: `smod`
+Overall instruction length: `1 byte`.
 
 #### § 2.5.3 `imod`
 
-Syntax: `imod` - Modulo two integers from the stack and push the result onto the stack.
+Modulo two integers from the stack and push the result (integer) onto the stack.
+Syntax: `imod`
+Overall instruction length: `1 byte`.
 
 #### § 2.5.4 `lmod`
 
-Syntax: `lmod` - Modulo two longs from the stack and push the result onto the stack.
+Modulo two longs from the stack and push the result (long) onto the stack.
+Syntax: `lmod`
+Overall instruction length: `1 byte`.
 
 #### § 2.5.5 `fmod`
 
-Syntax: `fmod` - Modulo two floats from the stack and push the result onto the stack.
+Modulo two floats from the stack and push the result (float) onto the stack.
+Syntax: `fmod`
+Overall instruction length: `1 byte`.
 
 #### § 2.5.6 `dmod`
 
-Syntax: `dmod` - Modulo two doubles from the stack and push the result onto the stack.
+Modulo two doubles from the stack and push the result (double) onto the stack.
+Syntax: `dmod`
+Overall instruction length: `1 byte`.
 
 #### § 2.5.7 `ubmod`
 
-Syntax: `ubmod` - Modulo two unsigned bytes from the stack and push the result onto the stack.
+Modulo two unsigned bytes from the stack and push the result (unsigned byte) onto the stack.
+Syntax: `ubmod`
+Overall instruction length: `1 byte`.
 
 #### § 2.5.8 `usmod`
 
-Syntax: `usmod` - Modulo two unsigned shorts from the stack and push the result onto the stack.
+Modulo two unsigned shorts from the stack and push the result (unsigned short) onto the stack.
+Syntax: `usmod`
+Overall instruction length: `1 byte`.
 
 #### § 2.5.9 `uimod`
 
-Syntax: `uimod` - Modulo two unsigned integers from the stack and push the result onto the stack.
+Modulo two unsigned integers from the stack and push the result (unsigned integer) onto the stack.
+Syntax: `uimod`
+Overall instruction length: `1 byte`.
 
 #### § 2.5.10 `ulmod`
 
-Syntax: `ulmod` - Modulo two unsigned longs from the stack and push the result onto the stack.
+Modulo two unsigned longs from the stack and push the result (unsigned long) onto the stack.
+Syntax: `ulmod`
+Overall instruction length: `1 byte`.
 
 ### § 2.6 Negation
 
 #### § 2.6.1 `bneg`
 
-Syntax: `bneg` - Negate a byte from the stack and push the result onto the stack.
+Negate a byte from the stack and push the result (byte) onto the stack.
+Syntax: `bneg`
+Overall instruction length: `1 byte`.
 
 #### § 2.6.2 `sneg`
 
-Syntax: `sneg` - Negate a short from the stack and push the result onto the stack.
+Syntax: `sneg` - Negate a short from the stack and push the result (short) onto the stack.
+Syntax: `sneg`
+Overall instruction length: `1 byte`.
 
 #### § 2.6.3 `ineg`
 
-Syntax: `ineg` - Negate an integer from the stack and push the result onto the stack.
+Negate an integer from the stack and push the result (integer) onto the stack.
+Syntax: `ineg`
+Overall instruction length: `1 byte`.
 
 #### § 2.6.4 `lneg`
 
-Syntax: `lneg` - Negate a long from the stack and push the result onto the stack.
+Negate a long from the stack and push the result (long) onto the stack.
+Syntax: `lneg`
+Overall instruction length: `1 byte`.
 
 ## § 3 Bitwise Expressions
 
@@ -334,127 +454,219 @@ Syntax: `lneg` - Negate a long from the stack and push the result onto the stack
 
 #### § 3.1.1 `band`
 
-Syntax: `band` - Bitwise and two bytes from the stack and push the result onto the stack.
+Bitwise and two bytes from the stack and push the result (byte) onto the stack.
+Can also be used for boolean and ubyte.
+Syntax: `band`
+Overall instruction length: `1 byte`.
 
 #### § 3.1.2 `sand`
 
-Syntax: `sand` - Bitwise and two shorts from the stack and push the result onto the stack.
+Bitwise and two shorts from the stack and push the result (short) onto the stack.
+Can also be used for char and ushort.
+Syntax: `sand`
+Overall instruction length: `1 byte`.
 
 #### § 3.1.3 `iand`
 
-Syntax: `iand` - Bitwise and two integers from the stack and push the result onto the stack.
+Bitwise and two integers from the stack and push the result (integer) onto the stack.
+Can also be used for float and uint.
+Syntax: `iand`
+Overall instruction length: `1 byte`.
 
 #### § 3.1.4 `land`
 
-Syntax: `land` - Bitwise and two longs from the stack and push the result onto the stack.
+Bitwise and two longs from the stack and push the result (long) onto the stack.
+Can also be used for double and ulong.
+Syntax: `land`
+Overall instruction length: `1 byte`.
 
 ### § 3.2 Bitwise or
 
 #### § 3.2.1 `bor`
 
-Syntax: `bor` - Bitwise or two bytes from the stack and push the result onto the stack.
+Bitwise or two bytes from the stack and push the result (byte) onto the stack.
+Can also be used for boolean and ubyte.
+Syntax: `bor`
+Overall instruction length: `1 byte`.
 
 #### § 3.2.2 `sor`
 
-Syntax: `sor` - Bitwise or two shorts from the stack and push the result onto the stack.
+Bitwise or two shorts from the stack and push the result (short) onto the stack.
+Can also be used for char and ushort.
+Syntax: `sor`
+Overall instruction length: `1 byte`.
 
 #### § 3.2.3 `ior`
 
-Syntax: `ior` - Bitwise or two integers from the stack and push the result onto the stack.
+Bitwise or two integers from the stack and push the result (integer) onto the stack.
+Can also be used for float and uint.
+Syntax: `ior`
+Overall instruction length: `1 byte`.
 
 #### § 3.2.4 `lor`
 
-Syntax: `lor` - Bitwise or two longs from the stack and push the result onto the stack.
+Bitwise or two longs from the stack and push the result (long) onto the stack.
+Can also be used for double and ulong.
+Syntax: `lor`
+Overall instruction length: `1 byte`.
 
 ### § 3.3 Bitwise xor
 
 #### § 3.3.1 `bxor`
 
-Syntax: `bxor` - Bitwise xor two bytes from the stack and push the result onto the stack.
+Bitwise xor two bytes from the stack and push the result (byte) onto the stack.
+Can also be used for boolean and ubyte.
+Syntax: `bxor`
+Overall instruction length: `1 byte`.
 
 #### § 3.3.2 `sxor`
 
-Syntax: `sxor` - Bitwise xor two shorts from the stack and push the result onto the stack.
+Bitwise xor two shorts from the stack and push the result (short) onto the stack.
+Can also be used for char and ushort.
+Syntax: `sxor`
+Overall instruction length: `1 byte`.
 
 #### § 3.3.3 `ixor`
 
-Syntax: `ixor` - Bitwise xor two integers from the stack and push the result onto the stack.
+Bitwise xor two integers from the stack and push the result (integer) onto the stack.
+Can also be used for float and uint.
+Syntax: `ixor`
+Overall instruction length: `1 byte`.
 
 #### § 3.3.4 `lxor`
 
-Syntax: `lxor` - Bitwise xor two longs from the stack and push the result onto the stack.
+Bitwise xor two longs from the stack and push the result (long) onto the stack.
+Can also be used for double and ulong.
+Syntax: `lxor`
+Overall instruction length: `1 byte`.
 
 ### § 3.4 Bitwise not
 
 #### § 3.4.1 `bnot`
 
-Syntax: `bnot` - Bitwise not a byte from the stack and push the result onto the stack.
+Invert the byte on top of the stack and push the result (byte) onto the stack.
+Syntax: `bnot`
+Overall instruction length: `1 byte`.
 
 #### § 3.4.2 `snot`
 
-Syntax: `snot` - Bitwise not a short from the stack and push the result onto the stack.
+Invert the short on top of the stack and push the result (short) onto the stack.
+Syntax: `snot`
+Overall instruction length: `1 byte`.
 
 #### § 3.4.3 `inot`
 
-Syntax: `inot` - Bitwise not an integer from the stack and push the result onto the stack.
+Invert the integer on top of the stack and push the result (integer) onto the stack.
+Syntax: `inot`
+Overall instruction length: `1 byte`.
 
 #### § 3.4.4 `lnot`
 
-Syntax: `lnot` - Bitwise not a long from the stack and push the result onto the stack.
+Invert the long on top of the stack and push the result (long) onto the stack.
+Syntax: `lnot`
+Overall instruction length: `1 byte`.
 
 #### § 3.5 Bitwise shift left
 
 #### § 3.5.1 `bshl`
 
-Syntax: `bshl` - Bitwise shift left a byte from the stack and push the result onto the stack.
+Bitwise shift left a byte from the stack and push the result onto the stack.
+The top byte of the stack defines the number of bits to shift, the byte below defines the byte to shift.
+Can also be used for boolean and ubyte.
+Syntax: `bshl`
+Overall instruction length: `1 byte`.
 
 #### § 3.5.2 `sshl`
 
-Syntax: `sshl` - Bitwise shift left a short from the stack and push the result onto the stack.
+Bitwise shift left a short from the stack and push the result onto the stack.
+The top byte of the stack defines the number of bits to shift, the short below defines the short to shift.
+Can also be used for char and ushort.
+Syntax: `sshl`
+Overall instruction length: `1 byte`.
 
 #### § 3.5.3 `ishl`
 
-Syntax: `ishl` - Bitwise shift left an integer from the stack and push the result onto the stack.
+Bitwise shift left an integer from the stack and push the result onto the stack.
+The top byte of the stack defines the number of bits to shift, the integer below defines the integer to shift.
+Can also be used for float and uint.
+Syntax: `ishl`
+Overall instruction length: `1 byte`.
 
 #### § 3.5.4 `lshl`
 
-Syntax: `lshl` - Bitwise shift left a long from the stack and push the result onto the stack.
+Bitwise shift left a long from the stack and push the result onto the stack.
+The top byte of the stack defines the number of bits to shift, the long below defines the long to shift.
+Can also be used for double and ulong.
+Syntax: `lshl`
+Overall instruction length: `1 byte`.
 
 #### § 3.6 Bitwise shift right
 
 #### § 3.6.1 `bshr`
 
-Syntax: `bshr` - Bitwise shift right a byte from the stack and push the result onto the stack.
+Bitwise shift right a byte from the stack and push the result onto the stack.
+The top byte of the stack defines the number of bits to shift, the byte below defines the byte to shift.
+Can also be used for boolean and ubyte.
+Syntax: `bshr`
+Overall instruction length: `1 byte`.
 
 #### § 3.6.2 `sshr`
 
-Syntax: `sshr` - Bitwise shift right a short from the stack and push the result onto the stack.
+Bitwise shift right a short from the stack and push the result onto the stack.
+The top byte of the stack defines the number of bits to shift, the short below defines the short to shift.
+Can also be used for char and ushort.
+Syntax: `sshr`
+Overall instruction length: `1 byte`.
 
 #### § 3.6.3 `ishr`
 
-Syntax: `ishr` - Bitwise shift right an integer from the stack and push the result onto the stack.
+Bitwise shift right an integer from the stack and push the result onto the stack.
+The top byte of the stack defines the number of bits to shift, the integer below defines the integer to shift.
+Can also be used for float and uint.
+Syntax: `ishr`
+Overall instruction length: `1 byte`.
 
 #### § 3.6.4 `lshr`
 
-Syntax: `lshr` - Bitwise shift right a long from the stack and push the result onto the stack.
+Bitwise shift right a long from the stack and push the result onto the stack.
+The top byte of the stack defines the number of bits to shift, the long below defines the long to shift.
+Can also be used for double and ulong.
+Syntax: `lshr`
+Overall instruction length: `1 byte`.
 
 #### § 3.7 Bitwise shift right unsigned
 
 #### § 3.7.1 `bshru`
 
-Syntax: `bshru` - Bitwise shift right unsigned a byte from the stack and push the result onto the stack.
+Bitwise shift right unsigned a byte from the stack and push the result onto the stack.
+The top byte of the stack defines the number of bits to shift, the byte below defines the byte to shift.
+Can also be used for boolean and ubyte.
+Syntax: `bshru`
+Overall instruction length: `1 byte`.
 
 #### § 3.7.2 `sshr`
 
-Syntax: `sshr` - Bitwise shift right unsigned a short from the stack and push the result onto the stack.
+Bitwise shift right unsigned a short from the stack and push the result onto the stack.
+The top byte of the stack defines the number of bits to shift, the short below defines the short to shift.
+Can also be used for char and ushort.
+Syntax: `sshr`
+Overall instruction length: `1 byte`.
 
 #### § 3.7.3 `ishru`
 
-Syntax: `ishru` - Bitwise shift right unsigned an integer from the stack and push the result onto the stack.
+Bitwise shift right unsigned an integer from the stack and push the result onto the stack.
+The top byte of the stack defines the number of bits to shift, the integer below defines the integer to shift.
+Can also be used for float and uint.
+Syntax: `ishru`
+Overall instruction length: `1 byte`.
 
 #### § 3.7.4 `lshru`
 
-Syntax: `lshru` - Bitwise shift right unsigned a long from the stack and push the result onto the stack.
+Bitwise shift right unsigned a long from the stack and push the result onto the stack.
+The top byte of the stack defines the number of bits to shift, the long below defines the long to shift.
+Can also be used for double and ulong.
+Syntax: `lshru`
+Overall instruction length: `1 byte`.
 
 ## § 4 CMP Expressions
 
@@ -462,28 +674,150 @@ Syntax: `lshru` - Bitwise shift right unsigned a long from the stack and push th
 
 #### § 4.1.1 `bcmp`
 
-Syntax: `bcmp` - Compare two bytes from the stack and push the result onto the stack.
+Compare two bytes from the stack and push the result onto the stack.
+If the top byte is greater than the second, the result will be -1, if they are equal, the result will be 0 and if the
+top byte is smaller than the second, the result will be -1. The result will be a byte.
+
+```txt
+1 1 1 1 1 1 1 1 // -1, the top byte is greater than the second
+0 0 0 0 0 0 0 0 // 0, the top byte is equal to the second
+0 0 0 0 0 0 0 1 // 1, the top byte is smaller than the second
+```
+
+Syntax: `bcmp`
+Overall instruction length: `1 byte`.
 
 #### § 4.1.2 `scmp`
 
-Syntax: `scmp` - Compare two shorts from the stack and push the result onto the stack.
+Compare two shorts from the stack and push the result onto the stack.
+If the top short is greater than the second, the result will be -1, if they are equal, the result will be 0 and if the
+top short is smaller than the second, the result will be -1. The result will be a byte.
+
+```txt
+1 1 1 1 1 1 1 1 // -1, the top short is greater than the second
+0 0 0 0 0 0 0 0 // 0, the top short is equal to the second
+0 0 0 0 0 0 0 1 // 1, the top short is smaller than the second
+```
+
+Syntax: `scmp`
+Overall instruction length: `1 byte`.
 
 #### § 4.1.3 `icmp`
 
-Syntax: `icmp` - Compare two integers from the stack and push the result onto the stack.
+Compare two integers from the stack and push the result onto the stack.
+If the top integer is greater than the second, the result will be -1, if they are equal, the result will be 0 and if the
+top integer is smaller than the second, the result will be -1. The result will be a byte.
+
+```txt
+1 1 1 1 1 1 1 1 // -1, the top integer is greater than the second
+0 0 0 0 0 0 0 0 // 0, the top integer is equal to the second
+0 0 0 0 0 0 0 1 // 1, the top integer is smaller than the second
+```
+
+Syntax: `icmp`
+Overall instruction length: `1 byte`.
 
 #### § 4.1.4 `lcmp`
 
-Syntax: `lcmp` - Compare two longs from the stack and push the result onto the stack.
+Compare two longs from the stack and push the result onto the stack.
+If the top long is greater than the second, the result will be -1, if they are equal, the result will be 0 and if the
+top long is smaller than the second, the result will be -1. The result will be a byte.
+
+```txt
+1 1 1 1 1 1 1 1 // -1, the top long is greater than the second
+0 0 0 0 0 0 0 0 // 0, the top long is equal to the second
+0 0 0 0 0 0 0 1 // 1, the top long is smaller than the second
+```
+
+Syntax: `lcmp`
+Overall instruction length: `1 byte`.
 
 #### § 4.1.5 `fcmp`
 
-Syntax: `fcmp` - Compare two floats from the stack and push the result onto the stack.
+Compare two floats from the stack and push the result onto the stack.
+If the top float is greater than the second, the result will be -1, if they are equal, the result will be 0 and if the
+top float is smaller than the second, the result will be -1. The result will be a byte.
+
+```txt
+1 1 1 1 1 1 1 1 // -1, the top float is greater than the second
+0 0 0 0 0 0 0 0 // 0, the top float is equal to the second
+0 0 0 0 0 0 0 1 // 1, the top float is smaller than the second
+```
+
+Syntax: `fcmp`
+Overall instruction length: `1 byte`.
 
 #### § 4.1.6 `dcmp`
 
-Syntax: `dcmp` - Compare two doubles from the stack and push the result onto the stack.
+Compare two doubles from the stack and push the result onto the stack.
 
+If the top double is greater than the second, the result will be -1, if they are equal, the result will be 0 and if the
+top double is smaller than the second, the result will be -1. The result will be a byte.
+
+```txt
+1 1 1 1 1 1 1 1 // -1, the top double is greater than the second
+0 0 0 0 0 0 0 0 // 0, the top double is equal to the second
+0 0 0 0 0 0 0 1 // 1, the top double is smaller than the second
 ```
 
-```
+Syntax: `dcmp`
+Overall instruction length: `1 byte`.
+
+## § 5 Control flow
+
+### § 5.1 Jumping
+
+#### § 5.1.1 `jmp`
+
+Jump to the instruction at the given address.
+
+Syntax: `jmp <u4 address>`
+Overall instruction length: `5 bytes`.
+
+#### § 5.1.4 `je`
+
+Jump to the instruction at the given address if the the comparison result is 0 (the two values are equal).
+
+Syntax: `je <u4 address>`
+
+Overall instruction length: `5 bytes`.
+
+#### § 5.1.5 `jne`
+
+Jump to the instruction at the given address if the the comparison result is not 0 (the two values are not equal).
+
+Syntax: `jne <u4 address>`
+
+Overall instruction length: `5 bytes`.
+
+#### § 5.1.6 `jg`
+
+Jump to the instruction at the given address if the the comparison result is -1 (the first value is greater than the second).
+
+Syntax: `jg <u4 address>`
+
+Overall instruction length: `5 bytes`.
+
+#### § 5.1.7 `jge`
+
+Jump to the instruction at the given address if the the comparison result is -1 or 0 (the first value is greater than or equal to the second).
+
+Syntax: `jge <u4 address>`
+
+Overall instruction length: `5 bytes`.
+
+#### § 5.1.8 `jl`
+
+Jump to the instruction at the given address if the the comparison result is 1 (the first value is smaller than the second).
+
+Syntax: `jl <u4 address>`
+
+Overall instruction length: `5 bytes`.
+
+#### § 5.1.9 `jle`
+
+Jump to the instruction at the given address if the the comparison result is 1 or 0 (the first value is smaller than or equal to the second).
+
+Syntax: `jle <u4 address>`
+
+Overall instruction length: `5 bytes`.
