@@ -8,23 +8,75 @@ tags: [specification, spec, interpreter, bytecode, instructions]
 
 ## Stack and variable manipulation
 
+The stack hereby refers to a stack of 8-bit-values. We can only put an 8-bit-value (further referred to as a `byte`, not to
+be with the data type `byte`) on top of the stack and we can remove the topmost bit from the stack. We will refer to the
+topmost byte as the `top/head` of the stack. The stack is a LIFO (last in, first out) data structure. The stack is our main
+tool to manipulate data. We can use an instruction to push a constant onto the stack, then we push another constant onto
+the stack. Now we can use an add instruction to add the two constants together. Our stack will no longer contain the two constants, but the result of the addition. This would look like this:
+
+```bash
+# Stack []
+bpush 1
+# Stack [1]
+bpush 2
+# Stack [1, 2]
+badd
+# Stack [3]
+```
+
+Be aware that the stack is a stack of 8-bit-values. When we push a short on the stack, the short consists of 16 bits, so we
+will have 2 bytes on our stack now. Here the above example with a short:
+
+```bash
+# Stack []
+spush 1
+# Stack [0, 1]
+spush 2
+# Stack [0, 1, 0, 2]
+sadd
+# Stack [0, 3]
+```
+
+In this way we could also combine two bytes to a short, or we could use only won spush to push two bytes onto the stack.
+This example performs the same operation with bytes, but using spush instead of bpush:
+
+```bash
+# Stack []
+spush 0x0102
+# Stack [1, 2]
+badd
+# Stack [3]
+```
+
+Now we will look at the local variable table. The local variable table is a table of 8-bit-values. We can store a byte in
+the local variable table and we can load a byte from the local variable table. The local variable table is a table of
+bytes, so we can only store a byte in the local variable table. When we want to store a short in the local variable table,
+
 ### § 1.1 Pushing constants onto the stack
+
+In the above example we already used some push instructions. Now lets declare them formally.
 
 #### § 1.1.1 `bpush`
 
-Syntax: `bpush <u1 value>` - Push a single byte (or any 8-bit-value) onto the stack. Can also be used for a boolean or ubyte.
+A `bpush` instruction pushes a single byte (or any 8-bit-value) onto the stack. It can also be used for a boolean or ubyte.
+Syntax: `bpush <u1 value>`, so we have the byte signing a bpush instruction and then directly after that the byte we want to
+push onto the stack. Overall instruction length: `2 bytes`.
 
 #### § 1.1.2 `spush`
 
-Syntax: `spush <u2 value>` - Push a short (or any 16-bit-value) onto the stack. Can also be used for a char or ushort.
+A `spush` instruction pushes a short (or any 16-bit-value) onto the stack. It can also be used for a ushort.
+Syntax: `spush <u2 value>`, so we have the byte signing a spush instruction and then directly after that the short we want to
+push onto the stack. Overall instruction length: `3 bytes`.
 
 #### § 1.1.3 `ipush`
 
-Syntax: `ipush <u4 value>` - Push an integer (or any 32-bit-value) onto the stack. Can also be used for a float or uint.
+An `ipush` instruction pushes an integer (or any 32-bit-value) onto the stack. It can also be used for a float or uint.
+Syntax: `ipush <u4 value>`, so we have the byte signing a ipush instruction and then directly after that the integer we want to push onto the stack. Overall instruction length: `5 bytes`.
 
 #### § 1.1.4 `lpush`
 
-Syntax: `lpush <u8 value>` - Push a long (or any 64-bit-value) onto the stack. Can also be used for a double or ulong.
+An `lpush` instruction pushes a long (or any 64-bit-value) onto the stack. It can also be used for a double or ulong.
+Syntax: `lpush <u8 value>`, so we have the byte signing a lpush instruction and then directly after that the long we want to push onto the stack. Overall instruction length: `9 bytes`.
 
 ### § 1.2 Loading data from the local variable table
 
@@ -431,3 +483,7 @@ Syntax: `fcmp` - Compare two floats from the stack and push the result onto the 
 #### § 4.1.6 `dcmp`
 
 Syntax: `dcmp` - Compare two doubles from the stack and push the result onto the stack.
+
+```
+
+```
