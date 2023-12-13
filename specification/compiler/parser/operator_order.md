@@ -1,5 +1,5 @@
 ---
-position: 2
+position: 3
 title: Order of Operators
 tags: [parser, operator, order, parsing token, specification, spec, compiler]
 ---

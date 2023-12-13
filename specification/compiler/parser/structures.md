@@ -1,5 +1,5 @@
 ---
-position: 1
+position: 2
 title: Structures
 tags: [parser, structures, token, specification, spec, compiler]
 ---
