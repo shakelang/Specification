@@ -177,7 +177,7 @@ const config: Config = {
             },
             {
               label: "Contact",
-              href: "mailto:contact@shakelang.com",
+              href: "https://shakelang.com/contact",
             },
           ],
         },
