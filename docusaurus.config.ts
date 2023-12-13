@@ -11,6 +11,22 @@ interface DocEntry {
   readonly url: string;
 }
 
+interface PackageEntry {
+  readonly label?: string;
+  readonly id: string;
+  readonly path: string;
+  readonly url: string;
+}
+
+const packages: readonly PackageEntry[] = [
+  {
+    label: "Shason",
+    id: "packages-shason",
+    path: "specification/packages/shason",
+    url: "packages/shason",
+  },
+];
+
 const docs: readonly DocEntry[] = [
   {
     label: "Bytecode",
@@ -24,6 +40,14 @@ const docs: readonly DocEntry[] = [
     path: "specification/compiler",
     url: "compiler",
   },
+  ...packages.map(
+    (e) =>
+      ({
+        id: e.id,
+        path: e.path,
+        url: e.url,
+      } satisfies DocEntry)
+  ),
 ];
 
 const config: Config = {
@@ -78,6 +102,20 @@ const config: Config = {
           href: "https://shakelang.com",
           label: "Website",
           position: "left",
+        },
+        {
+          to: "/",
+          label: "Packages",
+          position: "left",
+          items: [
+            ...packages.map(
+              (e) =>
+                ({
+                  to: `/${e.url}`,
+                  label: e.label,
+                } satisfies NavbarItem)
+            ),
+          ],
         },
         ...docs
           .filter((doc) => doc.label)
