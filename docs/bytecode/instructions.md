@@ -4,8 +4,6 @@ title: Bytecode Instructions
 tags: [specification, spec, interpreter, bytecode, instructions]
 ---
 
-# The shake bytecode code instructions
-
 ## Stack and variable manipulation
 
 The stack hereby refers to a stack of 8-bit-values. We can only put an 8-bit-value (further referred to as a `byte`, not to
