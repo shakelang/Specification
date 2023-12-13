@@ -1,5 +1,5 @@
 ---
-position: 1
+position: 2
 title: Bytecode Instructions
 tags: [specification, spec, interpreter, bytecode, instructions]
 ---

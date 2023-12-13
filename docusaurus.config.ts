@@ -17,14 +17,12 @@ const docs: readonly DocEntry[] = [
     id: "bytecode",
     path: "specification/bytecode",
     url: "bytecode",
-    index: "instructions",
   },
   {
     label: "Compiler",
     id: "compiler",
     path: "specification/compiler",
     url: "compiler",
-    index: "flow",
   },
 ];
 
@@ -82,11 +80,11 @@ const config: Config = {
           position: "left",
         },
         ...docs
-          .filter((doc) => doc.label && doc.index)
+          .filter((doc) => doc.label)
           .map(
             (doc) =>
               ({
-                to: `/${doc.url}/${doc.index}`,
+                to: `/${doc.url}${doc.index ? `/${doc.index}` : ""}`,
                 label: doc.label,
                 position: "left",
               } satisfies NavbarItem)
