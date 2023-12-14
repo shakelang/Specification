@@ -12,7 +12,7 @@ Lets look at the storage format of the bytecode files.
 ```c
 
 struct File {
-    u4 magic[4];
+    u4 magic;
     u2 major;
     u2 minor;
     u4 package_name_index;
