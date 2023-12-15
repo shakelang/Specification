@@ -595,7 +595,7 @@ The `boolean` type is represented a single uppercase `Z`.
 
 The `char` type is represented a single uppercase `C`.
 
-#### Object
+### Object
 
 The `object` type is represented a single uppercase `L` followed by the qualified name of the class and a `;`.
 If the class is generic the generic types are added to the end of the type. We seperate the class name and the generic types by the `@` character. The generic types are seperated by a `+` character.
