@@ -540,3 +540,74 @@ The type of the exception.
 The attribute count is the number of attributes that the code attribute has. The attributes are a list of attributes that are defined in the code attribute.
 
 Take a look at the [attributes](#attributes) section for more information.
+
+## Type Format Strings
+
+The type format is used to represent the type of a value in a string format.
+
+### Primitive Types
+
+#### Byte
+
+The `byte` type is represented a single uppercase `B`.
+
+#### Unsigned Byte (UByte)
+
+The `unsigned byte` type is, similar to the signed byte, represented a single lowercase `b`.
+
+#### Short
+
+The `short` type is represented a single uppercase `S`.
+
+#### Unsigned Short (UShort)
+
+The `unsigned short` type is, similar to the signed short, represented a single lowercase `s`.
+
+#### Int
+
+The `int` type is represented a single uppercase `I`.
+
+#### Unsigned Int (UInt)
+
+The `unsigned int` type is, similar to the signed int, represented a single lowercase `i`.
+
+#### Long
+
+The `long` type is represented a single uppercase `J`.
+
+#### Unsigned Long (ULong)
+
+The `unsigned long` type is, similar to the signed long, represented a single lowercase `j`.
+
+#### Float
+
+The `float` type is represented a single uppercase `F`.
+
+#### Double
+
+The `double` type is represented a single uppercase `D`.
+
+#### Boolean
+
+The `boolean` type is represented a single uppercase `Z`.
+
+#### Char
+
+The `char` type is represented a single uppercase `C`.
+
+#### Object
+
+The `object` type is represented a single uppercase `L` followed by the qualified name of the class and a `;`.
+If the class is generic the generic types are added to the end of the type. We seperate the class name and the generic types by the `@` character. The generic types are seperated by a `+` character.
+Every object type starts with a `L` and ends with a `;`.
+
+For example we have the type `shake.lang.String` which is not generic and would be represented as
+`Lshake/lang/String;`.
+
+The type `shake.lang.List<shake.lang.String>` would be represented as `Lshake/lang/List@Lshake/lang/String;;`.
+The type `shake.lang.Map<shake.lang.String, byte>` would be represented as `Lshake/lang/Map@Lshake/lang/String;+byte;`.
+
+### Array Types
+
+To represent an array of something, we add a `[` to the start of the type. For example the type `int[]` would be represented as `[I`.
+For multidimensional arrays we add a `[` for every dimension. For example the type `int[][]` would be represented as `[[I`.
