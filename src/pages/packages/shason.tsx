@@ -34,6 +34,25 @@ function HomepageHeader() {
             {settings.button_text}
           </Link>
         </div>
+
+        <p
+          className="hero__subtitle"
+          style={{
+            marginTop: "0.5rem",
+            fontSize: "1rem",
+          }}
+        >
+          <a
+            href="https://dokka.shakelang.com/util/shason"
+            style={{
+              color: "var(--ifm-font-color-base-inverse)",
+              textDecoration: "none",
+              fontStyle: "italic",
+            }}
+          >
+            ...or read the API Reference 📖
+          </a>
+        </p>
       </div>
     </header>
   );

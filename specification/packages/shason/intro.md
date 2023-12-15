@@ -6,13 +6,15 @@ title: Introduction
 Shason is a JSON parser written in Kotlin. It is designed to be fast and easy to use. It is designed to be
 compatible with the JSON specification ([RFC 8259](https://tools.ietf.org/html/rfc8259)).
 
+[Api Reference](https://dokka.shakelang.com/util/shason)
+
 ## Installation
 
 ### Gradle
 
 build.gradle
 
-```gradle
+```groovy
 implementation "com.shakelang.shake.util:shason:$version"
 ```
 
