@@ -541,7 +541,7 @@ The attribute count is the number of attributes that the code attribute has. The
 
 Take a look at the [attributes](#attributes) section for more information.
 
-## Type Format Strings
+## Type Descriptors
 
 The type format is used to represent the type of a value in a string format.
 
@@ -611,3 +611,19 @@ The type `shake.lang.Map<shake.lang.String, byte>` would be represented as `Lsha
 
 To represent an array of something, we add a `[` to the start of the type. For example the type `int[]` would be represented as `[I`.
 For multidimensional arrays we add a `[` for every dimension. For example the type `int[][]` would be represented as `[[I`.
+
+## Method Descriptors
+
+The method format is used to represent the signature of a method in a string format.
+
+### Method Signature
+
+The method signature contains of the following parts:
+
+- The method name
+- A `(` character to start the parameter list
+- The parameter types seperated by a `,` character
+- A `)` character to end the parameter list
+- The return type
+
+For example the method `int add(int a, int b)` would be represented as `add(I,I)I`.
