@@ -40,7 +40,7 @@ At the time of writing, the major version number is `0` and the minor version nu
 
 ### Package Name
 
-The package name index is the index of the package name. We store one package name per file. The package name is a string that is used to identify the package that the file belongs to. For example it could be `com.shakelang.shake`.
+The package name index is the index of the package name. We store one package name per file. The package name is a string that is used to identify the package that the file belongs to. For example it could be `com/shakelang/shake`.
 
 ### Constant Pool Count & Constant Pool
 
