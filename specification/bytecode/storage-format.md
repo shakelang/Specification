@@ -38,7 +38,7 @@ The major and minor version numbers are used to identify the version of the byte
 
 At the time of writing, the major version number is `0` and the minor version number is `1`.
 
-### Package Name Index
+### Package Name
 
 The package name index is the index of the package name. We store one package name per file. The package name is a string that is used to identify the package that the file belongs to. For example it could be `com.shakelang.shake`.
 
@@ -627,3 +627,31 @@ The method signature contains of the following parts:
 - The return type
 
 For example the method `int add(int a, int b)` would be represented as `add(I,I)I`.
+
+### Path Signature
+
+The path signature is the "path" of a method, class or field. It contains the package name, (optinally the parent class name) and the class/method/field name.
+
+The package path is separated by the `/` character. When we have a parent class, we seperate it with the `:` character.
+
+For example `shake.lang.String` would be represented as `shake/lang/String`. The method `shake.lang.String::length` would be represented as `shake/lang/String:length`.
+
+If we have a class like this:
+
+```shake
+package shake.lang;
+
+class String {
+    public int length() {
+        return 0;
+    }
+
+    class Builder {
+        public String build() {
+            return "";
+        }
+    }
+}
+```
+
+The method `shake.lang.String.Builder::build` would be represented as `shake/lang/String:Builder:build`.
