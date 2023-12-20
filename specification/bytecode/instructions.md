@@ -1114,7 +1114,7 @@ Syntax: `ldup`
 
 Overall instruction length: `1 byte`.
 
-### § 8.4 `pcast` _`(0xB0)`_
+### § 8.4 `pcast` _`(0xA0)`_
 
 Perform a primitive cast.
 The following byte defines the type to cast to.
