@@ -1056,13 +1056,15 @@ Overall instruction length: `1 byte`.
 
 ### § 8.2 `pop` _`(0xA1)`_
 
+#### § 8.2.1 `pop` _`(0xA1)`_
+
 Pop the top byte from the stack.
 
 Syntax: `pop`
 
 Overall instruction length: `1 byte`.
 
-### § 8.3 `spop` _`(0xA2)`_
+#### § 8.2.2 `spop` _`(0xA2)`_
 
 Pop the top two bytes from the stack.
 
@@ -1070,7 +1072,7 @@ Syntax: `spop`
 
 Overall instruction length: `1 byte`.
 
-### § 8.4 `ipop` _`(0xA3)`_
+#### § 8.2.3 `ipop` _`(0xA3)`_
 
 Pop the top four bytes from the stack.
 
@@ -1078,7 +1080,7 @@ Syntax: `ipop`
 
 Overall instruction length: `1 byte`.
 
-### § 8.5 `lpop` _`(0xA4)`_
+#### § 8.2.4 `lpop` _`(0xA4)`_
 
 Pop the top eight bytes from the stack.
 
@@ -1086,7 +1088,49 @@ Syntax: `lpop`
 
 Overall instruction length: `1 byte`.
 
-### § 8.6 `pcast` _`(0xA0)`_
+### § 8.3 `dup`
+
+### § 8.3.1 `bdup` _`(0xA5)`_
+
+Duplicate the top byte on the stack.
+
+Could be used to duplicate a byte, boolean or ubyte.
+
+Syntax: `bdup`
+
+Overall instruction length: `1 byte`.
+
+### § 8.3.2 `sdup` _`(0xA6)`_
+
+Duplicate the top 2-byte element on the stack.
+
+Could be used to duplicate a short, char or ushort.
+
+Syntax: `sdup`
+
+Overall instruction length: `1 byte`.
+
+### § 8.3.3 `idup` _`(0xA7)`_
+
+Duplicate the top 4-byte element on the stack.
+
+Could be used to duplicate an integer, float or uint.
+
+Syntax: `idup`
+
+Overall instruction length: `1 byte`.
+
+### § 8.3.4 `ldup` _`(0xA8)`_
+
+Duplicate the top 8-byte element on the stack.
+
+Could be used to duplicate a long, double or ulong.
+
+Syntax: `ldup`
+
+Overall instruction length: `1 byte`.
+
+### § 8.4 `pcast` _`(0xB0)`_
 
 Perform a primitive cast.
 The following byte defines the type to cast to.
@@ -1114,43 +1158,3 @@ We want to cast `0x` `0` _to_ `1`, so we use `0x01`.
 Syntax: `pcast <u1 type>`
 
 Overall instruction length: `2 bytes`.
-
-### § 8.7 `bdup` _`(0xA5)`_
-
-Duplicate the top byte on the stack.
-
-Could be used to duplicate a byte, boolean or ubyte.
-
-Syntax: `bdup`
-
-Overall instruction length: `1 byte`.
-
-### § 8.8 `sdup` _`(0xA6)`_
-
-Duplicate the top 2-byte element on the stack.
-
-Could be used to duplicate a short, char or ushort.
-
-Syntax: `sdup`
-
-Overall instruction length: `1 byte`.
-
-### § 8.9 `idup` _`(0xA7)`_
-
-Duplicate the top 4-byte element on the stack.
-
-Could be used to duplicate an integer, float or uint.
-
-Syntax: `idup`
-
-Overall instruction length: `1 byte`.
-
-### § 8.10 `ldup` _`(0xA8)`_
-
-Duplicate the top 8-byte element on the stack.
-
-Could be used to duplicate a long, double or ulong.
-
-Syntax: `ldup`
-
-Overall instruction length: `1 byte`.
