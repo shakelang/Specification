@@ -940,7 +940,7 @@ Syntax: `jne <u4 address>`
 
 Overall instruction length: `5 bytes`.
 
-#### § 5.1.6 `jg` _`(0x85)`_
+#### § 5.1.6 `jg` _`(0x81)`_
 
 Jump to the instruction at the given address if the the comparison result is 0 (00000000) (the first value is greater than the second).
 
@@ -950,7 +950,7 @@ Syntax: `jg <u4 address>`
 
 Overall instruction length: `5 bytes`.
 
-#### § 5.1.7 `jge` _`(0x86)`_
+#### § 5.1.7 `jge` _`(0x85)`_
 
 Jump to the instruction at the given address if the the comparison result is 0 (00000000) or 1 (00000001) (the first value is greater than or equal to the second).
 
@@ -958,7 +958,7 @@ Syntax: `jge <u4 address>`
 
 Overall instruction length: `5 bytes`.
 
-#### § 5.1.8 `jl` _`(0x87)`_
+#### § 5.1.8 `jl` _`(0x86)`_
 
 Jump to the instruction at the given address if the the comparison result is 2 (00000010) (the first value is smaller than the second).
 
@@ -966,7 +966,7 @@ Syntax: `jl <u4 address>`
 
 Overall instruction length: `5 bytes`.
 
-#### § 5.1.9 `jle` _`(0x88)`_
+#### § 5.1.9 `jle` _`(0x87)`_
 
 Jump to the instruction at the given address if the the comparison result is 2 (00000010) or 1 (00000001) (the first value is smaller than or equal to the second).
 
