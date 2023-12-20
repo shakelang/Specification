@@ -58,7 +58,11 @@ jobs:
         uses: actions/upload-pages-artifact@v3
         with:
           path: "./build"
+          name: spec
 
       - name: Deploy to GitHub Pages 🚀
         id: deployment
         uses: actions/deploy-pages@v3
+        with:
+          artifact_name: spec
+          token: ${{ secrets.GITHUB_TOKEN }}
