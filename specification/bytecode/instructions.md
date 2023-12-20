@@ -1142,3 +1142,13 @@ We want to cast `0x` `0` _to_ `1`, so we use `0x01`.
 Syntax: `pcast <u1 type>`
 
 Overall instruction length: `2 bytes`.
+
+### § 8.5 `call` _`(0xA9)`_
+
+Call a method.
+
+Syntax: `call <u4 constant>`
+
+The constant should be an utf-8 constant, containing a qualified method name.
+
+Overall instruction length: `5 bytes`.
