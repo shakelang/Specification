@@ -1090,7 +1090,7 @@ Overall instruction length: `1 byte`.
 
 ### § 8.3 `dup`
 
-### § 8.3.1 `bdup` _`(0xA5)`_
+#### § 8.3.1 `bdup` _`(0xA5)`_
 
 Duplicate the top byte on the stack.
 
@@ -1100,7 +1100,7 @@ Syntax: `bdup`
 
 Overall instruction length: `1 byte`.
 
-### § 8.3.2 `sdup` _`(0xA6)`_
+#### § 8.3.2 `sdup` _`(0xA6)`_
 
 Duplicate the top 2-byte element on the stack.
 
@@ -1110,7 +1110,7 @@ Syntax: `sdup`
 
 Overall instruction length: `1 byte`.
 
-### § 8.3.3 `idup` _`(0xA7)`_
+#### § 8.3.3 `idup` _`(0xA7)`_
 
 Duplicate the top 4-byte element on the stack.
 
@@ -1120,7 +1120,7 @@ Syntax: `idup`
 
 Overall instruction length: `1 byte`.
 
-### § 8.3.4 `ldup` _`(0xA8)`_
+#### § 8.3.4 `ldup` _`(0xA8)`_
 
 Duplicate the top 8-byte element on the stack.
 
