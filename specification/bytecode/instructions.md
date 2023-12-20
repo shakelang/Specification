@@ -4,13 +4,61 @@ title: Bytecode Instructions
 tags: [specification, spec, interpreter, bytecode, instructions]
 ---
 
+## Bytecode Definition
+
+A bytecode is a sequence of bytes. We always have one `opcode` that is followed by zero or more `operands`.
+Lets take a look at an example. We have a simple bytecode. We push two bytes onto the stack and add them together.
+
+The code would look like this:
+
+```bash
+# Stack []
+bpush 1
+# Stack [1]
+bpush 2
+# Stack [1, 2]
+badd
+# Stack [3]
+```
+
+The bytecode would look like this (byte values are written in hexadecimal):
+
+```txt
+01 01 01 02 10
+```
+
+Lets group the bytes a little bit to make it more readable:
+
+```txt
+01 01
+01 02
+10
+```
+
+We start the interpretation at the first byte. It is the opcode `bpush`. The interpreter knows that the opcode
+`bpush` is always followed by a operand. So it reads the next byte and interprets it as the operand. The instruction
+tells it to push this byte onto the stack. The pointer is now at the third byte. As we are finished with the first instruction by now, the next byte is interpreted as an opcode again.
+
+_(The interpreter will do the same for the next instruction, it is `bpush` again, so it will do basically the same as
+for the first instruction.)_
+
+After the second `bpush` instruction, the pointer is at the fifth byte. The next byte is the opcode `badd`. The
+interpreter knows that the opcode `badd` is not followed by any operand. The instruction tells it to add the two bytes
+on top of the stack together and push the result onto the stack. The pointer is incremented again. This code is _bad_ as the pointer is now at the end of the bytecode, but we have no `RET` instruction. The interpreter will throw an error. But for this example that should be enough.
+
+_**Keep in mind, that mistakes in the bytecode can lead to undefined behavior. If we have a byte missing, value bytes
+can be interpreted as opcodes and vice versa. This is a serious problem and leads to many security issues, especially
+when we can modify operand bytes during runtime. So be careful when you write your own bytecode (or use tools and not
+write the bytes by hand).**_
+
+In the following sections we will define the opcodes and operands they are followed by.
+
 ## Stack and variable manipulation
 
-The stack hereby refers to a stack of 8-bit-values. We can only put an 8-bit-value (further referred to as a `byte`, not to
-be with the data type `byte`) on top of the stack and we can remove the topmost bit from the stack. We will refer to the
-topmost byte as the `top/head` of the stack. The stack is a LIFO (last in, first out) data structure. The stack is our main
-tool to manipulate data. We can use an instruction to push a constant onto the stack, then we push another constant onto
-the stack. Now we can use an add instruction to add the two constants together. Our stack will no longer contain the two constants, but the result of the addition. This would look like this:
+The stack hereby refers to a stack of 8-bit-values. We can only put an 8-bit-value (further referred to as a `byte`,
+not to be with the data type `byte`) on top of the stack and we can remove the topmost bit from the stack. We will
+refer to the topmost byte as the `top/head` of the stack. The stack is a LIFO (last in, first out) data structure.
+The stack is our main tool to manipulate data. We can use an instruction to push a constant onto the stack, then we push another constant onto the stack. Now we can use an add instruction to add the two constants together. Our stack will no longer contain the two constants, but the result of the addition. This would look like this:
 
 ```bash
 # Stack []
