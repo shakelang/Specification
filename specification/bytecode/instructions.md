@@ -974,22 +974,6 @@ Syntax: `jle <u4 address>`
 
 Overall instruction length: `5 bytes`.
 
-#### § 5.1.10 `jz` _`(0x85)`_
-
-Jump to the instruction at the given address if the the comparison result is 1 (00000001) (the two values are equal).
-
-Syntax: `jz <u4 address>`
-
-Overall instruction length: `5 bytes`.
-
-#### § 5.1.11 `jnz` _`(0x89)`_
-
-Jump to the instruction at the given address if the the comparison result is not 1 (00000001) (the two values are not equal).
-
-Syntax: `jnz <u4 address>`
-
-Overall instruction length: `5 bytes`.
-
 #### § 6.1.1 `ret` _`(0x90)`_
 
 Return from the current method.
