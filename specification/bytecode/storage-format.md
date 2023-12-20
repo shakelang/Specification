@@ -628,6 +628,8 @@ The method signature contains of the following parts:
 
 For example the method `int add(int a, int b)` would be represented as `add(I,I)I`.
 
+A qualified method signature should additionally contain a qualified path. See [Path Signature](#path-signature).
+
 ### Path Signature
 
 The path signature is the "path" of a method, class or field. It contains the package name, (optinally the parent class name) and the class/method/field name.
