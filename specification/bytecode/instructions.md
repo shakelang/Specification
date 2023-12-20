@@ -1152,7 +1152,7 @@ This table shows the available types:
 | `float`  | `0x8` | `8`       | `1000`   |
 | `double` | `0x9` | `9`       | `1001`   |
 
-For example, if you want to cast a byte to a short, you would use `0x01` (0b00010001). You can read this like this:
+For example, if you want to cast a byte to a short, you would use `0x01` (`0b00010001`). You can read this like this:
 We want to cast `0x` `0` _to_ `1`, so we use `0x01`.
 
 Syntax: `pcast <u1 type>`
