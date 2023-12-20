@@ -80,7 +80,7 @@ const config: Config = {
           sidebarPath: "./sidebars.ts",
           // Please change this to your repo.
           // Remove this to remove the "edit this page" links.
-          editUrl: "https://github.com/shakelang/specification/tree/main/",
+          editUrl: "https://github.com/shakelang/specification/tree/master/",
         },
         theme: {
           customCss: "./src/css/custom.css",
@@ -198,6 +198,7 @@ const config: Config = {
         path: doc.path,
         routeBasePath: doc.url,
         sidebarPath: require.resolve("./sidebars.ts"),
+        editUrl: "https://github.com/shakelang/specification/tree/master/",
       },
     ]),
   ],
