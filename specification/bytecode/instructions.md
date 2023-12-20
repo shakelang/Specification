@@ -1054,9 +1054,9 @@ Syntax: `nop`
 
 Overall instruction length: `1 byte`.
 
-### § 8.2 `pop` _`(0xA1)`_
+### § 8.2 `pop`
 
-#### § 8.2.1 `pop` _`(0xA1)`_
+#### § 8.2.1 `bpop` _`(0xA1)`_
 
 Pop the top byte from the stack.
 
