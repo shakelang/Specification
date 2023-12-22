@@ -89,6 +89,7 @@ The tag is used to identify the type of the constant. The tag is always the firs
 - `0x06` Float
 - `0x07` Double
 - `0x08` Class
+- `0x09` String
 
 ### UTF8 Constant
 
@@ -254,6 +255,25 @@ The identifier of the constant. The tag of the class constant is `0x08`.
 #### Name Index
 
 The index of the UTF8 constant that contains the name of the class.
+
+### String Constant
+
+The string constant is used to store strings. Strings can be refferd to by the bytecode.
+
+```c
+struct cp_info {
+    u1 tag = 0x09;
+    u2 string_index;
+};
+```
+
+#### Tag
+
+The identifier of the constant. The tag of the string constant is `0x09`.
+
+#### String Index
+
+The index of the UTF8 constant that contains the string.
 
 ## Classes
 
