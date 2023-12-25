@@ -897,6 +897,80 @@ top double is smaller than the second, the result will be -1. The result will be
 Syntax: `dcmp`
 Overall instruction length: `1 byte`.
 
+### Comparison to boolean
+
+You can achieve the same result using jumps, but these are shortcuts for that. These are very commonly used
+combinations, so for performance reasons, these are included as instructions.
+
+These instructions convert cmp results to booleans.
+
+#### § 4.2.1 `less` _`(0x76)`_
+
+Compare two values from the stack and push the result onto the stack. Uses the result of the compare operator.
+
+Will return 1 (`00000001`) only if the top value is smaller than the second value.
+(so if the cmp result is `00000010`)
+
+Syntax: `less`
+
+Overall instruction length: `1 byte`.
+
+#### § 4.2.2 `leq` _`(0x77)`_
+
+Compare two values from the stack and push the result onto the stack. Uses the result of the compare operator.
+
+Will return 1 (`00000001`) if the top value is smaller than or equal to the second value.
+(so if the cmp result is `00000010` or `00000001`)
+
+Syntax: `leq`
+
+Overall instruction length: `1 byte`.
+
+#### § 4.2.3 `eq` _`(0x78)`_
+
+Compare two values from the stack and push the result onto the stack. Uses the result of the compare operator.
+
+Will return 1 (`00000001`) if the top value is equal to the second value.
+(so if the cmp result is `00000001`)
+
+Syntax: `eq`
+
+Overall instruction length: `1 byte`.
+
+#### § 4.2.4 `neq` _`(0x79)`_
+
+Compare two values from the stack and push the result onto the stack. Uses the result of the compare operator.
+
+Will return 1 (`00000001`) if the top value is not equal to the second value.
+(so if the cmp result is `00000000` or `00000010`)
+
+Syntax: `neq`
+
+Overall instruction length: `1 byte`.
+
+#### § 4.2.5 `geq` _`(0x7A)`_
+
+Compare two values from the stack and push the result onto the stack. Uses the result of the compare operator.
+
+Will return 1 (`00000001`) if the top value is greater than or equal to the second value.
+
+(so if the cmp result is `00000000` or `00000001`)
+
+Syntax: `geq`
+
+Overall instruction length: `1 byte`.
+
+#### § 4.2.6 `greater` _`(0x7B)`_
+
+Compare two values from the stack and push the result onto the stack. Uses the result of the compare operator.
+
+Will return 1 (`00000001`) if the top value is greater than the second value.
+(so if the cmp result is `00000000`)
+
+Syntax: `greater`
+
+Overall instruction length: `1 byte`.
+
 ## § 5 Control flow
 
 ### § 5.1 Jumping
