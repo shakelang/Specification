@@ -15,13 +15,13 @@ compatible with the JSON specification ([RFC 8259](https://tools.ietf.org/html/r
 build.gradle
 
 ```groovy
-implementation "com.shakelang.shake.util:shason:$version"
+implementation "com.shakelang.util:shason:$version"
 ```
 
 build.gradle.kts
 
 ```kotlin
-implementation("com.shakelang.shake.util:shason:$version")
+implementation("com.shakelang.util:shason:$version")
 ```
 
 ## Usage
