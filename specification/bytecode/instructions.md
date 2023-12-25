@@ -971,51 +971,51 @@ combinations, so for performance reasons, these are included as instructions.
 
 These instructions convert cmp results to booleans.
 
-#### § 4.2.1 `less` _`(0x7A)`_
+#### § 4.2.1 `clt` _`(0x7A)`_
 
 Compare two values from the stack and push the result onto the stack. Uses the result of the compare operator.
 
 Will return 1 (`00000001`) only if the top value is smaller than the second value.
 (so if the cmp result is `00000010`)
 
-Syntax: `less`
+Syntax: `clt`
 
 Overall instruction length: `1 byte`.
 
-#### § 4.2.2 `leq` _`(0x7B)`_
+#### § 4.2.2 `cle` _`(0x7B)`_
 
 Compare two values from the stack and push the result onto the stack. Uses the result of the compare operator.
 
 Will return 1 (`00000001`) if the top value is smaller than or equal to the second value.
 (so if the cmp result is `00000010` or `00000001`)
 
-Syntax: `leq`
+Syntax: `cle`
 
 Overall instruction length: `1 byte`.
 
-#### § 4.2.3 `eq` _`(0x7C)`_
+#### § 4.2.3 `ceq` _`(0x7C)`_
 
 Compare two values from the stack and push the result onto the stack. Uses the result of the compare operator.
 
 Will return 1 (`00000001`) if the top value is equal to the second value.
 (so if the cmp result is `00000001`)
 
-Syntax: `eq`
+Syntax: `ceq`
 
 Overall instruction length: `1 byte`.
 
-#### § 4.2.4 `neq` _`(0x7D)`_
+#### § 4.2.4 `cne` _`(0x7D)`_
 
 Compare two values from the stack and push the result onto the stack. Uses the result of the compare operator.
 
 Will return 1 (`00000001`) if the top value is not equal to the second value.
 (so if the cmp result is `00000000` or `00000010`)
 
-Syntax: `neq`
+Syntax: `cne`
 
 Overall instruction length: `1 byte`.
 
-#### § 4.2.5 `geq` _`(0x7E)`_
+#### § 4.2.5 `cge` _`(0x7E)`_
 
 Compare two values from the stack and push the result onto the stack. Uses the result of the compare operator.
 
@@ -1023,18 +1023,18 @@ Will return 1 (`00000001`) if the top value is greater than or equal to the seco
 
 (so if the cmp result is `00000000` or `00000001`)
 
-Syntax: `geq`
+Syntax: `cge`
 
 Overall instruction length: `1 byte`.
 
-#### § 4.2.6 `greater` _`(0x7F)`_
+#### § 4.2.6 `cgt` _`(0x7F)`_
 
 Compare two values from the stack and push the result onto the stack. Uses the result of the compare operator.
 
 Will return 1 (`00000001`) if the top value is greater than the second value.
 (so if the cmp result is `00000000`)
 
-Syntax: `greater`
+Syntax: `cgt`
 
 Overall instruction length: `1 byte`.
 
