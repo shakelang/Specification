@@ -885,8 +885,8 @@ Overall instruction length: `1 byte`.
 
 Compare two doubles from the stack and push the result onto the stack.
 
-If the top double is greater than the second, the result will be -1, if they are equal, the result will be 0 and if the
-top double is smaller than the second, the result will be -1. The result will be a byte.
+If the top double is greater than the second, the result will be -1, if they are equal, the result will be 0 and if
+the top double is smaller than the second, the result will be -1. The result will be a byte.
 
 ```txt
 0 0 0 0 0 0 0 0 // 0, the top double is greater than the second
@@ -897,6 +897,73 @@ top double is smaller than the second, the result will be -1. The result will be
 Syntax: `dcmp`
 Overall instruction length: `1 byte`.
 
+### § 4.1.7 `ubcmp` _`(0x76)`_
+
+Compare two unsigned bytes from the stack and push the result onto the stack.
+
+If the top unsigned byte is greater than the second, the result will be -1, if they are equal, the result will be 0 and if the top unsigned byte is smaller than the second, the result will be -1. The result will be a byte.
+
+```txt
+0 0 0 0 0 0 0 0 // 0, the top unsigned byte is greater than the second
+0 0 0 0 0 0 0 1 // 1, the top unsigned byte is equal to the second
+0 0 0 0 0 0 1 0 // 2, the top unsigned byte is smaller than the second
+```
+
+Syntax: `ubcmp`
+
+Overall instruction length: `1 byte`.
+
+### § 4.1.8 `uscmp` _`(0x77)`_
+
+Compare two unsigned shorts from the stack and push the result onto the stack.
+
+If the top unsigned short is greater than the second, the result will be -1, if they are equal, the result will be 0
+and if the top unsigned short is smaller than the second, the result will be -1. The result will be a byte.
+
+```txt
+0 0 0 0 0 0 0 0 // 0, the top unsigned short is greater than the second
+0 0 0 0 0 0 0 1 // 1, the top unsigned short is equal to the second
+0 0 0 0 0 0 1 0 // 2, the top unsigned short is smaller than the second
+```
+
+Syntax: `uscmp`
+
+Overall instruction length: `1 byte`.
+
+### § 4.1.9 `uicmp` _`(0x78)`_
+
+Compare two unsigned integers from the stack and push the result onto the stack.
+
+If the top unsigned integer is greater than the second, the result will be -1, if they are equal, the result will be 0
+and if the top unsigned integer is smaller than the second, the result will be -1. The result will be a byte.
+
+```txt
+0 0 0 0 0 0 0 0 // 0, the top unsigned integer is greater than the second
+0 0 0 0 0 0 0 1 // 1, the top unsigned integer is equal to the second
+0 0 0 0 0 0 1 0 // 2, the top unsigned integer is smaller than the second
+```
+
+Syntax: `uicmp`
+
+Overall instruction length: `1 byte`.
+
+### § 4.1.10 `ulcmp` _`(0x79)`_
+
+Compare two unsigned longs from the stack and push the result onto the stack.
+
+If the top unsigned long is greater than the second, the result will be -1, if they are equal, the result will be 0
+and if the top unsigned long is smaller than the second, the result will be -1. The result will be a byte.
+
+```txt
+0 0 0 0 0 0 0 0 // 0, the top unsigned long is greater than the second
+0 0 0 0 0 0 0 1 // 1, the top unsigned long is equal to the second
+0 0 0 0 0 0 1 0 // 2, the top unsigned long is smaller than the second
+```
+
+Syntax: `ulcmp`
+
+Overall instruction length: `1 byte`.
+
 ### Comparison to boolean
 
 You can achieve the same result using jumps, but these are shortcuts for that. These are very commonly used
@@ -904,7 +971,7 @@ combinations, so for performance reasons, these are included as instructions.
 
 These instructions convert cmp results to booleans.
 
-#### § 4.2.1 `less` _`(0x76)`_
+#### § 4.2.1 `less` _`(0x7A)`_
 
 Compare two values from the stack and push the result onto the stack. Uses the result of the compare operator.
 
@@ -915,7 +982,7 @@ Syntax: `less`
 
 Overall instruction length: `1 byte`.
 
-#### § 4.2.2 `leq` _`(0x77)`_
+#### § 4.2.2 `leq` _`(0x7B)`_
 
 Compare two values from the stack and push the result onto the stack. Uses the result of the compare operator.
 
@@ -926,7 +993,7 @@ Syntax: `leq`
 
 Overall instruction length: `1 byte`.
 
-#### § 4.2.3 `eq` _`(0x78)`_
+#### § 4.2.3 `eq` _`(0x7C)`_
 
 Compare two values from the stack and push the result onto the stack. Uses the result of the compare operator.
 
@@ -937,7 +1004,7 @@ Syntax: `eq`
 
 Overall instruction length: `1 byte`.
 
-#### § 4.2.4 `neq` _`(0x79)`_
+#### § 4.2.4 `neq` _`(0x7D)`_
 
 Compare two values from the stack and push the result onto the stack. Uses the result of the compare operator.
 
@@ -948,7 +1015,7 @@ Syntax: `neq`
 
 Overall instruction length: `1 byte`.
 
-#### § 4.2.5 `geq` _`(0x7A)`_
+#### § 4.2.5 `geq` _`(0x7E)`_
 
 Compare two values from the stack and push the result onto the stack. Uses the result of the compare operator.
 
@@ -960,7 +1027,7 @@ Syntax: `geq`
 
 Overall instruction length: `1 byte`.
 
-#### § 4.2.6 `greater` _`(0x7B)`_
+#### § 4.2.6 `greater` _`(0x7F)`_
 
 Compare two values from the stack and push the result onto the stack. Uses the result of the compare operator.
 
