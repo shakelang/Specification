@@ -8,6 +8,10 @@ The interpreter is the part of the compiler that processes the ASTs. It resolves
 are correct. It also checks if the program is valid. For example, it checks if a method is not abstract and final at
 the same time.
 
+This Article talks about a abstract view of the processor. When we are talking about a specific implementation, we
+will mention it. If so, we'll talk about the [Shake Processor Implementation](https://github.com/shakelang/shake/tree/master/shake/compiler/processor)
+(which is the default implementation).
+
 ## Definition
 
 ## Phases
@@ -126,3 +130,19 @@ _This scope is generated for blocks. It is generated for every method body. Some
 also generate a block scope._
 
 (parent: method scope or block scope if nested)
+
+## Implementation
+
+In the following sections, we will talk about the default implementation of the processor, it can be found
+[here](https://github.com/shakelang/shake/tree/master/shake/compiler/processor).
+
+### Structuring
+
+The processor needs a lot of types. We created all types as interfaces in the `com.shakelang.shake.compiler.processor.
+program.types` package. As we cannot directly create instances, we created all implementations in the `com.shakelang.
+shake.compiler.processor.program.creation` package.
+
+The types have methods for the different phases. (Only for the phases they need to implement, a method does not need to
+implement phase 1 or 2, so it does not need to implement the methods for these phases)
+
+The processor is implemented in class `com.shakelang.shake.processor.ShakePackageBasedProcessor`. Additionally there is `com.shakelang.shake.processor.ShakeASTProcessor` (which is used to process code blocks inside of methods).
