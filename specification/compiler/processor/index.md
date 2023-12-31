@@ -131,6 +131,39 @@ also generate a block scope._
 
 (parent: method scope or block scope if nested)
 
+## Selection
+
+### Classes / Fields / Variables
+
+For classes and fields/variables, its quite straight forward. We just need to find the class/field in the current
+scope. If we cannot find it, we can try to find it in the parent scope.
+
+### Methods
+
+For methods, its a bit more complicated. As there can be multiple overloads of a method, we need to find the correct
+one. It is even possible that there are multiple methods that could work.
+
+First of all we create a list of all methods with that name. They are sorted by scope. (so the first methods will be
+the ones in the current scope, then the ones in the parent scope, etc.)
+
+Then we filter out all methods that have the wrong amount of parameters. (This is the easiest check and is quite cheap,
+so we do it first)
+
+Then we filter out all methods that have incompatible types for the parameters.
+
+Now we have a list of all methods that could work. If there is only one method left, we found the correct one.
+
+To find a criteria for the correct method, we created a concept called "compatibility distance". The compatibility
+distance is a number that describes how compatible two types are. The lower the number, the more compatible they are.
+
+for example the distance between `byte` and `byte` is 0 (they are the same type), the distance between `byte` and
+`short` is 1 (they are both numeric types, but `short` is bigger than `byte`), the distance between `byte` and `int` is 2
+
+We take the sum of all distances of all parameters. The method with the lowest sum will be chosen.
+
+If there are multiple methods with the same sum, we take the one that is the first in the list (as the list is sorted
+by scope, this will be the one in the current scope).
+
 ## Implementation
 
 In the following sections, we will talk about the default implementation of the processor, it can be found
