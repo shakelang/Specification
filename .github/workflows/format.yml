@@ -57,4 +57,4 @@ jobs:
           delete-branch: true
           author: shakebot[bot] <bot@shakelang.com>
           signoff: false
-          labels: automated, style, kotlin
+          labels: automated, style
