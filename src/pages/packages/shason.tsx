@@ -4,6 +4,8 @@ import Layout from "@theme/Layout";
 import HomepageFeatures from "@site/src/components/HomepageFeatures";
 import Heading from "@theme/Heading";
 
+import React from "react";
+
 import undraw_portfolio_update from "@site/static/img/undraw_portfolio_update.svg";
 import undraw_note_list from "@site/static/img/undraw_note_list.svg";
 import undraw_product_iteration from "@site/static/img/undraw_product_iteration.svg";
@@ -86,9 +88,9 @@ export default function Home(): JSX.Element {
               Svg: undraw_note_list,
               description: (
                 <>
-                  Don't worry about implementations for different platforms.
-                  Shason works on all of them without any need to worry about
-                  it.
+                  Don&apos;t worry about implementations for different
+                  platforms. Shason works on all of them without any need to
+                  worry about it.
                 </>
               ),
             },
@@ -97,8 +99,8 @@ export default function Home(): JSX.Element {
               Svg: undraw_product_iteration,
               description: (
                 <>
-                  If you decide to add support to a new platform, you don't need
-                  to worry about rewriting the logic for another JSON
+                  If you decide to add support to a new platform, you don&apos;t
+                  need to worry about rewriting the logic for another JSON
                   parser/serializer for that platform.
                 </>
               ),

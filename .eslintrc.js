@@ -1,3 +1,4 @@
+// @eslint-ignore-file
 module.exports = {
   parser: "@typescript-eslint/parser",
   parserOptions: {
@@ -22,4 +23,5 @@ module.exports = {
       version: "detect",
     },
   },
+  ignorePatterns: ["node_modules", "build", ".eslintrc.js", "babel.config.js"],
 };
