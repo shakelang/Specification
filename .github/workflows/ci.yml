@@ -18,6 +18,7 @@ permissions:
 
 jobs:
   build:
+    name: Build ⛏
     runs-on: ubuntu-latest
     steps:
       - name: Checkout 🛎️
@@ -43,7 +44,18 @@ jobs:
       - name: Install npm packages ☁️
         run: npm ci
 
+      - name: Build Dependents 🔨
+        run: npm run dependents
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
       - name: Build Website 🔨
         run: npm run build
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Archive production artifact
+        uses: actions/upload-artifact@main
+        with:
+          name: build
+          path: build/
