@@ -5,7 +5,7 @@ name: Format using ktlint
 on:
   push:
     branches:
-      - main
+      - master
       - development
   schedule:
     - cron: "45 15 * * 4"
