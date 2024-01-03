@@ -1,4 +1,4 @@
-name: Dependabot auto-approve
+name: auto approve
 on: pull_request_target
 
 permissions:
@@ -6,7 +6,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  dependabot:
+  auto-merge:
     runs-on: ubuntu-latest
     if: ${{ github.actor == 'dependabot[bot]' || github.actor == 'shakelang-bot' }}
     steps:
