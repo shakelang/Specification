@@ -316,13 +316,19 @@ So we can store 16 booleans in the access flags.
 
 Here we have a list of all access flags:
 
-| Flag # | Hex Value | Name        | Description            |
-| ------ | --------- | ----------- | ---------------------- |
-| 0      | `0x0001`  | `public`    | The class is public    |
-| 1      | `0x0002`  | `private`   | The class is private   |
-| 2      | `0x0004`  | `protected` | The class is protected |
-| 3      | `0x0008`  | `static`    | The class is static    |
-| 4      | `0x0010`  | `final`     | The class is final     |
+| Flag # | Hex Value | Binary Value        | Name         | Description                |
+| ------ | --------- | ------------------- | ------------ | -------------------------- |
+| 0      | `0x0001`  | `00000000 00000001` | `public`     | The class is public        |
+| 1      | `0x0002`  | `00000000 00000010` | `private`    | The class is private       |
+| 2      | `0x0004`  | `00000000 00000100` | `protected`  | The class is protected     |
+| 3      | `0x0008`  | `00000000 00001000` | `static`     | The class is static        |
+| 4      | `0x0010`  | `00000000 00010000` | `final`      | The class is final         |
+| 5      | `0x0020`  | `00000000 00100000` | `interface`  | The class is an interface  |
+| 6      | `0x0040`  | `00000000 01000000` | `abstract`   | The class is abstract      |
+| 7      | `0x0080`  | `00000000 10000000` | `synthetic`  | The class is synthetic     |
+| 8      | `0x0100`  | `00000001 00000000` | `annotation` | The class is an annotation |
+| 9      | `0x0200`  | `00000010 00000000` | `enum`       | The class is an enum       |
+| 10     | `0x0400`  | `00000100 00000000` | `object`     | The class is an object     |
 
 ### Interface Count & Interfaces
 
@@ -387,13 +393,17 @@ So we can store 16 booleans in the access flags.
 
 Here we have a list of all access flags:
 
-| Flag # | Hex Value | Name        | Description            |
-| ------ | --------- | ----------- | ---------------------- |
-| 0      | `0x0001`  | `public`    | The class is public    |
-| 1      | `0x0002`  | `private`   | The class is private   |
-| 2      | `0x0004`  | `protected` | The class is protected |
-| 3      | `0x0008`  | `static`    | The class is static    |
-| 4      | `0x0010`  | `final`     | The class is final     |
+| Flag # | Hex Value | Binary Value        | Name           | Description                |
+| ------ | --------- | ------------------- | -------------- | -------------------------- |
+| 0      | `0x0001`  | `00000000 00000001` | `public`       | The method is public       |
+| 1      | `0x0002`  | `00000000 00000010` | `private`      | The method is private      |
+| 2      | `0x0004`  | `00000000 00000100` | `protected`    | The method is protected    |
+| 3      | `0x0008`  | `00000000 00001000` | `static`       | The method is static       |
+| 4      | `0x0010`  | `00000000 00010000` | `final`        | The method is final        |
+| 5      | `0x0020`  | `00000000 00100000` | `synchronized` | The method is synchronized |
+| 6      | `0x0040`  | `00000000 01000000` | `native`       | The method is native       |
+| 7      | `0x0080`  | `00000000 10000000` | `abstract`     | The method is abstract     |
+| 8      | `0x0100`  | `00000001 00000000` | `strict`       | The method is strict       |
 
 ### Attribute Count & Attributes
 
@@ -430,13 +440,14 @@ We can write the access flags in binary to understand them better. We have 16 bi
 
 Here we have a list of all access flags:
 
-| Flag # | Hex Value | Name        | Description            |
-| ------ | --------- | ----------- | ---------------------- |
-| 0      | `0x0001`  | `public`    | The class is public    |
-| 1      | `0x0002`  | `private`   | The class is private   |
-| 2      | `0x0004`  | `protected` | The class is protected |
-| 3      | `0x0008`  | `static`    | The class is static    |
-| 4      | `0x0010`  | `final`     | The class is final     |
+| Flag # | Hex Value | Binary Value        | Name        | Description            |
+| ------ | --------- | ------------------- | ----------- | ---------------------- |
+| 0      | `0x0001`  | `00000000 00000001` | `public`    | The field is public    |
+| 1      | `0x0002`  | `00000000 00000010` | `private`   | The field is private   |
+| 2      | `0x0004`  | `00000000 00000100` | `protected` | The field is protected |
+| 3      | `0x0008`  | `00000000 00001000` | `static`    | The field is static    |
+| 4      | `0x0010`  | `00000000 00010000` | `final`     | The field is final     |
+| 6      | `0x0040`  | `00000000 01000000` | `abstract`  | The field is abstract  |
 
 ### Attribute Count & Attributes
 
