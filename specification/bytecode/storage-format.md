@@ -77,7 +77,7 @@ struct cp_info {
 };
 ```
 
-### Tag
+### Constant Tag
 
 The tag is used to identify the type of the constant. The tag is always the first byte of the constant.
 
@@ -103,15 +103,15 @@ struct cp_info {
 };
 ```
 
-#### Tag
+#### Utf8 Constant Tag
 
 The identifier of the constant. The tag of the UTF8 constant is `0x01`.
 
-#### Length
+#### Utf8 Constant Length
 
 The length of the string in bytes.
 
-#### Bytes
+#### Utf8 Constant Bytes
 
 The bytes of the string. The string is stored as a UTF8 string.
 
@@ -126,7 +126,7 @@ struct cp_info {
 };
 ```
 
-#### Tag
+#### Byte Constant Tag
 
 The identifier of the constant. The tag of the byte constant is `0x02`.
 
@@ -147,11 +147,11 @@ struct cp_info {
 
 ```
 
-#### Tag
+#### Short Constant Tag
 
 The identifier of the constant. The tag of the short constant is `0x03`.
 
-#### Value
+#### Short Constant Value
 
 The value of the short.
 
@@ -168,11 +168,11 @@ struct cp_info {
 
 ```
 
-#### Tag
+#### Int Constant Tag
 
 The identifier of the constant. The tag of the int constant is `0x04`.
 
-#### Value
+#### Int Constant Value
 
 The value of the int.
 
@@ -189,11 +189,11 @@ struct cp_info {
 
 ```
 
-#### Tag
+#### Long Constant Tag
 
 The identifier of the constant. The tag of the long constant is `0x05`.
 
-#### Value
+#### Long Constant Value
 
 The value of the long.
 
@@ -210,11 +210,11 @@ struct cp_info {
 
 ```
 
-#### Tag
+#### Float Constant Tag
 
 The identifier of the constant. The tag of the float constant is `0x06`.
 
-#### Value
+#### Float Constant Value
 
 The value of the float.
 
@@ -229,11 +229,11 @@ struct cp_info {
 };
 ```
 
-#### Tag
+#### Double Constant Tag
 
 The identifier of the constant. The tag of the double constant is `0x07`.
 
-#### Value
+#### Double Constant Value
 
 The value of the double.
 
@@ -248,11 +248,11 @@ struct cp_info {
 };
 ```
 
-#### Tag
+#### Class Constant Tag
 
 The identifier of the constant. The tag of the class constant is `0x08`.
 
-#### Name Index
+#### Class ConstantName Index
 
 The index of the UTF8 constant that contains the name of the class.
 
@@ -267,13 +267,13 @@ struct cp_info {
 };
 ```
 
-#### Tag
+#### String Constant Tag
 
 The identifier of the constant. The tag of the string constant is `0x09`.
 
-#### String Index
+#### String Constant Utf8 Index
 
-The index of the UTF8 constant that contains the string.
+The index of the UTF8 constant that contains the string's value.
 
 ## Classes
 
@@ -297,15 +297,15 @@ struct class_info {
 };
 ```
 
-### Name Index
+### Class Name Index
 
 The index of the UTF8 constant that contains the name of the class.
 
-### Super Index
+### Class Super Index
 
 The index of the UTF8 constant that contains the name of the super class.
 
-### Access Flags
+### Class Access Flags
 
 We can write the access flags in binary to understand them better. We have 16 bits for the access flags.
 So we can store 16 booleans in the access flags.
@@ -330,27 +330,27 @@ Here we have a list of all access flags:
 | 9      | `0x0200`  | `00000010 00000000` | `enum`       | The class is an enum       |
 | 10     | `0x0400`  | `00000100 00000000` | `object`     | The class is an object     |
 
-### Interface Count & Interfaces
+### Class Interface Count & Interfaces
 
 The interface count is the number of interfaces that the class implements. The interfaces are a list of indexes of UTF8 constants that contain the names of the interfaces.
 
-### Sub Class Count & Sub Classes
+### Class Sub Class Count & Sub Classes
 
 The sub class count is the number of sub classes that the class has. The sub classes are a list of classes that are sub classes of the class.
 
-### Method Count & Methods
+### Class Method Count & Methods
 
 The method count is the number of methods that the class has. The methods are a list of methods that are defined in the class.
 
 Take a look at the [methods](#methods) section for more information.
 
-### Field Count & Fields
+### Class Field Count & Fields
 
 The field count is the number of fields that the class has. The fields are a list of fields that are defined in the class.
 
 Take a look at the [fields](#fields) section for more information.
 
-### Attribute Count & Attributes
+### Class Attribute Count & Attributes
 
 The attribute count is the number of attributes that the class has. The attributes are a list of attributes that are defined in the class.
 
@@ -372,15 +372,15 @@ struct method_info {
 
 ```
 
-### Name Index
+### Method Name Index
 
 The index of the UTF8 constant that contains the name of the method.
 
-### Qualified Name Index
+### Method Qualified Name Index
 
 The index of the UTF8 constant that contains the qualified name of the method.
 
-### Access Flags
+### Method Access Flags
 
 The access flags of the method. The access flags are used to identify the visibility of the method.
 
@@ -405,7 +405,7 @@ Here we have a list of all access flags:
 | 7      | `0x0080`  | `00000000 10000000` | `abstract`     | The method is abstract     |
 | 8      | `0x0100`  | `00000001 00000000` | `strict`       | The method is strict       |
 
-### Attribute Count & Attributes
+### Method Attribute Count & Attributes
 
 The attribute count is the number of attributes that the method has. The attributes are a list of attributes that are defined in the method.
 
@@ -424,11 +424,11 @@ struct field_info {
 };
 ```
 
-### Name Index
+### Field Name Index
 
 The index of the UTF8 constant that contains the name of the field.
 
-### Access Flags
+### Field Access Flags
 
 The access flags of the field. The access flags are used to identify the visibility of the field.
 
@@ -449,7 +449,7 @@ Here we have a list of all access flags:
 | 4      | `0x0010`  | `00000000 00010000` | `final`     | The field is final     |
 | 6      | `0x0040`  | `00000000 01000000` | `abstract`  | The field is abstract  |
 
-### Attribute Count & Attributes
+### Field Attribute Count & Attributes
 
 The attribute count is the number of attributes that the field has. The attributes are a list of attributes that are defined in the field.
 
@@ -467,15 +467,15 @@ struct attribute_info {
 };
 ```
 
-### Name Index
+### Attribute Name Index
 
 The index of the UTF8 constant that contains the name of the attribute.
 
-### Length
+### Attribute Length
 
 The length of the attribute in bytes.
 
-### Info
+### Attribute Info
 
 The info of the attribute. The info depends on the name of the attribute.
 
@@ -492,15 +492,15 @@ struct attribute_info {
 
 ```
 
-##### Name Index
+##### Code Attribute Name Index
 
 The index of the UTF8 constant that contains the name of the attribute. The name of the code attribute is `Code`.
 
-##### Length
+##### Code Attribute Length
 
 The length of the attribute in bytes.
 
-##### Info
+##### Code Attribute Info
 
 The info of the attribute. The info depends on the name of the attribute.
 
@@ -517,27 +517,27 @@ struct code_attribute_info {
 };
 ```
 
-###### Max Stack
+###### Code Attribute Max Stack
 
 The maximum number of values that can be stored on the stack at the same time.
 
-###### Max Locals
+###### Code Attribute Max Locals
 
 The maximum number of local variables that can be stored at the same time.
 
-###### Code Length
+###### Code Attribute Code Length
 
 The length of the bytecode in bytes.
 
-###### Code
+###### Code Attribute Code
 
 The bytecode of the method.
 
-###### Exception Table Length
+###### Code Attribute Exception Table Length
 
 The length of the exception table.
 
-###### Exception Table
+###### Code Attribute Exception Table
 
 The exception table is a list of exceptions that can be thrown in the method.
 
@@ -550,23 +550,23 @@ struct exception_table_info {
 };
 ```
 
-###### Start PC
+###### Exception Start PC
 
 The start of the exception.
 
-###### End PC
+###### Exception End PC
 
 The end of the exception.
 
-###### Handler PC
+###### Exception Handler PC
 
 The handler of the exception.
 
-###### Catch Type
+###### Exception Catch Type
 
 The type of the exception.
 
-###### Attribute Count & Attributes
+###### Exception Attribute Count & Attributes
 
 The attribute count is the number of attributes that the code attribute has. The attributes are a list of attributes that are defined in the code attribute.
 
@@ -576,57 +576,57 @@ Take a look at the [attributes](#attributes) section for more information.
 
 The type format is used to represent the type of a value in a string format.
 
-### Primitive Types
+### Primitive Type Descriptors
 
-#### Byte
+#### Byte Type Descriptor
 
 The `byte` type is represented a single uppercase `B`.
 
-#### Unsigned Byte (UByte)
+#### Unsigned Byte (UByte) Type Descriptor
 
 The `unsigned byte` type is, similar to the signed byte, represented a single lowercase `b`.
 
-#### Short
+#### Short Type Descriptor
 
 The `short` type is represented a single uppercase `S`.
 
-#### Unsigned Short (UShort)
+#### Unsigned Short (UShort) Type Descriptor
 
 The `unsigned short` type is, similar to the signed short, represented a single lowercase `s`.
 
-#### Int
+#### Int Type Descriptor
 
 The `int` type is represented a single uppercase `I`.
 
-#### Unsigned Int (UInt)
+#### Unsigned Int (UInt) Type Descriptor
 
 The `unsigned int` type is, similar to the signed int, represented a single lowercase `i`.
 
-#### Long
+#### Long Type Descriptor
 
 The `long` type is represented a single uppercase `J`.
 
-#### Unsigned Long (ULong)
+#### Unsigned Long (ULong) Type Descriptor
 
 The `unsigned long` type is, similar to the signed long, represented a single lowercase `j`.
 
-#### Float
+#### Float Type Descriptor
 
 The `float` type is represented a single uppercase `F`.
 
-#### Double
+#### Double Type Descriptor
 
 The `double` type is represented a single uppercase `D`.
 
-#### Boolean
+#### Boolean Type Descriptor
 
 The `boolean` type is represented a single uppercase `Z`.
 
-#### Char
+#### Char Type Descriptor
 
 The `char` type is represented a single uppercase `C`.
 
-### Objects
+### Object Type Descriptor
 
 The `object` type is represented a single uppercase `L` followed by the qualified name of the class and a `;`.
 If the class is generic the generic types are added to the end of the type. We seperate the class name and the generic types by the `@` character. The generic types are seperated by a `+` character.
@@ -638,7 +638,7 @@ For example we have the type `shake.lang.String` which is not generic and would 
 The type `shake.lang.List<shake.lang.String>` would be represented as `Lshake/lang/List@Lshake/lang/String;;`.
 The type `shake.lang.Map<shake.lang.String, byte>` would be represented as `Lshake/lang/Map@Lshake/lang/String;+byte;`.
 
-### Arrays
+### Array Type Descriptor
 
 To represent an array of something, we add a `[` to the start of the type. For example the type `int[]` would be represented as `[I`.
 For multidimensional arrays we add a `[` for every dimension. For example the type `int[][]` would be represented as `[[I`.
