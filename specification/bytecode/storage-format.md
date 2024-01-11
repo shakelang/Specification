@@ -330,31 +330,71 @@ Here we have a list of all access flags:
 | 9      | `0x0200`  | `00000010 00000000` | `enum`       | The class is an enum       |
 | 10     | `0x0400`  | `00000100 00000000` | `object`     | The class is an object     |
 
-### Class Interface Count & Interfaces
+### Class Interfaces
 
-The interface count is the number of interfaces that the class implements. The interfaces are a list of indexes of UTF8 constants that contain the names of the interfaces.
+```c
+struct interfaces {
+    u4 count;
+    u4 interfaces[count];
+};
+```
 
-### Class Sub Class Count & Sub Classes
+The interface count is the number of interfaces that the class implements.
 
-The sub class count is the number of sub classes that the class has. The sub classes are a list of classes that are sub classes of the class.
+Following the interface count is a list of indexes of the UTF8 constants that contain the names of the interfaces.
 
-### Class Method Count & Methods
+### Class Subclasses
+
+```c
+struct sub_classes {
+    u4 count;
+    class_info sub_classes[count];
+};
+```
+
+The sub class count is the number of sub classes that the class has.
+
+Following the sub class count is a list of sub classes. The sub classes are defined in the same way as the class.
+(See [Classes](#classes))
+
+### Class Methods
+
+```c
+struct methods {
+    u4 count;
+    method_info methods[count];
+};
+```
 
 The method count is the number of methods that the class has. The methods are a list of methods that are defined in the class.
 
-Take a look at the [methods](#methods) section for more information.
+Following the method count is a list of methods. See [Methods](#methods) for more information.
 
-### Class Field Count & Fields
+### Class Fields
+
+```c
+struct fields {
+    u4 count;
+    field_info fields[count];
+};
+```
 
 The field count is the number of fields that the class has. The fields are a list of fields that are defined in the class.
 
-Take a look at the [fields](#fields) section for more information.
+Following the field count is a list of fields. See [Fields](#fields) for more information.
 
-### Class Attribute Count & Attributes
+### Class Attributes
+
+```c
+struct attributes {
+    u4 count;
+    attribute_info attributes[count];
+};
+```
 
 The attribute count is the number of attributes that the class has. The attributes are a list of attributes that are defined in the class.
 
-Take a look at the [attributes](#attributes) section for more information.
+Following the attribute count is a list of attributes. See [Attributes](#attributes) for more information.
 
 ## Methods
 
