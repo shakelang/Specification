@@ -519,7 +519,7 @@ The length of the attribute in bytes.
 
 The info of the attribute. The info depends on the name of the attribute.
 
-#### Code Attribute
+### Code Attribute
 
 The code attribute is used to store the bytecode of a method.
 
@@ -532,15 +532,15 @@ struct attribute_info {
 
 ```
 
-##### Code Attribute Name Index
+#### Code Attribute Name Index
 
 The index of the UTF8 constant that contains the name of the attribute. The name of the code attribute is `Code`.
 
-##### Code Attribute Length
+#### Code Attribute Length
 
 The length of the attribute in bytes.
 
-##### Code Attribute Info
+#### Code Attribute Info
 
 The info of the attribute. The info depends on the name of the attribute.
 
@@ -557,19 +557,19 @@ struct code_attribute_info {
 };
 ```
 
-###### Code Attribute Max Stack
+##### Code Attribute Max Stack
 
 The maximum number of values that can be stored on the stack at the same time.
 
-###### Code Attribute Max Locals
+##### Code Attribute Max Locals
 
 The maximum number of local variables that can be stored at the same time.
 
-###### Code Attribute Code Length
+##### Code Attribute Code Length
 
 The length of the bytecode in bytes.
 
-###### Code Attribute Code
+##### Code Attribute Code
 
 The bytecode of the method.
 
