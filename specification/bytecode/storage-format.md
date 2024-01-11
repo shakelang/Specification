@@ -403,7 +403,6 @@ The methods are a list of methods that are defined in the file.
 ```c
 
 struct method_info {
-    u4 name_index;
     u4 qualified_name_index;
     u2 access_flags;
     u4 attribute_count;
@@ -412,13 +411,9 @@ struct method_info {
 
 ```
 
-### Method Name Index
+### Method Qualified Name Index
 
 The index of the UTF8 constant that contains the name of the method.
-
-### Method Type Index
-
-The index of the UTF8 constant that contains the type of the method.
 
 ### Method Flags
 
