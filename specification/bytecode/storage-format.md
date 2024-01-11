@@ -416,9 +416,9 @@ struct method_info {
 
 The index of the UTF8 constant that contains the name of the method.
 
-### Method Qualified Name Index
+### Method Type Index
 
-The index of the UTF8 constant that contains the qualified name of the method.
+The index of the UTF8 constant that contains the type of the method.
 
 ### Method Access Flags
 
