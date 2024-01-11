@@ -612,6 +612,12 @@ The attribute count is the number of attributes that the code attribute has. The
 
 Take a look at the [attributes](#attributes) section for more information.
 
+##### Code Attribute Attributes
+
+The attribute count is the number of attributes that the code attribute has. The attributes are a list of attributes that are defined in the code attribute.
+
+Take a look at the [attributes](#attributes) section for more information.
+
 ## Type Descriptors
 
 The type format is used to represent the type of a value in a string format.
