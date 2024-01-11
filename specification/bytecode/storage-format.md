@@ -305,16 +305,16 @@ The index of the UTF8 constant that contains the name of the class.
 
 The index of the UTF8 constant that contains the name of the super class.
 
-### Class Access Flags
+### Class Flags
 
-We can write the access flags in binary to understand them better. We have 16 bits for the access flags.
-So we can store 16 booleans in the access flags.
+We can write the flags in binary to understand them better. We have 16 bits for the flags.
+So we can store 16 booleans in the flags.
 
 ```txt
 0000 0000 0000 0000
 ```
 
-Here we have a list of all access flags:
+Here we have a list of all flags:
 
 | Flag # | Hex Value | Binary Value        | Name         | Description                |
 | ------ | --------- | ------------------- | ------------ | -------------------------- |
@@ -420,18 +420,18 @@ The index of the UTF8 constant that contains the name of the method.
 
 The index of the UTF8 constant that contains the type of the method.
 
-### Method Access Flags
+### Method Flags
 
-The access flags of the method. The access flags are used to identify the visibility of the method.
+The flags of the method. The flags are used to identify the visibility of the method.
 
-We can write the access flags in binary to understand them better. We have 16 bits for the access flags.
-So we can store 16 booleans in the access flags.
+We can write the flags in binary to understand them better. We have 16 bits for the flags.
+So we can store 16 booleans in the flags.
 
 ```txt
 0000 0000 0000 0000
 ```
 
-Here we have a list of all access flags:
+Here we have a list of all flags:
 
 | Flag # | Hex Value | Binary Value        | Name           | Description                |
 | ------ | --------- | ------------------- | -------------- | -------------------------- |
@@ -473,17 +473,17 @@ The index of the UTF8 constant that contains the name of the field.
 
 The index of the UTF8 constant that contains the type of the field.
 
-### Field Access Flags
+### Field Flags
 
-The access flags of the field. The access flags are used to identify the visibility of the field.
+The flags of the field. The flags are used to identify the visibility of the field.
 
-We can write the access flags in binary to understand them better. We have 16 bits for the access flags.
+We can write the flags in binary to understand them better. We have 16 bits for the flags.
 
 ```txt
 0000 0000 0000 0000
 ```
 
-Here we have a list of all access flags:
+Here we have a list of all flags:
 
 | Flag # | Hex Value | Binary Value        | Name        | Description            |
 | ------ | --------- | ------------------- | ----------- | ---------------------- |
