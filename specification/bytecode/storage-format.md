@@ -445,7 +445,7 @@ Here we have a list of all flags:
 | 7      | `0x0080`  | `00000000 10000000` | `abstract`     | The method is abstract     |
 | 8      | `0x0100`  | `00000001 00000000` | `strict`       | The method is strict       |
 
-### Method Attribute Count & Attributes
+### Method Attributes
 
 The attribute count is the number of attributes that the method has. The attributes are a list of attributes that are defined in the method.
 
@@ -611,7 +611,7 @@ The handler of the exception.
 
 The type of the exception.
 
-###### Exception Attribute Count & Attributes
+###### Exception Attributes
 
 The attribute count is the number of attributes that the code attribute has. The attributes are a list of attributes that are defined in the code attribute.
 
