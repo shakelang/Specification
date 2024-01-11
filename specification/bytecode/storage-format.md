@@ -458,6 +458,7 @@ The fields are a list of fields that are defined in the file.
 ```c
 struct field_info {
     u4 name_index;
+    u4 type_index;
     u2 access_flags;
     u4 attribute_count;
     attribute_info attributes[attribute_count];
@@ -467,6 +468,10 @@ struct field_info {
 ### Field Name Index
 
 The index of the UTF8 constant that contains the name of the field.
+
+### Field Type Index
+
+The index of the UTF8 constant that contains the type of the field.
 
 ### Field Access Flags
 
@@ -489,7 +494,7 @@ Here we have a list of all access flags:
 | 4      | `0x0010`  | `00000000 00010000` | `final`     | The field is final     |
 | 6      | `0x0040`  | `00000000 01000000` | `abstract`  | The field is abstract  |
 
-### Field Attribute Count & Attributes
+### Field Attributes
 
 The attribute count is the number of attributes that the field has. The attributes are a list of attributes that are defined in the field.
 
