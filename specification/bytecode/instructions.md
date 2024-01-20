@@ -1284,21 +1284,57 @@ Syntax: `pcast <u1 type>`
 
 Overall instruction length: `2 bytes`.
 
-### § 8.5 `call` _`(0xA9)`_
+### § 8.5 `invoke_static` _`(0xA9)`_
 
-Call a method.
+Invoke a method. Target method **must** be static!
 
-Syntax: `call <u4 constant>`
+Syntax: `invoke <u4 constant>`
 
 The constant should be an utf-8 constant, containing a qualified method name.
 
 Overall instruction length: `5 bytes`.
 
+### § 8.6 `invoke_instance` _`0xAA`_
+
+Call a method on an object. Target method **must not** be static!
+
+Synthax: `call <u4 constant>`
+
+The constant should be an utf-8 constant, containing a qualified method name.`
+
+Overall instruction length: `5 bytes`
+
+The arguments are taken from right to left from the stack (so you can )
+
+8 bytes from the stack will be taken as address. **The arguments will be taken first!**
+
+### § 8.6 `load_field_static` _`0xAB`_
+
+Load a static field value
+
+Synthax: `call <u4 constant>`
+
+The constant should be an utf-8 constant, containing a qualified field name.`
+
+Overall instruction length: `5 bytes`
+
+### § 8.6 `load_field_instance` _`0xAC`_
+
+Load a static field value
+
+Synthax: `call <u4 constant>`
+
+The constant should be an utf-8 constant, containing a qualified field name.`
+
+Overall instruction length: `5 bytes`
+
+8 bytes from the stack will be taken as address.
+
 ## § 9 Global variables
 
 ### § 9.1 Load global variable
 
-#### § 9.1 `bloadg` _`(0xB0)`_
+#### § 9.1.2 `bloadg` _`(0xB0)`_
 
 Load a global variable onto the stack.
 
@@ -1306,7 +1342,11 @@ Syntax: `bloadg`
 
 Overall instruction length: `1 byte`.
 
-#### § 9.2 `sloadg` _`(0xB1)`_
+The address (`8 byte`) is taken from the stack
+
+Will put the result (`1 byte`) on top of the stack
+
+#### § 9.1.2 `sloadg` _`(0xB1)`_
 
 Load a global variable onto the stack.
 
@@ -1314,7 +1354,11 @@ Syntax: `sloadg`
 
 Overall instruction length: `1 byte`.
 
-#### § 9.3 `iloadg` _`(0xB2)`_
+The address (`8 byte`) is taken from the stack
+
+Will put the result (`2 byte`) on top of the stack
+
+#### § 9.1.3 `iloadg` _`(0xB2)`_
 
 Load a global variable onto the stack.
 
@@ -1322,13 +1366,21 @@ Syntax: `iloadg`
 
 Overall instruction length: `1 byte`.
 
-#### § 9.4 `lloadg` _`(0xB3)`_
+The address (`8 byte`) is taken from the stack
+
+Will put the result (`4 byte`) on top of the stack
+
+#### § 9.1.4 `lloadg` _`(0xB3)`_
 
 Load a global variable onto the stack.
 
 Syntax: `lloadg`
 
 Overall instruction length: `1 byte`.
+
+The address (`8 byte`) is taken from the stack
+
+Will put the result (`8 byte`) on top of the stack
 
 ### § 9.2 Store global variable
 
@@ -1340,6 +1392,10 @@ Syntax: `bstoreg`
 
 Overall instruction length: `1 byte`.
 
+The address (`8 byte`) is taken from the stack
+
+The value (`1 byte`) is taken from the stack
+
 #### § 9.2.2 `sstoreg` _`(0xB5)`_
 
 Store a short from the stack into a global variable.
@@ -1347,6 +1403,10 @@ Store a short from the stack into a global variable.
 Syntax: `sstoreg`
 
 Overall instruction length: `1 byte`.
+
+The address (`8 byte`) is taken from the stack
+
+The value (`2 byte`) is taken from the stack
 
 #### § 9.2.3 `istoreg` _`(0xB6)`_
 
@@ -1356,6 +1416,10 @@ Syntax: `istoreg`
 
 Overall instruction length: `1 byte`.
 
+The address (`8 byte`) is taken from the stack
+
+The value (`4 byte`) is taken from the stack
+
 #### § 9.2.4 `lstoreg` _`(0xB7)`_
 
 Store a long from the stack into a global variable.
@@ -1363,3 +1427,7 @@ Store a long from the stack into a global variable.
 Syntax: `lstoreg`
 
 Overall instruction length: `1 byte`.
+
+The address (`8 byte`) is taken from the stack
+
+The value (`8 byte`) is taken from the stack
