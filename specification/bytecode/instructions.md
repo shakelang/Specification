@@ -1293,3 +1293,73 @@ Syntax: `call <u4 constant>`
 The constant should be an utf-8 constant, containing a qualified method name.
 
 Overall instruction length: `5 bytes`.
+
+## § 9 Global variables
+
+### § 9.1 Load global variable
+
+#### § 9.1 `bloadg` _`(0xB0)`_
+
+Load a global variable onto the stack.
+
+Syntax: `bloadg`
+
+Overall instruction length: `1 byte`.
+
+#### § 9.2 `sloadg` _`(0xB1)`_
+
+Load a global variable onto the stack.
+
+Syntax: `sloadg`
+
+Overall instruction length: `1 byte`.
+
+#### § 9.3 `iloadg` _`(0xB2)`_
+
+Load a global variable onto the stack.
+
+Syntax: `iloadg`
+
+Overall instruction length: `1 byte`.
+
+#### § 9.4 `lloadg` _`(0xB3)`_
+
+Load a global variable onto the stack.
+
+Syntax: `lloadg`
+
+Overall instruction length: `1 byte`.
+
+### § 9.2 Store global variable
+
+#### § 9.2.1 `bstoreg` _`(0xB4)`_
+
+Store a byte from the stack into a global variable.
+
+Syntax: `bstoreg`
+
+Overall instruction length: `1 byte`.
+
+#### § 9.2.2 `sstoreg` _`(0xB5)`_
+
+Store a short from the stack into a global variable.
+
+Syntax: `sstoreg`
+
+Overall instruction length: `1 byte`.
+
+#### § 9.2.3 `istoreg` _`(0xB6)`_
+
+Store an integer from the stack into a global variable.
+
+Syntax: `istoreg`
+
+Overall instruction length: `1 byte`.
+
+#### § 9.2.4 `lstoreg` _`(0xB7)`_
+
+Store a long from the stack into a global variable.
+
+Syntax: `lstoreg`
+
+Overall instruction length: `1 byte`.
