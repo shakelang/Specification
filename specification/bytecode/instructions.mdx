@@ -104,7 +104,7 @@ export const ManualSection = ({
     <span id={`code-${opcode}`}>{" "}</span>
     <span id={id}></span>
     {(() => {
-        const headerId = `instr-${id}`;
+        const headerId = `instr-${name}`;
         const contents = (<>
             {`§ ${name} `}
             <code>{name}</code> 
@@ -840,7 +840,7 @@ Overall instruction length: `1 byte`.
 
 ### § 4.1 CMP
 
-#### § 4.1.1 `bcmp` _`(0x70)`_
+<ManualSection opcode="0x70" id="4.1.1" name="bcmp" level="4" />
 
 Compare two bytes from the stack and push the result onto the stack.
 If the top byte is greater than the second, the result will be -1, if they are equal, the result will be 0 and if the
@@ -855,7 +855,7 @@ top byte is smaller than the second, the result will be -1. The result will be a
 Syntax: `bcmp`
 Overall instruction length: `1 byte`.
 
-#### § 4.1.2 `scmp` _`(0x71)`_
+<ManualSection opcode="0x71" id="4.1.2" name="scmp" level="4" />
 
 Compare two shorts from the stack and push the result onto the stack.
 If the top short is greater than the second, the result will be -1, if they are equal, the result will be 0 and if the
@@ -870,7 +870,7 @@ top short is smaller than the second, the result will be -1. The result will be 
 Syntax: `scmp`
 Overall instruction length: `1 byte`.
 
-#### § 4.1.3 `icmp` _`(0x72)`_
+<ManualSection opcode="0x72" id="4.1.3" name="icmp" level="4" />
 
 Compare two integers from the stack and push the result onto the stack.
 If the top integer is greater than the second, the result will be -1, if they are equal, the result will be 0 and if the
@@ -885,7 +885,7 @@ top integer is smaller than the second, the result will be -1. The result will b
 Syntax: `icmp`
 Overall instruction length: `1 byte`.
 
-#### § 4.1.4 `lcmp` _`(0x73)`_
+<ManualSection opcode="0x73" id="4.1.4" name="lcmp" level="4" />
 
 Compare two longs from the stack and push the result onto the stack.
 If the top long is greater than the second, the result will be -1, if they are equal, the result will be 0 and if the
@@ -900,7 +900,7 @@ top long is smaller than the second, the result will be -1. The result will be a
 Syntax: `lcmp`
 Overall instruction length: `1 byte`.
 
-#### § 4.1.5 `fcmp` _`(0x74)`_
+<ManualSection opcode="0x74" id="4.1.5" name="fcmp" level="4" />
 
 Compare two floats from the stack and push the result onto the stack.
 If the top float is greater than the second, the result will be -1, if they are equal, the result will be 0 and if the
@@ -915,7 +915,7 @@ top float is smaller than the second, the result will be -1. The result will be 
 Syntax: `fcmp`
 Overall instruction length: `1 byte`.
 
-#### § 4.1.6 `dcmp` _`(0x75)`_
+<ManualSection opcode="0x75" id="4.1.6" name="dcmp" level="4" />
 
 Compare two doubles from the stack and push the result onto the stack.
 
@@ -931,7 +931,7 @@ the top double is smaller than the second, the result will be -1. The result wil
 Syntax: `dcmp`
 Overall instruction length: `1 byte`.
 
-### § 4.1.7 `ubcmp` _`(0x76)`_
+<ManualSection opcode="0x76" id="4.1.7" name="ubcmp" level="4" />
 
 Compare two unsigned bytes from the stack and push the result onto the stack.
 
@@ -947,7 +947,7 @@ Syntax: `ubcmp`
 
 Overall instruction length: `1 byte`.
 
-### § 4.1.8 `uscmp` _`(0x77)`_
+<ManualSection opcode="0x77" id="4.1.8" name="uscmp" level="4" />
 
 Compare two unsigned shorts from the stack and push the result onto the stack.
 
@@ -964,7 +964,7 @@ Syntax: `uscmp`
 
 Overall instruction length: `1 byte`.
 
-### § 4.1.9 `uicmp` _`(0x78)`_
+<ManualSection opcode="0x78" id="4.1.9" name="uicmp" level="4" />
 
 Compare two unsigned integers from the stack and push the result onto the stack.
 
@@ -981,7 +981,7 @@ Syntax: `uicmp`
 
 Overall instruction length: `1 byte`.
 
-### § 4.1.10 `ulcmp` _`(0x79)`_
+<ManualSection opcode="0x79" id="4.1.10" name="ulcmp" level="4" />
 
 Compare two unsigned longs from the stack and push the result onto the stack.
 
@@ -1005,7 +1005,7 @@ combinations, so for performance reasons, these are included as instructions.
 
 These instructions convert cmp results to booleans.
 
-#### § 4.2.1 `clt` _`(0x7A)`_
+<ManualSection opcode="0x7A" id="4.2.1" name="clt" level="4" />
 
 Compare two values from the stack and push the result onto the stack. Uses the result of the compare operator.
 
@@ -1016,7 +1016,7 @@ Syntax: `clt`
 
 Overall instruction length: `1 byte`.
 
-#### § 4.2.2 `cle` _`(0x7B)`_
+<ManualSection opcode="0x7B" id="4.2.2" name="cle" level="4" />
 
 Compare two values from the stack and push the result onto the stack. Uses the result of the compare operator.
 
@@ -1027,7 +1027,7 @@ Syntax: `cle`
 
 Overall instruction length: `1 byte`.
 
-#### § 4.2.3 `ceq` _`(0x7C)`_
+<ManualSection opcode="0x7C" id="4.2.3" name="ceq" level="4" />
 
 Compare two values from the stack and push the result onto the stack. Uses the result of the compare operator.
 
@@ -1038,7 +1038,7 @@ Syntax: `ceq`
 
 Overall instruction length: `1 byte`.
 
-#### § 4.2.4 `cne` _`(0x7D)`_
+<ManualSection opcode="0x7D" id="4.2.4" name="cne" level="4" />
 
 Compare two values from the stack and push the result onto the stack. Uses the result of the compare operator.
 
@@ -1049,7 +1049,7 @@ Syntax: `cne`
 
 Overall instruction length: `1 byte`.
 
-#### § 4.2.5 `cge` _`(0x7E)`_
+<ManualSection opcode="0x7E" id="4.2.5" name="cge" level="4" />
 
 Compare two values from the stack and push the result onto the stack. Uses the result of the compare operator.
 
@@ -1061,7 +1061,7 @@ Syntax: `cge`
 
 Overall instruction length: `1 byte`.
 
-#### § 4.2.6 `cgt` _`(0x7F)`_
+<ManualSection opcode="0x7F" id="4.2.6" name="cgt" level="4" />
 
 Compare two values from the stack and push the result onto the stack. Uses the result of the compare operator.
 
@@ -1076,14 +1076,14 @@ Overall instruction length: `1 byte`.
 
 ### § 5.1 Jumping
 
-#### § 5.1.1 `jmp` _`(0x80)`_
+<ManualSection opcode="0x80" id="5.1.1" name="jmp" level="4" />
 
 Jump to the instruction at the given address.
 
 Syntax: `jmp <u4 address>`
 Overall instruction length: `5 bytes`.
 
-#### § 5.1.2 `jz` _`(0x81)`_
+<ManualSection opcode="0x81" id="5.1.2" name="jz" level="4" />
 
 Jump to the instruction at the given address if the the comparison result is 1 (00000001) (the two values are equal).
 
@@ -1091,7 +1091,7 @@ Syntax: `jz <u4 address>`
 
 Overall instruction length: `5 bytes`.
 
-#### § 5.1.3 `jnz` _`(0x82)`_
+<ManualSection opcode="0x82" id="5.1.3" name="jnz" level="4" />
 
 Jump to the instruction at the given address if the the comparison result is not 1 (00000001) (the two values are not equal).
 
@@ -1099,7 +1099,7 @@ Syntax: `jnz <u4 address>`
 
 Overall instruction length: `5 bytes`.
 
-#### § 5.1.4 `je` _`(0x83)`_
+<ManualSection opcode="0x83" id="5.1.4" name="je" level="4" />
 
 Jump to the instruction at the given address if the the comparison result is 1 (00000001) (the two compared values are equal).
 
@@ -1107,7 +1107,7 @@ Syntax: `je <u4 address>`
 
 Overall instruction length: `5 bytes`.
 
-#### § 5.1.5 `jne` _`(0x84)`_
+<ManualSection opcode="0x84" id="5.1.5" name="jne" level="4" />
 
 Jump to the instruction at the given address if the the comparison result is not 1 (00000001) (the two values are not equal).
 
@@ -1115,7 +1115,7 @@ Syntax: `jne <u4 address>`
 
 Overall instruction length: `5 bytes`.
 
-#### § 5.1.6 `jg` _`(0x81)`_
+<ManualSection opcode="0x85" id="5.1.6" name="jg" level="4" />
 
 Jump to the instruction at the given address if the the comparison result is 0 (00000000) (the first value is greater than the second).
 
@@ -1125,7 +1125,7 @@ Syntax: `jg <u4 address>`
 
 Overall instruction length: `5 bytes`.
 
-#### § 5.1.7 `jge` _`(0x85)`_
+<ManualSection opcode="0x86" id="5.1.7" name="jge" level="4" />
 
 Jump to the instruction at the given address if the the comparison result is 0 (00000000) or 1 (00000001) (the first value is greater than or equal to the second).
 
@@ -1133,7 +1133,7 @@ Syntax: `jge <u4 address>`
 
 Overall instruction length: `5 bytes`.
 
-#### § 5.1.8 `jl` _`(0x86)`_
+<ManualSection opcode="0x87" id="5.1.8" name="jl" level="4" />
 
 Jump to the instruction at the given address if the the comparison result is 2 (00000010) (the first value is smaller than the second).
 
@@ -1141,7 +1141,7 @@ Syntax: `jl <u4 address>`
 
 Overall instruction length: `5 bytes`.
 
-#### § 5.1.9 `jle` _`(0x87)`_
+<ManualSection opcode="0x88" id="5.1.9" name="jle" level="4" />
 
 Jump to the instruction at the given address if the the comparison result is 2 (00000010) or 1 (00000001) (the first value is smaller than or equal to the second).
 
@@ -1149,7 +1149,9 @@ Syntax: `jle <u4 address>`
 
 Overall instruction length: `5 bytes`.
 
-#### § 6.1.1 `ret` _`(0x90)`_
+### § 5.2 Returning
+
+<ManualSection opcode="0x90" id="5.2.1" name="ret" level="4" />
 
 Return from the current method.
 
@@ -1157,7 +1159,7 @@ Syntax: `ret`
 
 Overall instruction length: `1 byte`.
 
-#### § 6.1.2 `bret` _`(0x91)`_
+<ManualSection opcode="0x91" id="5.2.2" name="bret" level="4" />
 
 Set the return value to a byte and return value (one byte).
 
@@ -1169,7 +1171,7 @@ Syntax: `bret`
 
 Overall instruction length: `1 byte`.
 
-#### § 6.1.3 `sret` _`(0x92)`_
+<ManualSection opcode="0x92" id="5.2.3" name="sret" level="4" />
 
 Set the return value to a short and return value (two bytes).
 
@@ -1181,7 +1183,7 @@ Syntax: `sret`
 
 Overall instruction length: `1 byte`.
 
-#### § 6.1.4 `iret` _`(0x93)`_
+<ManualSection opcode="0x93" id="5.2.4" name="iret" level="4" />
 
 Set the return value to an integer and return value (four bytes).
 
@@ -1193,7 +1195,7 @@ Syntax: `iret`
 
 Overall instruction length: `1 byte`.
 
-#### § 6.1.5 `lret` _`(0x94)`_
+<ManualSection opcode="0x94" id="5.2.5" name="lret" level="4" />
 
 Set the return value to a long and return value (eight bytes).
 
@@ -1203,9 +1205,9 @@ _Can also be used for double and ulong._
 
 Syntax: `lret`
 
-## § 8 Misc
+## § 6 Misc
 
-### § 8.1 `nop` _`(0x00)`_
+<MiscSection opcode="0xA0" id="6.1" name="nop" level="4" />
 
 Does nothing.
 
@@ -1213,9 +1215,9 @@ Syntax: `nop`
 
 Overall instruction length: `1 byte`.
 
-### § 8.2 `pop`
+### § 7.2 pop
 
-#### § 8.2.1 `bpop` _`(0xA1)`_
+<ManualSection opcode="0xA1" id="7.2.1" name="bpop" level="4" />
 
 Pop the top byte from the stack.
 
@@ -1223,7 +1225,7 @@ Syntax: `pop`
 
 Overall instruction length: `1 byte`.
 
-#### § 8.2.2 `spop` _`(0xA2)`_
+<ManualSection opcode="0xA2" id="7.2.2" name="spop" level="4" />
 
 Pop the top two bytes from the stack.
 
@@ -1231,7 +1233,7 @@ Syntax: `spop`
 
 Overall instruction length: `1 byte`.
 
-#### § 8.2.3 `ipop` _`(0xA3)`_
+<ManualSection opcode="0xA3" id="7.2.3" name="ipop" level="4" />
 
 Pop the top four bytes from the stack.
 
@@ -1239,7 +1241,7 @@ Syntax: `ipop`
 
 Overall instruction length: `1 byte`.
 
-#### § 8.2.4 `lpop` _`(0xA4)`_
+<ManualSection opcode="0xA4" id="7.2.4" name="lpop" level="4" />
 
 Pop the top eight bytes from the stack.
 
@@ -1247,9 +1249,9 @@ Syntax: `lpop`
 
 Overall instruction length: `1 byte`.
 
-### § 8.3 `dup`
+### § 7.3 dup
 
-#### § 8.3.1 `bdup` _`(0xA5)`_
+<ManualSection opcode="0xA5" id="7.3.1" name="bdup" level="4" />
 
 Duplicate the top byte on the stack.
 
@@ -1259,7 +1261,7 @@ Syntax: `bdup`
 
 Overall instruction length: `1 byte`.
 
-#### § 8.3.2 `sdup` _`(0xA6)`_
+<ManualSection opcode="0xA6" id="7.3.2" name="sdup" level="4" />
 
 Duplicate the top 2-byte element on the stack.
 
@@ -1269,7 +1271,7 @@ Syntax: `sdup`
 
 Overall instruction length: `1 byte`.
 
-#### § 8.3.3 `idup` _`(0xA7)`_
+<ManualSection opcode="0xA7" id="7.3.3" name="idup" level="4" />
 
 Duplicate the top 4-byte element on the stack.
 
@@ -1279,7 +1281,7 @@ Syntax: `idup`
 
 Overall instruction length: `1 byte`.
 
-#### § 8.3.4 `ldup` _`(0xA8)`_
+<ManualSection opcode="0xA8" id="7.3.4" name="ldup" level="4" />
 
 Duplicate the top 8-byte element on the stack.
 
@@ -1289,7 +1291,7 @@ Syntax: `ldup`
 
 Overall instruction length: `1 byte`.
 
-### § 8.4 `pcast` _`(0xA0)`_
+<ManualSection opcode="0xA9" id="7.3.5" name="dup" level="4" />
 
 Perform a primitive cast.
 The following byte defines the type to cast to.
@@ -1318,9 +1320,9 @@ Syntax: `pcast <u1 type>`
 
 Overall instruction length: `2 bytes`.
 
-### § 9 Invoking methods
+### § 8 Invoking methods
 
-### § 9.1 `invoke_static` _`(0xB0)`_
+<ManualSection opcode="0xB0" id="8.1" name="invoke_static" level="4" />
 
 Invoke a method. Target method **must** be static!
 
@@ -1330,7 +1332,7 @@ The constant should be an utf-8 constant, containing a qualified method name.
 
 Overall instruction length: `5 bytes`.
 
-### § 9.2 `invoke_instance` _`0xB1`_
+<ManualSection opcode="0xB1" id="8.2" name="invoke_instance" level="4" />
 
 Call a method on an object. Target method **must not** be static!
 
@@ -1344,9 +1346,9 @@ The arguments are taken from right to left from the stack (so you can )
 
 8 bytes from the stack will be taken as address. **The arguments will be taken first!**
 
-## § 10 Field access
+## § 9 Field access
 
-### § 10.1 `load_field_static` _`0xB2`_
+<MiscSection opcode="0xB2" id="9.1" name="load_field_static" level="4" />
 
 Load a static field value
 
@@ -1356,9 +1358,9 @@ The constant should be an utf-8 constant, containing a qualified field name.`
 
 Overall instruction length: `5 bytes`
 
-### § 10.2 `load_field_instance` _`0xB3`_
+<MiscSection opcode="0xB3" id="9.2" name="load_field_instance" level="4" />
 
-Load a static field value
+Load an instance field value
 
 Synthax: `load_field_instance <u4 constant>`
 
@@ -1368,7 +1370,7 @@ Overall instruction length: `5 bytes`
 
 8 bytes from the stack will be taken as address.
 
-### § 10.3 `bload_array` _`0xB4`_
+<ManualSection opcode="0xB4" id="9.3" name="bload_array" level="4" />
 
 Load a byte from an array
 
@@ -1382,7 +1384,7 @@ The array (`8 byte`) is taken from the stack
 
 Will put the result (`1 byte`) on top of the stack
 
-### § 10.4 `sload_array` _`0xB5`_
+<ManualSection opcode="0xB5" id="9.4" name="sload_array" level="4" />
 
 Load a short from an array
 
@@ -1396,7 +1398,7 @@ The array (`8 byte`) is taken from the stack
 
 Will put the result (`2 byte`) on top of the stack
 
-### § 10.5 `iload_array` _`0xB6`_
+<ManualSection opcode="0xB6" id="9.5" name="iload_array" level="4" />
 
 Load an integer from an array
 
@@ -1410,7 +1412,7 @@ The array (`8 byte`) is taken from the stack
 
 Will put the result (`4 byte`) on top of the stack
 
-### § 10.6 `lload_array` _`0xB7`_
+<ManualSection opcode="0xB7" id="9.6" name="lload_array" level="4" />
 
 Load a long from an array
 
@@ -1424,7 +1426,7 @@ The array (`8 byte`) is taken from the stack
 
 Will put the result (`8 byte`) on top of the stack
 
-### § 10.7 `store_static` _`0xB8`_
+<MiscSection opcode="0xB8" id="9.7" name="store_static" level="4" />
 
 Store a static field value
 
@@ -1433,7 +1435,7 @@ The constant should be an utf-8 constant, containing a qualified field name.`
 
 Overall instruction length: `5 bytes`
 
-### § 10.8 `store_instance` _`0xB9`_
+<MiscSection opcode="0xB9" id="9.8" name="store_instance" level="4" />
 
 Store a static field value
 
@@ -1445,7 +1447,7 @@ Overall instruction length: `5 bytes`
 
 8 bytes from the stack will be taken as address.
 
-### § 10.9 `bstore_array` _`0xBA`_
+### § 9.9 `bstore_array` _`0xBA`_
 
 Store a byte in an array
 
@@ -1459,7 +1461,7 @@ The array (`8 byte`) is taken from the stack
 
 The value (`1 byte`) is taken from the stack
 
-### § 10.10 `sstore_array` _`0xBB`_
+### § 9.10 `sstore_array` _`0xBB`_
 
 Store a short in an array
 
@@ -1473,7 +1475,7 @@ The array (`8 byte`) is taken from the stack
 
 The value (`2 byte`) is taken from the stack
 
-### § 10.11 `istore_array` _`0xBC`_
+### § 9.11 `istore_array` _`0xBC`_
 
 Store an integer in an array
 
@@ -1487,7 +1489,7 @@ The array (`8 byte`) is taken from the stack
 
 The value (`4 byte`) is taken from the stack
 
-### § 10.12 `lstore_array` _`0xBD`_
+### § 9.12 `lstore_array` _`0xBD`_
 
 Store a long in an array
 
@@ -1501,9 +1503,9 @@ The array (`8 byte`) is taken from the stack
 
 The value (`8 byte`) is taken from the stack
 
-## § 11 Creating objects and arrays
+## § 10 Creating objects and arrays
 
-### § 11.1 `new_object` _`0xC0`_
+### § 10.1 `new_object` _`0xC0`_
 
 Create a new object
 
@@ -1513,7 +1515,7 @@ The constant should be an utf-8 constant, containing a qualified constructor nam
 
 Overall instruction length: `5 bytes`
 
-### § 11.2 `new_array` _`0xC1`_
+### § 10.2 `new_array` _`0xC1`_
 
 Create a new array
 
@@ -1525,9 +1527,9 @@ Overall instruction length: `5 bytes`
 
 The length (`4 byte`) is taken from the stack
 
-## § 12 Throwing exceptions
+## § 11 Throwing exceptions
 
-### § 12.1 `throw` _`0xC2`_
+### § 11.1 `throw` _`0xC2`_
 
 Throw an exception
 
