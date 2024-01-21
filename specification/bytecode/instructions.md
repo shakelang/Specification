@@ -1284,7 +1284,9 @@ Syntax: `pcast <u1 type>`
 
 Overall instruction length: `2 bytes`.
 
-### § 8.5 `invoke_static` _`(0xA9)`_
+### § 9 Invoking methods
+
+### § 9.1 `invoke_static` _`(0xB0)`_
 
 Invoke a method. Target method **must** be static!
 
@@ -1294,7 +1296,7 @@ The constant should be an utf-8 constant, containing a qualified method name.
 
 Overall instruction length: `5 bytes`.
 
-### § 8.6 `invoke_instance` _`0xAA`_
+### § 9.2 `invoke_instance` _`0xB1`_
 
 Call a method on an object. Target method **must not** be static!
 
@@ -1308,19 +1310,98 @@ The arguments are taken from right to left from the stack (so you can )
 
 8 bytes from the stack will be taken as address. **The arguments will be taken first!**
 
-### § 8.6 `load_field_static` _`0xAB`_
+## § 10 Field access
+
+### § 10.1 `load_field_static` _`0xB2`_
 
 Load a static field value
 
-Synthax: `call <u4 constant>`
+Synthax: `load_field_static <u4 constant>`
 
 The constant should be an utf-8 constant, containing a qualified field name.`
 
 Overall instruction length: `5 bytes`
 
-### § 8.6 `load_field_instance` _`0xAC`_
+### § 10.2 `load_field_instance` _`0xB3`_
 
 Load a static field value
+
+Synthax: `load_field_instance <u4 constant>`
+
+The constant should be an utf-8 constant, containing a qualified field name.`
+
+Overall instruction length: `5 bytes`
+
+8 bytes from the stack will be taken as address.
+
+### § 10.3 `bload_array` _`0xB4`_
+
+Load a byte from an array
+
+Synthax: `bload_array`
+
+Overall instruction length: `1 byte`
+
+The index (`4 byte`) is taken from the stack
+
+The array (`8 byte`) is taken from the stack
+
+Will put the result (`1 byte`) on top of the stack
+
+### § 10.4 `sload_array` _`0xB5`_
+
+Load a short from an array
+
+Synthax: `sload_array`
+
+Overall instruction length: `1 byte`
+
+The index (`4 byte`) is taken from the stack
+
+The array (`8 byte`) is taken from the stack
+
+Will put the result (`2 byte`) on top of the stack
+
+### § 10.5 `iload_array` _`0xB6`_
+
+Load an integer from an array
+
+Synthax: `iload_array`
+
+Overall instruction length: `1 byte`
+
+The index (`4 byte`) is taken from the stack
+
+The array (`8 byte`) is taken from the stack
+
+Will put the result (`4 byte`) on top of the stack
+
+### § 10.6 `lload_array` _`0xB7`_
+
+Load a long from an array
+
+Synthax: `lload_array`
+
+Overall instruction length: `1 byte`
+
+The index (`4 byte`) is taken from the stack
+
+The array (`8 byte`) is taken from the stack
+
+Will put the result (`8 byte`) on top of the stack
+
+### § 10.7 `store_static` _`0xB8`_
+
+Store a static field value
+
+Synthax: `call <u4 constant>`
+The constant should be an utf-8 constant, containing a qualified field name.`
+
+Overall instruction length: `5 bytes`
+
+### § 10.8 `store_instance` _`0xB9`_
+
+Store a static field value
 
 Synthax: `call <u4 constant>`
 
@@ -1329,6 +1410,102 @@ The constant should be an utf-8 constant, containing a qualified field name.`
 Overall instruction length: `5 bytes`
 
 8 bytes from the stack will be taken as address.
+
+### § 10.9 `bstore_array` _`0xBA`_
+
+Store a byte in an array
+
+Synthax: `bstore_array`
+
+Overall instruction length: `1 byte`
+
+The index (`4 byte`) is taken from the stack
+
+The array (`8 byte`) is taken from the stack
+
+The value (`1 byte`) is taken from the stack
+
+### § 10.10 `sstore_array` _`0xBB`_
+
+Store a short in an array
+
+Synthax: `sstore_array`
+
+Overall instruction length: `1 byte`
+
+The index (`4 byte`) is taken from the stack
+
+The array (`8 byte`) is taken from the stack
+
+The value (`2 byte`) is taken from the stack
+
+### § 10.11 `istore_array` _`0xBC`_
+
+Store an integer in an array
+
+Synthax: `istore_array`
+
+Overall instruction length: `1 byte`
+
+The index (`4 byte`) is taken from the stack
+
+The array (`8 byte`) is taken from the stack
+
+The value (`4 byte`) is taken from the stack
+
+### § 10.12 `lstore_array` _`0xBD`_
+
+Store a long in an array
+
+Synthax: `lstore_array`
+
+Overall instruction length: `1 byte`
+
+The index (`4 byte`) is taken from the stack
+
+The array (`8 byte`) is taken from the stack
+
+The value (`8 byte`) is taken from the stack
+
+## § 11 Creating objects and arrays
+
+### § 11.1 `new_object` _`0xC0`_
+
+Create a new object
+
+Synthax: `new_object <u4 constant>`
+
+The constant should be an utf-8 constant, containing a qualified constructor name.
+
+Overall instruction length: `5 bytes`
+
+### § 11.2 `new_array` _`0xC1`_
+
+Create a new array
+
+Synthax: `new_array <u4 constant>`
+
+The constant should be an utf-8 constant, containing a qualified type name.
+
+Overall instruction length: `5 bytes`
+
+The length (`4 byte`) is taken from the stack
+
+## § 12 Throwing exceptions
+
+### § 12.1 `throw` _`0xC2`_
+
+Throw an exception
+
+Synthax: `throw`
+
+Overall instruction length: `1 byte`
+
+The exception (`8 byte`) is taken from the stack
+
+<!--
+
+TODO: Are these even needed? Are they a security risk?
 
 ## § 9 Global variables
 
@@ -1431,3 +1608,5 @@ Overall instruction length: `1 byte`.
 The address (`8 byte`) is taken from the stack
 
 The value (`8 byte`) is taken from the stack
+
+-->
