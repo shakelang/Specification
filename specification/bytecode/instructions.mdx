@@ -94,6 +94,39 @@ badd
 # Stack [3]
 ```
 
+export const ManualSection = ({ 
+    opcode,
+    id,
+    name,
+    level,
+ }) => (
+  <>
+    <span id={`code-${opcode}`}>{" "}</span>
+    <span id={id}></span>
+    {(() => {
+        const headerId = `instr-${id}`;
+        const contents = (<>
+            {`§ ${name} `}
+            <code>{name}</code> 
+            {" "}
+            <em>
+                <code>{opcode}</code> 
+            </em>
+        </>
+        );
+        switch(level) {
+            case "1": return <h1 id={headerId}>{contents}</h1>
+            case "2": return <h2 id={headerId}>{contents}</h2>
+            case "3": return <h3 id={headerId}>{contents}</h3>
+            case "4": return <h4 id={headerId}>{contents}</h4>
+            case "5": return <h5 id={headerId}>{contents}</h5>
+            case "6": return <h6 id={headerId}>{contents}</h6>
+            default: throw new Error(`Invalid level ${level} for instruction ${name} (${opcode})`);
+        }
+    })()}
+  </>
+);
+
 Now we will look at the local variable table. The local variable table is a table of 8-bit-values. We can store a byte in
 the local variable table and we can load a byte from the local variable table. The local variable table is a table of
 bytes, so we can only store a byte one position. If we wan't to store a 16-bit-value, we have to store it in two indices. So a `short` occupies two bytes, an `int` four and so on.
@@ -102,52 +135,53 @@ bytes, so we can only store a byte one position. If we wan't to store a 16-bit-v
 
 In the above example we already used some push instructions. Now lets declare them formally.
 
-#### § 1.1.1 `bpush` _`(0x01)`_
+<ManualSection opcode="0x01" id="1.1.1" name="bpush" level="4" />
 
 A `bpush` instruction pushes a single byte (or any 8-bit-value) onto the stack. It can also be used for a boolean or ubyte.
 Syntax: `bpush <u1 value>`, so we have the byte signing a bpush instruction and then directly after that the byte we want to
 push onto the stack. Overall instruction length: `2 bytes`.
 
-#### § 1.1.2 `spush` _`(0x02)`_
+
+<ManualSection opcode="0x02" id="1.1.2" name="spush" level="4" />
 
 A `spush` instruction pushes a short (or any 16-bit-value) onto the stack. It can also be used for a ushort.
 Syntax: `spush <u2 value>`, so we have the byte signing a spush instruction and then directly after that the short we want to
 push onto the stack. Overall instruction length: `3 bytes`.
 
-#### § 1.1.3 `ipush` _`(0x03)`_
+<ManualSection opcode="0x03" id="1.1.3" name="ipush" level="4" />
 
 An `ipush` instruction pushes an integer (or any 32-bit-value) onto the stack. It can also be used for a float or uint.
 Syntax: `ipush <u4 value>`, so we have the byte signing a ipush instruction and then directly after that the integer we want to push onto the stack. Overall instruction length: `5 bytes`.
 
-#### § 1.1.4 `lpush` _`(0x04)`_
+<ManualSection opcode="0x04" id="1.1.4" name="lpush" level="4" />
 
 A `lpush` instruction pushes a long (or any 64-bit-value) onto the stack. It can also be used for a double or ulong.
 Syntax: `lpush <u8 value>`, so we have the byte signing a lpush instruction and then directly after that the long we want to push onto the stack. Overall instruction length: `9 bytes`.
 
 ### § 1.2 Loading data from the local variable table
 
-#### § 1.2.1 `bload` _`(0x05)`_
+<ManualSection opcode="0x05" id="1.2.1" name="bload" level="4" />
 
 A `bload` instruction loads a byte from the local variable table onto the stack. The index stores the index of the byte in
 the local variable table.
 Syntax: `bload <u2 index>`
 Overall instruction length: `3 bytes`.
 
-#### § 1.2.2 `sload` _`(0x06)`_
+<ManualSection opcode="0x06" id="1.2.2" name="sload" level="4" />
 
 A `sload` instruction loads a short from the local variable table onto the stack. The index stores the index of the bottom
 byte of the short in the local variable table. The short will be loaded onto the stack. Overall instruction length: `3 bytes`.
 Syntax: `sload <u2 index>`
 Overall instruction length: `3 bytes`.
 
-#### § 1.2.3 `iload` _`(0x07)`_
+<ManualSection opcode="0x07" id="1.2.3" name="iload" level="4" />
 
 A `iload` instruction loads an integer from the local variable table onto the stack. The index stores the index of the bottom
 byte of the integer in the local variable table. The integer will be loaded onto the stack.
 Syntax: `iload <u2 index>`
 Overall instruction length: `3 bytes`.
 
-#### § 1.2.4 `lload` _`(0x08)`_
+<ManualSection opcode="0x08" id="1.2.4" name="lload" level="4" />
 
 A `lload` instruction loads a long from the local variable table onto the stack. The index stores the index of the bottom
 byte of the long in the local variable table. The long will be loaded onto the stack.
@@ -156,27 +190,27 @@ Overall instruction length: `3 bytes`.
 
 ### § 1.3 Storing data in the local variable table
 
-#### § 1.3.1 `bstore` _`(0x09)`_
+<ManualSection opcode="0x09" id="1.3.1" name="bstore" level="4" />
 
 Store a byte from the stack in the local variable table. The index points to the byte in the local variable table.
 Syntax: `bstore <u2 index>` -
 Overall instruction length: `3 bytes`.
 
-#### § 1.3.2 `sstore` _`(0x0A)`_
+<ManualSection opcode="0x0A" id="1.3.2" name="sstore" level="4" />
 
 Store a short from the stack in the local variable table. The index points to the bottom byte of the short. The short
 occupies two bytes (2 indices) in the local variable table.
 Syntax: `sstore <u2 index>`
 Overall instruction length: `3 bytes`.
 
-#### § 1.3.3 `istore` _`(0x0B)`_
+<ManualSection opcode="0x0B" id="1.3.3" name="istore" level="4" />
 
 Store an integer from the stack in the local variable table. The index points to the bottom byte of the integer. The integer
 occupies four bytes (4 indices) in the local variable table.
 Syntax: `istore <u2 index>`
 Overall instruction length: `3 bytes`.
 
-#### § 1.3.4 `lstore` _`(0x0C)`_
+<ManualSection opcode="0x0C" id="1.3.4" name="lstore" level="4" />
 
 Syntax: `lstore <u2 index>` - Store a long from the stack in the local variable table. The index points to the bottom byte of the long. The long occupies eight bytes (8 indices) in the local variable table.
 
@@ -184,37 +218,37 @@ Syntax: `lstore <u2 index>` - Store a long from the stack in the local variable 
 
 ### § 2.1 Addition
 
-#### § 2.1.1 `badd` _`(0x10)`_
+<ManualSection opcode="0x10" id="2.1.1" name="badd" level="4" />
 
 Add the two bytes from the stack and push the result (byte) onto the stack.
 Syntax: `badd`
 Overall instruction length: `1 byte`.
 
-#### § 2.1.2 `sadd` _`(0x11)`_
+<ManualSection opcode="0x11" id="2.1.2" name="sadd" level="4" />
 
 Add the two shorts from the stack and push the result (short) onto the stack.
 Syntax: `sadd`
 Overall instruction length: `1 byte`.
 
-#### § 2.1.3 `iadd` _`(0x12)`_
+<ManualSection opcode="0x12" id="2.1.3" name="iadd" level="4" />
 
 Add two integers from the stack and push the result (integer) onto the stack.
 Syntax: `iadd`
 Overall instruction length: `1 byte`.
 
-#### § 2.1.4 `ladd` _`(0x13)´_
+<ManualSection opcode="0x13" id="2.1.4" name="ladd" level="4" />
 
 Add two longs from the stack and push the result (long) onto the stack.
 Syntax: `ladd`
 Overall instruction length: `1 byte`.
 
-#### § 2.1.5 `fadd` _`(0x14)`_
+<ManualSection opcode="0x14" id="2.1.5" name="fadd" level="4" />
 
 Add two floats from the stack and push the result (float) onto the stack.
 Syntax: `fadd`
 Overall instruction length: `1 byte`.
 
-#### § 2.1.6 `dadd` _`(0x15)`_
+<ManualSection opcode="0x15" id="2.1.6" name="dadd" level="4" />
 
 Add two doubles from the stack and push the result (double) onto the stack.
 Syntax: `dadd`
@@ -222,61 +256,61 @@ Overall instruction length: `1 byte`.
 
 ### § 2.2 Subtraction
 
-#### § 2.2.1 `bsub` _`(0x16)`_
+<ManualSection opcode="0x16" id="2.2.1" name="bsub" level="4" />
 
 Subtract two bytes from the stack and push the result (byte) onto the stack.
 Syntax: `bsub`
 Overall instruction length: `1 byte`.
 
-#### § 2.2.2 `ssub` _(0x17)_
+<ManualSection opcode="0x17" id="2.2.2" name="ssub" level="4" />
 
 Subtract two shorts from the stack and push the result (short) onto the stack.
 Syntax: `ssub`
 Overall instruction length: `1 byte`.
 
-#### § 2.2.3 `isub` _`(0x18)`_
+<ManualSection opcode="0x18" id="2.2.3" name="isub" level="4" />
 
 Subtract two integers from the stack and push the result (integer) onto the stack.
 Syntax: `isub`
 Overall instruction length: `1 byte`.
 
-#### § 2.2.4 `lsub` _`(0x19)`_
+<ManualSection opcode="0x19" id="2.2.4" name="lsub" level="4" />
 
 Subtract two longs from the stack and push the result (long) onto the stack.
 Syntax: `lsub`
 Overall instruction length: `1 byte`.
 
-#### § 2.2.5 `fsub` _`(0x1A)`_
+<ManualSection opcode="0x1A" id="2.2.5" name="fsub" level="4" />
 
 Subtract two floats from the stack and push the result (float) onto the stack.
 Syntax: `fsub`
 Overall instruction length: `1 byte`.
 
-#### § 2.2.6 `dsub` _`(0x1B)`_
+<ManualSection opcode="0x1B" id="2.2.6" name="dsub" level="4" />
 
 Subtract two doubles from the stack and push the result (double) onto the stack.
 Syntax: `dsub`
 Overall instruction length: `1 byte`.
 
-#### §2.2.7 `ubsub` _`(0x1C)`_
+### § 2.3 Multiplication
 
 Subtract two unsigned bytes from the stack and push the result (unsigned byte) onto the stack.
 Syntax: `ubsub`
 Overall instruction length: `1 byte`.
 
-#### § 2.2.8 `ussub` _`(0x1D)`_
+<ManualSection opcode="0x1D" id="2.2.8" name="ussub" level="4" />
 
 Subtract two unsigned shorts from the stack and push the result (unsigned short) onto the stack.
 Syntax: `ussub`
 Overall instruction length: `1 byte`.
 
-#### § 2.2.9 `uisub` _`(0x1E)`_
+<ManualSection opcode="0x1E" id="2.2.9" name="uisub" level="4" />
 
 Subtract two unsigned integers from the stack and push the result (unsigned integer) onto the stack.
 Syntax: `uisub`
 Overall instruction length: `1 byte`.
 
-#### § 2.2.10 `ulsub` _`(0x1F)`_
+<ManualSection opcode="0x1F" id="2.2.10" name="ulsub" level="4" />
 
 Subtract two unsigned longs from the stack and push the result (unsigned long) onto the stack.
 Syntax: `ulsub`
@@ -284,61 +318,61 @@ Overall instruction length: `1 byte`.
 
 ### § 2.3 Multiplication
 
-#### § 2.3.1 `bmul` _`(0x20)`_
+<ManualSection opcode="0x20" id="2.3.1" name="bmul" level="4" />
 
 Multiply two bytes from the stack and push the result (byte) onto the stack.
 Syntax: `bmul`
 Overall instruction length: `1 byte`.
 
-#### § 2.3.2 `smul` _`(0x21)`_
+<ManualSection opcode="0x21" id="2.3.2" name="smul" level="4" />
 
 Multiply two shorts from the stack and push the result (short) onto the stack.
 Syntax: `smul`
 Overall instruction length: `1 byte`.
 
-#### § 2.3.3 `imul` _`(0x22)`_
+<ManualSection opcode="0x22" id="2.3.3" name="imul" level="4" />
 
 Multiply two integers from the stack and push the result (integer) onto the stack.
 Syntax: `imul`
 Overall instruction length: `1 byte`.
 
-#### § 2.3.4 `lmul` _`(0x23)`_
+<ManualSection opcode="0x23" id="2.3.4" name="lmul" level="4" />
 
 Multiply two longs from the stack and push the result (long) onto the stack.
 Syntax: `lmul`
 Overall instruction length: `1 byte`.
 
-#### § 2.3.5 `fmul` _`(0x24)`_
+<ManualSection opcode="0x24" id="2.3.5" name="fmul" level="4" />
 
 Multiply two floats from the stack and push the result (float) onto the stack.
 Syntax: `fmul`
 Overall instruction length: `1 byte`.
 
-#### § 2.3.6 `dmul` _`(0x25)`_
+<ManualSection opcode="0x25" id="2.3.6" name="dmul" level="4" />
 
 Multiply two doubles from the stack and push the result (double) onto the stack.
 Syntax: `dmul`
 Overall instruction length: `1 byte`.
 
-#### § 2.3.7 `ubmul` _`(0x26)`_
+<ManualSection opcode="0x26" id="2.3.7" name="ubmul" level="4" />
 
 Multiply two unsigned bytes from the stack and push the result (unsigned byte) onto the stack.
 Syntax: `ubmul`
 Overall instruction length: `1 byte`.
 
-#### § 2.3.8 `usmul` _`(0x27)`_
+<ManualSection opcode="0x27" id="2.3.8" name="usmul" level="4" />
 
 Multiply two unsigned shorts from the stack and push the result (unsigned short) onto the stack.
 Syntax: `usmul`
 Overall instruction length: `1 byte`.
 
-#### § 2.3.9 `uimul` _`(0x28)`_
+<ManualSection opcode="0x28" id="2.3.9" name="uimul" level="4" />
 
 Multiply two unsigned integers from the stack and push the result (unsigned integer) onto the stack.
 Syntax: `uimul`
 Overall instruction length: `1 byte`.
 
-#### § 2.3.10 `ulmul` _`(0x29)`_
+<ManualSection opcode="0x29" id="2.3.10" name="ulmul" level="4" />
 
 Multiply two unsigned longs from the stack and push the result (unsigned long) onto the stack.
 Syntax: `ulmul`
@@ -346,61 +380,61 @@ Overall instruction length: `1 byte`.
 
 ### § 2.4 Division
 
-#### § 2.4.1 `bdiv` _`(0x2A)`_
+<ManualSection opcode="0x2A" id="2.4.1" name="bdiv" level="4" />
 
 Divide two bytes from the stack and push the result (byte) onto the stack.
 Syntax: `bdiv`
 Overall instruction length: `1 byte`.
 
-#### § 2.4.2 `sdiv` _`(0x2B)`_
+<ManualSection opcode="0x2B" id="2.4.2" name="sdiv" level="4" />
 
 Divide two shorts from the stack and push the result (short) onto the stack.
 Syntax: `sdiv`
 Overall instruction length: `1 byte`.
 
-#### § 2.4.3 `idiv` _`(0x2C)`_
+<ManualSection opcode="0x2C" id="2.4.3" name="idiv" level="4" />
 
 Divide two integers from the stack and push the result (integer) onto the stack.
 Syntax: `idiv`
 Overall instruction length: `1 byte`.
 
-#### § 2.4.4 `ldiv` _`(0x2D)`_
+<ManualSection opcode="0x2D" id="2.4.4" name="ldiv" level="4" />
 
 Divide two longs from the stack and push the result (long) onto the stack.
 Syntax: `ldiv`
 Overall instruction length: `1 byte`.
 
-#### § 2.4.5 `fdiv` _`(0x2E)`_
+<ManualSection opcode="0x2E" id="2.4.5" name="fdiv" level="4" />
 
 Divide two floats from the stack and push the result (float) onto the stack.
 Syntax: `fdiv`
 Overall instruction length: `1 byte`.
 
-#### § 2.4.6 `ddiv` _`(0x2F)`_
+<ManualSection opcode="0x2F" id="2.4.6" name="ddiv" level="4" />
 
 Divide two doubles from the stack and push the result (double) onto the stack.
 Syntax: `ddiv`
 Overall instruction length: `1 byte`.
 
-#### § 2.4.7 `ubdiv` _`(0x30)`_
+<ManualSection opcode="0x30" id="2.4.7" name="ubdiv" level="4" />
 
 Divide two unsigned bytes from the stack and push the result (unsigned byte) onto the stack.
 Syntax: `ubdiv`
 Overall instruction length: `1 byte`.
 
-#### § 2.4.8 `usdiv` _`(0x31)`_
+<ManualSection opcode="0x31" id="2.4.8" name="usdiv" level="4" />
 
 Divide two unsigned shorts from the stack and push the result (unsigned short) onto the stack.
 Syntax: `usdiv`
 Overall instruction length: `1 byte`.
 
-#### § 2.4.9 `uidiv` _`(0x32)`_
+<ManualSection opcode="0x32" id="2.4.9" name="uidiv" level="4" />
 
 Divide two unsigned integers from the stack and push the result (unsigned integer) onto the stack.
 Syntax: `uidiv`
 Overall instruction length: `1 byte`.
 
-#### § 2.4.10 `uldiv` _`(0x33)`_
+<ManualSection opcode="0x33" id="2.4.10" name="uldiv" level="4" />
 
 Divide two unsigned longs from the stack and push the result (unsigned long) onto the stack.
 Syntax: `uldiv`
@@ -408,61 +442,61 @@ Overall instruction length: `1 byte`.
 
 ### § 2.5 Modulo
 
-#### § 2.5.1 `bmod` _`(0x34)`_
+<ManualSection opcode="0x34" id="2.5.1" name="bmod" level="4" />
 
 Modulo two bytes from the stack and push the result (byte) onto the stack.
 Syntax: `bmod`
 Overall instruction length: `1 byte`.
 
-#### § 2.5.2 `smod` _`(0x35)`_
+<ManualSection opcode="0x35" id="2.5.2" name="smod" level="4" />
 
 Modulo two shorts from the stack and push the result (short) onto the stack.
 Syntax: `smod`
 Overall instruction length: `1 byte`.
 
-#### § 2.5.3 `imod` _`(0x36)`_
+<ManualSection opcode="0x36" id="2.5.3" name="imod" level="4" />
 
 Modulo two integers from the stack and push the result (integer) onto the stack.
 Syntax: `imod`
 Overall instruction length: `1 byte`.
 
-#### § 2.5.4 `lmod` _`(0x37)`_
+<ManualSection opcode="0x37" id="2.5.4" name="lmod" level="4" />
 
 Modulo two longs from the stack and push the result (long) onto the stack.
 Syntax: `lmod`
 Overall instruction length: `1 byte`.
 
-#### § 2.5.5 `fmod` _`(0x38)`_
+<ManualSection opcode="0x38" id="2.5.5" name="fmod" level="4" />
 
 Modulo two floats from the stack and push the result (float) onto the stack.
 Syntax: `fmod`
 Overall instruction length: `1 byte`.
 
-#### § 2.5.6 `dmod` _`(0x39)`_
+<ManualSection opcode="0x39" id="2.5.6" name="dmod" level="4" />
 
 Modulo two doubles from the stack and push the result (double) onto the stack.
 Syntax: `dmod`
 Overall instruction length: `1 byte`.
 
-#### § 2.5.7 `ubmod` _`(0x3A)`_
+<ManualSection opcode="0x3A" id="2.5.7" name="ubmod" level="4" />
 
 Modulo two unsigned bytes from the stack and push the result (unsigned byte) onto the stack.
 Syntax: `ubmod`
 Overall instruction length: `1 byte`.
 
-#### § 2.5.8 `usmod` _`(0x3B)`_
+<ManualSection opcode="0x3B" id="2.5.8" name="usmod" level="4" />
 
 Modulo two unsigned shorts from the stack and push the result (unsigned short) onto the stack.
 Syntax: `usmod`
 Overall instruction length: `1 byte`.
 
-#### § 2.5.9 `uimod` _`(0x3C)`_
+<ManualSection opcode="0x3C" id="2.5.9" name="uimod" level="4" />
 
 Modulo two unsigned integers from the stack and push the result (unsigned integer) onto the stack.
 Syntax: `uimod`
 Overall instruction length: `1 byte`.
 
-#### § 2.5.10 `ulmod` _`(0x3D)`_
+<ManualSection opcode="0x3D" id="2.5.10" name="ulmod" level="4" />
 
 Modulo two unsigned longs from the stack and push the result (unsigned long) onto the stack.
 Syntax: `ulmod`
@@ -470,37 +504,37 @@ Overall instruction length: `1 byte`.
 
 ### § 2.6 Negation
 
-#### § 2.6.1 `bneg` _`(0x3E)`_
+<ManualSection opcode="0x3E" id="2.6.1" name="bneg" level="4" />
 
 Negate a byte from the stack and push the result (byte) onto the stack.
 Syntax: `bneg`
 Overall instruction length: `1 byte`.
 
-#### § 2.6.2 `sneg` _`(0x3F)`_
+<ManualSection opcode="0x3F" id="2.6.2" name="sneg" level="4" />
 
 Syntax: `sneg` - Negate a short from the stack and push the result (short) onto the stack.
 Syntax: `sneg`
 Overall instruction length: `1 byte`.
 
-#### § 2.6.3 `ineg` _`(0x40)`_
+<ManualSection opcode="0x40" id="2.6.3" name="ineg" level="4" />
 
 Negate an integer from the stack and push the result (integer) onto the stack.
 Syntax: `ineg`
 Overall instruction length: `1 byte`.
 
-#### § 2.6.4 `lneg` _`(0x41)`_
+<ManualSection opcode="0x41" id="2.6.4" name="lneg" level="4" />
 
 Negate a long from the stack and push the result (long) onto the stack.
 Syntax: `lneg`
 Overall instruction length: `1 byte`.
 
-#### § 2.6.5 `fneg` _`(0x42)`_
+<ManualSection opcode="0x42" id="2.6.5" name="fneg" level="4" />
 
 Negate a float from the stack and push the result (float) onto the stack.
 Syntax: `fneg`
 Overall instruction length: `1 byte`.
 
-#### § 2.6.6 `dneg` _`(0x43)`_
+<ManualSection opcode="0x43" id="2.6.6" name="dneg" level="4" />
 
 Negate a double from the stack and push the result (double) onto the stack.
 Syntax: `dneg`
@@ -508,37 +542,37 @@ Overall instruction length: `1 byte`.
 
 ### § 2.7 Increment
 
-#### § 2.7.1 `binc` _`(0x44)`_
+<ManualSection opcode="0x44" id="2.7.1" name="binc" level="4" />
 
 Increment a byte from the stack and push the result (byte) onto the stack.
 Syntax: `binc`
 Overall instruction length: `1 byte`.
 
-#### § 2.7.2 `sinc` _`(0x45)`_
+<ManualSection opcode="0x45" id="2.7.2" name="sinc" level="4" />
 
 Increment a short from the stack and push the result (short) onto the stack.
 Syntax: `sinc`
 Overall instruction length: `1 byte`.
 
-#### § 2.7.3 `iinc` _`(0x46)`_
+<ManualSection opcode="0x46" id="2.7.3" name="iinc" level="4" />
 
 Increment an integer from the stack and push the result (integer) onto the stack.
 Syntax: `iinc`
 Overall instruction length: `1 byte`.
 
-#### § 2.7.4 `linc` _`(0x47)`_
+<ManualSection opcode="0x47" id="2.7.4" name="linc" level="4" />
 
 Increment a long from the stack and push the result (long) onto the stack.
 Syntax: `linc`
 Overall instruction length: `1 byte`.
 
-#### § 2.7.5 `finc` _`(0x48)`_
+<ManualSection opcode="0x48" id="2.7.5" name="finc" level="4" />
 
 Increment a float from the stack and push the result (float) onto the stack.
 Syntax: `finc`
 Overall instruction length: `1 byte`.
 
-#### § 2.7.6 `dinc` _`(0x49)`_
+<ManualSection opcode="0x49" id="2.7.6" name="dinc" level="4" />
 
 Increment a double from the stack and push the result (double) onto the stack.
 Syntax: `dinc`
@@ -546,37 +580,37 @@ Overall instruction length: `1 byte`.
 
 ### § 2.8 Decrement
 
-#### § 2.8.1 `bdec` _`(0x4A)`_
+<ManualSection opcode="0x4A" id="2.8.1" name="bdec" level="4" />
 
 Decrement a byte from the stack and push the result (byte) onto the stack.
 Syntax: `bdec`
 Overall instruction length: `1 byte`.
 
-#### § 2.8.2 `sdec` _`(0x4B)`_
+<ManualSection opcode="0x4B" id="2.8.2" name="sdec" level="4" />
 
 Decrement a short from the stack and push the result (short) onto the stack.
 Syntax: `sdec`
 Overall instruction length: `1 byte`.
 
-#### § 2.8.3 `idec` _`(0x4C)`_
+<ManualSection opcode="0x4C" id="2.8.3" name="idec" level="4" />
 
 Decrement an integer from the stack and push the result (integer) onto the stack.
 Syntax: `idec`
 Overall instruction length: `1 byte`.
 
-#### § 2.8.4 `ldec` _`(0x4D)`_
+<ManualSection opcode="0x4D" id="2.8.4" name="ldec" level="4" />
 
 Decrement a long from the stack and push the result (long) onto the stack.
 Syntax: `ldec`
 Overall instruction length: `1 byte`.
 
-#### § 2.8.5 `fdec` _`(0x4E)`_
+<ManualSection opcode="0x4E" id="2.8.5" name="fdec" level="4" />
 
 Decrement a float from the stack and push the result (float) onto the stack.
 Syntax: `fdec`
 Overall instruction length: `1 byte`.
 
-#### § 2.8.6 `ddec` _`(0x4F)`_
+<ManualSection opcode="0x4F" id="2.8.6" name="ddec" level="4" />
 
 Decrement a double from the stack and push the result (double) onto the stack.
 Syntax: `ddec`
@@ -586,28 +620,28 @@ Overall instruction length: `1 byte`.
 
 ### § 3.1 Bitwise and
 
-#### § 3.1.1 `band` _`(0x50)`_
+<ManualSection opcode="0x50" id="3.1.1" name="band" level="4" />
 
 Bitwise and two bytes from the stack and push the result (byte) onto the stack.
 Can also be used for boolean and ubyte.
 Syntax: `band`
 Overall instruction length: `1 byte`.
 
-#### § 3.1.2 `sand` _`(0x51)`_
+<ManualSection opcode="0x51" id="3.1.2" name="sand" level="4" />
 
 Bitwise and two shorts from the stack and push the result (short) onto the stack.
 Can also be used for char and ushort.
 Syntax: `sand`
 Overall instruction length: `1 byte`.
 
-#### § 3.1.3 `iand` _`(0x52)`_
+<ManualSection opcode="0x52" id="3.1.3" name="iand" level="4" />
 
 Bitwise and two integers from the stack and push the result (integer) onto the stack.
 Can also be used for float and uint.
 Syntax: `iand`
 Overall instruction length: `1 byte`.
 
-#### § 3.1.4 `land` _`(0x53)`_
+<ManualSection opcode="0x53" id="3.1.4" name="land" level="4" />
 
 Bitwise and two longs from the stack and push the result (long) onto the stack.
 Can also be used for double and ulong.
@@ -616,28 +650,28 @@ Overall instruction length: `1 byte`.
 
 ### § 3.2 Bitwise or
 
-#### § 3.2.1 `bor` _`(0x54)`_
+<ManualSection opcode="0x54" id="3.2.1" name="bor" level="4" />
 
 Bitwise or two bytes from the stack and push the result (byte) onto the stack.
 Can also be used for boolean and ubyte.
 Syntax: `bor`
 Overall instruction length: `1 byte`.
 
-#### § 3.2.2 `sor` _`(0x55)`_
+<ManualSection opcode="0x55" id="3.2.2" name="sor" level="4" />
 
 Bitwise or two shorts from the stack and push the result (short) onto the stack.
 Can also be used for char and ushort.
 Syntax: `sor`
 Overall instruction length: `1 byte`.
 
-#### § 3.2.3 `ior` _`(0x56)`_
+<ManualSection opcode="0x56" id="3.2.3" name="ior" level="4" />
 
 Bitwise or two integers from the stack and push the result (integer) onto the stack.
 Can also be used for float and uint.
 Syntax: `ior`
 Overall instruction length: `1 byte`.
 
-#### § 3.2.4 `lor` _`(0x57)`_
+<ManualSection opcode="0x57" id="3.2.4" name="lor" level="4" />
 
 Bitwise or two longs from the stack and push the result (long) onto the stack.
 Can also be used for double and ulong.
@@ -646,28 +680,28 @@ Overall instruction length: `1 byte`.
 
 ### § 3.3 Bitwise xor
 
-#### § 3.3.1 `bxor` _`(0x58)`_
+<ManualSection opcode="0x58" id="3.3.1" name="bxor" level="4" />
 
 Bitwise xor two bytes from the stack and push the result (byte) onto the stack.
 Can also be used for boolean and ubyte.
 Syntax: `bxor`
 Overall instruction length: `1 byte`.
 
-#### § 3.3.2 `sxor` _`(0x59)`_
+<ManualSection opcode="0x59" id="3.3.2" name="sxor" level="4" />
 
 Bitwise xor two shorts from the stack and push the result (short) onto the stack.
 Can also be used for char and ushort.
 Syntax: `sxor`
 Overall instruction length: `1 byte`.
 
-#### § 3.3.3 `ixor` _`(0x5A)`_
+<ManualSection opcode="0x5A" id="3.3.3" name="ixor" level="4" />
 
 Bitwise xor two integers from the stack and push the result (integer) onto the stack.
 Can also be used for float and uint.
 Syntax: `ixor`
 Overall instruction length: `1 byte`.
 
-#### § 3.3.4 `lxor` _`(0x5B)`_
+<ManualSection opcode="0x5B" id="3.3.4" name="lxor" level="4" />
 
 Bitwise xor two longs from the stack and push the result (long) onto the stack.
 Can also be used for double and ulong.
@@ -676,33 +710,33 @@ Overall instruction length: `1 byte`.
 
 ### § 3.4 Bitwise not
 
-#### § 3.4.1 `bnot` _`(0x5C)`_
+<ManualSection opcode="0x5C" id="3.4.1" name="bnot" level="4" />
 
 Invert the byte on top of the stack and push the result (byte) onto the stack.
 Syntax: `bnot`
 Overall instruction length: `1 byte`.
 
-#### § 3.4.2 `snot` _`(0x5D)`_
+<ManualSection opcode="0x5D" id="3.4.2" name="snot" level="4" />
 
 Invert the short on top of the stack and push the result (short) onto the stack.
 Syntax: `snot`
 Overall instruction length: `1 byte`.
 
-#### § 3.4.3 `inot` _`(0x5E)`_
+<ManualSection opcode="0x5E" id="3.4.3" name="inot" level="4" />
 
 Invert the integer on top of the stack and push the result (integer) onto the stack.
 Syntax: `inot`
 Overall instruction length: `1 byte`.
 
-#### § 3.4.4 `lnot` _`(0x5F)`_
+<ManualSection opcode="0x5F" id="3.4.4" name="lnot" level="4" />
 
 Invert the long on top of the stack and push the result (long) onto the stack.
 Syntax: `lnot`
 Overall instruction length: `1 byte`.
 
-#### § 3.5 Bitwise shift left
+### § 3.5 Bitwise shift left
 
-#### § 3.5.1 `bshl` _`(0x60)`_
+<ManualSection opcode="0x60" id="3.5.1" name="bshl" level="4" />
 
 Bitwise shift left a byte from the stack and push the result onto the stack.
 The top byte of the stack defines the number of bits to shift, the byte below defines the byte to shift.
@@ -710,7 +744,7 @@ Can also be used for boolean and ubyte.
 Syntax: `bshl`
 Overall instruction length: `1 byte`.
 
-#### § 3.5.2 `sshl` _`(0x61)`_
+<ManualSection opcode="0x61" id="3.5.2" name="sshl" level="4" />
 
 Bitwise shift left a short from the stack and push the result onto the stack.
 The top byte of the stack defines the number of bits to shift, the short below defines the short to shift.
@@ -718,7 +752,7 @@ Can also be used for char and ushort.
 Syntax: `sshl`
 Overall instruction length: `1 byte`.
 
-#### § 3.5.3 `ishl` _`(0x62)`_
+<ManualSection opcode="0x62" id="3.5.3" name="ishl" level="4" />
 
 Bitwise shift left an integer from the stack and push the result onto the stack.
 The top byte of the stack defines the number of bits to shift, the integer below defines the integer to shift.
@@ -726,7 +760,7 @@ Can also be used for float and uint.
 Syntax: `ishl`
 Overall instruction length: `1 byte`.
 
-#### § 3.5.4 `lshl` _`(0x63)`_
+<ManualSection opcode="0x63" id="3.5.4" name="lshl" level="4" />
 
 Bitwise shift left a long from the stack and push the result onto the stack.
 The top byte of the stack defines the number of bits to shift, the long below defines the long to shift.
@@ -734,9 +768,9 @@ Can also be used for double and ulong.
 Syntax: `lshl`
 Overall instruction length: `1 byte`.
 
-#### § 3.6 Bitwise shift right
+### § 3.6 Bitwise shift right
 
-#### § 3.6.1 `bshr` _`(0x64)`_
+<ManualSection opcode="0x64" id="3.6.1" name="bshr" level="4" />
 
 Bitwise shift right a byte from the stack and push the result onto the stack.
 The top byte of the stack defines the number of bits to shift, the byte below defines the byte to shift.
@@ -744,7 +778,7 @@ Can also be used for boolean and ubyte.
 Syntax: `bshr`
 Overall instruction length: `1 byte`.
 
-#### § 3.6.2 `sshr` _`(0x65)`_
+<ManualSection opcode="0x65" id="3.6.2" name="sshr" level="4" />
 
 Bitwise shift right a short from the stack and push the result onto the stack.
 The top byte of the stack defines the number of bits to shift, the short below defines the short to shift.
@@ -752,7 +786,7 @@ Can also be used for char and ushort.
 Syntax: `sshr`
 Overall instruction length: `1 byte`.
 
-#### § 3.6.3 `ishr` _`(0x66)`_
+<ManualSection opcode="0x66" id="3.6.3" name="ishr" level="4" />
 
 Bitwise shift right an integer from the stack and push the result onto the stack.
 The top byte of the stack defines the number of bits to shift, the integer below defines the integer to shift.
@@ -760,7 +794,7 @@ Can also be used for float and uint.
 Syntax: `ishr`
 Overall instruction length: `1 byte`.
 
-#### § 3.6.4 `lshr` _`(0x67)`_
+<ManualSection opcode="0x67" id="3.6.4" name="lshr" level="4" />
 
 Bitwise shift right a long from the stack and push the result onto the stack.
 The top byte of the stack defines the number of bits to shift, the long below defines the long to shift.
@@ -768,9 +802,9 @@ Can also be used for double and ulong.
 Syntax: `lshr`
 Overall instruction length: `1 byte`.
 
-#### § 3.7 Bitwise shift right unsigned
+### § 3.7 Bitwise shift right unsigned
 
-#### § 3.7.1 `bshru` _`(0x68)`_
+<ManualSection opcode="0x68" id="3.7.1" name="bshru" level="4" />
 
 Bitwise shift right unsigned a byte from the stack and push the result onto the stack.
 The top byte of the stack defines the number of bits to shift, the byte below defines the byte to shift.
@@ -778,7 +812,7 @@ Can also be used for boolean and ubyte.
 Syntax: `bshru`
 Overall instruction length: `1 byte`.
 
-#### § 3.7.2 `sshr` _`(0x69)`_
+<ManualSection opcode="0x69" id="3.7.2" name="sshr" level="4" />
 
 Bitwise shift right unsigned a short from the stack and push the result onto the stack.
 The top byte of the stack defines the number of bits to shift, the short below defines the short to shift.
@@ -786,7 +820,7 @@ Can also be used for char and ushort.
 Syntax: `sshr`
 Overall instruction length: `1 byte`.
 
-#### § 3.7.3 `ishru` _`(0x6A)`_
+<ManualSection opcode="0x6A" id="3.7.3" name="ishru" level="4" />
 
 Bitwise shift right unsigned an integer from the stack and push the result onto the stack.
 The top byte of the stack defines the number of bits to shift, the integer below defines the integer to shift.
@@ -794,7 +828,7 @@ Can also be used for float and uint.
 Syntax: `ishru`
 Overall instruction length: `1 byte`.
 
-#### § 3.7.4 `lshru` _`(0x6B)`_
+<ManualSection opcode="0x6B" id="3.7.4" name="lshru" level="4" />
 
 Bitwise shift right unsigned a long from the stack and push the result onto the stack.
 The top byte of the stack defines the number of bits to shift, the long below defines the long to shift.
