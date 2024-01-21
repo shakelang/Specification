@@ -94,35 +94,38 @@ badd
 # Stack [3]
 ```
 
-export const ManualSection = ({ 
-    opcode,
-    id,
-    name,
-    level,
- }) => (
+export const ManualSection = ({ opcode, id, name, level }) => (
   <>
-    <span id={`code-${opcode}`}>{" "}</span>
+    <span id={`code-${opcode}`}> </span>
     <span id={id}></span>
     {(() => {
-        const headerId = `instr-${id}`;
-        const contents = (<>
-            {`§ ${name} `}
-            <code>{name}</code> 
-            {" "}
-            <em>
-                <code>{opcode}</code> 
-            </em>
+      const headerId = `instr-${id}`;
+      const contents = (
+        <>
+          {`§ ${name} `}
+          <code>{name}</code> <em>
+            <code>{opcode}</code>
+          </em>
         </>
-        );
-        switch(level) {
-            case "1": return <h1 id={headerId}>{contents}</h1>
-            case "2": return <h2 id={headerId}>{contents}</h2>
-            case "3": return <h3 id={headerId}>{contents}</h3>
-            case "4": return <h4 id={headerId}>{contents}</h4>
-            case "5": return <h5 id={headerId}>{contents}</h5>
-            case "6": return <h6 id={headerId}>{contents}</h6>
-            default: throw new Error(`Invalid level ${level} for instruction ${name} (${opcode})`);
-        }
+      );
+      switch (level) {
+        case "1":
+          return <h1 id={headerId}>{contents}</h1>;
+        case "2":
+          return <h2 id={headerId}>{contents}</h2>;
+        case "3":
+          return <h3 id={headerId}>{contents}</h3>;
+        case "4":
+          return <h4 id={headerId}>{contents}</h4>;
+        case "5":
+          return <h5 id={headerId}>{contents}</h5>;
+        case "6":
+          return <h6 id={headerId}>{contents}</h6>;
+        default:
+          throw new Error(
+            `Invalid level ${level} for instruction ${name} (${opcode})`,
+          );
+      }
     })()}
   </>
 );
@@ -140,7 +143,6 @@ In the above example we already used some push instructions. Now lets declare th
 A `bpush` instruction pushes a single byte (or any 8-bit-value) onto the stack. It can also be used for a boolean or ubyte.
 Syntax: `bpush <u1 value>`, so we have the byte signing a bpush instruction and then directly after that the byte we want to
 push onto the stack. Overall instruction length: `2 bytes`.
-
 
 <ManualSection opcode="0x02" id="1.1.2" name="spush" level="4" />
 
