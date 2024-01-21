@@ -99,7 +99,7 @@ export const ManualSection = ({ opcode, id, name, level }) => (
     <span id={`code-${opcode}`}> </span>
     <span id={id}></span>
     {(() => {
-      const headerId = `instr-${name}`;
+      const headerId = `instr-${name.replace(/[ _]/g, "-")}`;
       const contents = (
         <>
           {`§ ${name} `}
