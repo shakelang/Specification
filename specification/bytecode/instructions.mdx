@@ -1217,9 +1217,9 @@ Syntax: `nop`
 
 Overall instruction length: `1 byte`.
 
-### § 7.2 pop
+### § 6.2 pop
 
-<ManualSection opcode="0xA1" id="7.2.1" name="bpop" level="4" />
+<ManualSection opcode="0xA1" id="6.2.1" name="bpop" level="4" />
 
 Pop the top byte from the stack.
 
@@ -1227,7 +1227,7 @@ Syntax: `pop`
 
 Overall instruction length: `1 byte`.
 
-<ManualSection opcode="0xA2" id="7.2.2" name="spop" level="4" />
+<ManualSection opcode="0xA2" id="6.2.2" name="spop" level="4" />
 
 Pop the top two bytes from the stack.
 
@@ -1235,7 +1235,7 @@ Syntax: `spop`
 
 Overall instruction length: `1 byte`.
 
-<ManualSection opcode="0xA3" id="7.2.3" name="ipop" level="4" />
+<ManualSection opcode="0xA3" id="6.2.3" name="ipop" level="4" />
 
 Pop the top four bytes from the stack.
 
@@ -1243,7 +1243,7 @@ Syntax: `ipop`
 
 Overall instruction length: `1 byte`.
 
-<ManualSection opcode="0xA4" id="7.2.4" name="lpop" level="4" />
+<ManualSection opcode="0xA4" id="6.2.4" name="lpop" level="4" />
 
 Pop the top eight bytes from the stack.
 
@@ -1251,9 +1251,9 @@ Syntax: `lpop`
 
 Overall instruction length: `1 byte`.
 
-### § 7.3 dup
+### § 6.3 dup
 
-<ManualSection opcode="0xA5" id="7.3.1" name="bdup" level="4" />
+<ManualSection opcode="0xA5" id="6.3.1" name="bdup" level="4" />
 
 Duplicate the top byte on the stack.
 
@@ -1263,7 +1263,7 @@ Syntax: `bdup`
 
 Overall instruction length: `1 byte`.
 
-<ManualSection opcode="0xA6" id="7.3.2" name="sdup" level="4" />
+<ManualSection opcode="0xA6" id="6.3.2" name="sdup" level="4" />
 
 Duplicate the top 2-byte element on the stack.
 
@@ -1273,7 +1273,7 @@ Syntax: `sdup`
 
 Overall instruction length: `1 byte`.
 
-<ManualSection opcode="0xA7" id="7.3.3" name="idup" level="4" />
+<ManualSection opcode="0xA7" id="6.3.3" name="idup" level="4" />
 
 Duplicate the top 4-byte element on the stack.
 
@@ -1283,7 +1283,7 @@ Syntax: `idup`
 
 Overall instruction length: `1 byte`.
 
-<ManualSection opcode="0xA8" id="7.3.4" name="ldup" level="4" />
+<ManualSection opcode="0xA8" id="6.3.4" name="ldup" level="4" />
 
 Duplicate the top 8-byte element on the stack.
 
@@ -1293,7 +1293,9 @@ Syntax: `ldup`
 
 Overall instruction length: `1 byte`.
 
-<ManualSection opcode="0xA9" id="7.3.5" name="dup" level="4" />
+### § 6.4 cast
+
+<ManualSection opcode="0xA9" id="6.4.1" name="pcast" level="4" />
 
 Perform a primitive cast.
 The following byte defines the type to cast to.
@@ -1322,9 +1324,9 @@ Syntax: `pcast <u1 type>`
 
 Overall instruction length: `2 bytes`.
 
-### § 8 Invoking methods
+### § 7 Invoking methods
 
-<ManualSection opcode="0xB0" id="8.1" name="invoke_static" level="4" />
+<ManualSection opcode="0xB0" id="7.1" name="invoke_static" level="4" />
 
 Invoke a method. Target method **must** be static!
 
@@ -1334,7 +1336,7 @@ The constant should be an utf-8 constant, containing a qualified method name.
 
 Overall instruction length: `5 bytes`.
 
-<ManualSection opcode="0xB1" id="8.2" name="invoke_instance" level="4" />
+<ManualSection opcode="0xB1" id="7.2" name="invoke_instance" level="4" />
 
 Call a method on an object. Target method **must not** be static!
 
@@ -1348,9 +1350,9 @@ The arguments are taken from right to left from the stack (so you can )
 
 8 bytes from the stack will be taken as address. **The arguments will be taken first!**
 
-## § 9 Field access
+## § 8 Field access
 
-<ManualSection opcode="0xB2" id="9.1" name="load_field_static" level="4" />
+<ManualSection opcode="0xB2" id="8.1" name="load_field_static" level="4" />
 
 Load a static field value
 
@@ -1360,7 +1362,7 @@ The constant should be an utf-8 constant, containing a qualified field name.`
 
 Overall instruction length: `5 bytes`
 
-<ManualSection opcode="0xB3" id="9.2" name="load_field_instance" level="4" />
+<ManualSection opcode="0xB3" id="8.2" name="load_field_instance" level="4" />
 
 Load an instance field value
 
@@ -1372,7 +1374,7 @@ Overall instruction length: `5 bytes`
 
 8 bytes from the stack will be taken as address.
 
-<ManualSection opcode="0xB4" id="9.3" name="bload_array" level="4" />
+<ManualSection opcode="0xB4" id="8.3" name="bload_array" level="4" />
 
 Load a byte from an array
 
@@ -1386,7 +1388,7 @@ The array (`8 byte`) is taken from the stack
 
 Will put the result (`1 byte`) on top of the stack
 
-<ManualSection opcode="0xB5" id="9.4" name="sload_array" level="4" />
+<ManualSection opcode="0xB5" id="8.4" name="sload_array" level="4" />
 
 Load a short from an array
 
@@ -1400,7 +1402,7 @@ The array (`8 byte`) is taken from the stack
 
 Will put the result (`2 byte`) on top of the stack
 
-<ManualSection opcode="0xB6" id="9.5" name="iload_array" level="4" />
+<ManualSection opcode="0xB6" id="8.5" name="iload_array" level="4" />
 
 Load an integer from an array
 
@@ -1414,7 +1416,7 @@ The array (`8 byte`) is taken from the stack
 
 Will put the result (`4 byte`) on top of the stack
 
-<ManualSection opcode="0xB7" id="9.6" name="lload_array" level="4" />
+<ManualSection opcode="0xB7" id="8.6" name="lload_array" level="4" />
 
 Load a long from an array
 
@@ -1428,7 +1430,7 @@ The array (`8 byte`) is taken from the stack
 
 Will put the result (`8 byte`) on top of the stack
 
-<ManualSection opcode="0xB8" id="9.7" name="store_static" level="4" />
+<ManualSection opcode="0xB8" id="8.7" name="store_static" level="4" />
 
 Store a static field value
 
@@ -1437,7 +1439,7 @@ The constant should be an utf-8 constant, containing a qualified field name.`
 
 Overall instruction length: `5 bytes`
 
-<ManualSection opcode="0xB9" id="9.8" name="store_instance" level="4" />
+<ManualSection opcode="0xB9" id="8.8" name="store_instance" level="4" />
 
 Store a static field value
 
@@ -1449,7 +1451,7 @@ Overall instruction length: `5 bytes`
 
 8 bytes from the stack will be taken as address.
 
-<ManualSection opcode="0xBA" id="9.9" name="bstore_array" level="4" />
+<ManualSection opcode="0xBA" id="8.9" name="bstore_array" level="4" />
 
 Store a byte in an array
 
@@ -1463,7 +1465,7 @@ The array (`8 byte`) is taken from the stack
 
 The value (`1 byte`) is taken from the stack
 
-<ManualSection opcode="0xBB" id="9.10" name="sstore_array" level="4" />
+<ManualSection opcode="0xBB" id="8.10" name="sstore_array" level="4" />
 
 Store a short in an array
 
@@ -1477,7 +1479,7 @@ The array (`8 byte`) is taken from the stack
 
 The value (`2 byte`) is taken from the stack
 
-<ManualSection opcode="0xBC" id="9.11" name="istore_array" level="4" />
+<ManualSection opcode="0xBC" id="8.11" name="istore_array" level="4" />
 
 Store an integer in an array
 
@@ -1491,7 +1493,7 @@ The array (`8 byte`) is taken from the stack
 
 The value (`4 byte`) is taken from the stack
 
-<ManualSection opcode="0xBD" id="9.12" name="lstore_array" level="4" />
+<ManualSection opcode="0xBD" id="8.12" name="lstore_array" level="4" />
 
 Store a long in an array
 
@@ -1505,9 +1507,9 @@ The array (`8 byte`) is taken from the stack
 
 The value (`8 byte`) is taken from the stack
 
-## § 10 Creating objects and arrays
+## § 9 Creating objects and arrays
 
-<ManualSection opcode="0xC0" id="10.1" name="new_object" level="4" />
+<ManualSection opcode="0xC0" id="9.1" name="new_object" level="4" />
 
 Create a new object
 
@@ -1517,7 +1519,7 @@ The constant should be an utf-8 constant, containing a qualified constructor nam
 
 Overall instruction length: `5 bytes`
 
-<ManualSection opcode="0xC1" id="10.2" name="new_array" level="4" />
+<ManualSection opcode="0xC1" id="9.2" name="new_array" level="4" />
 
 Create a new array
 
@@ -1529,9 +1531,9 @@ Overall instruction length: `5 bytes`
 
 The length (`4 byte`) is taken from the stack
 
-## § 11 Throwing exceptions
+## § 10 Throwing exceptions
 
-<ManualSection opcode="0xC2" id="11.1" name="throw" level="4" />
+<ManualSection opcode="0xC2" id="10.1" name="throw" level="4" />
 
 Throw an exception
 
