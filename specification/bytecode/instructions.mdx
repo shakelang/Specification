@@ -1338,7 +1338,7 @@ The constant should be an utf-8 constant, containing a qualified method name.
 
 Overall instruction length: `5 bytes`.
 
-<ManualSection opcode="0xB1" id="7.2" name="invoke_instance" level="4" />
+<ManualSection opcode="0xB1" id="7.2" name="invoke_virtual" level="4" />
 
 Call a method on an object. Target method **must not** be static!
 
@@ -1364,11 +1364,11 @@ The constant should be an utf-8 constant, containing a qualified field name.`
 
 Overall instruction length: `5 bytes`
 
-<ManualSection opcode="0xB3" id="8.2" name="load_field_instance" level="4" />
+<ManualSection opcode="0xB3" id="8.2" name="load_field_virtual" level="4" />
 
-Load an instance field value
+Load an virtual field value
 
-Synthax: `load_field_instance <u4 constant>`
+Synthax: `load_field_virtual <u4 constant>`
 
 The constant should be an utf-8 constant, containing a qualified field name.`
 
@@ -1441,7 +1441,7 @@ The constant should be an utf-8 constant, containing a qualified field name.`
 
 Overall instruction length: `5 bytes`
 
-<ManualSection opcode="0xB9" id="8.8" name="store_instance" level="4" />
+<ManualSection opcode="0xB9" id="8.8" name="store_virtual" level="4" />
 
 Store a static field value
 
