@@ -30,11 +30,15 @@ A structure is a sequence of tokens that form a meaningful unit in a program.
 
 ## § 2 Structures
 
+In this section we will define all the different structures that we refer to in the parser.
+When we describe structures, we wil wrap token types in square brackets (`<>`) to indicate that they are tokens.
+We will refer to other structures by their name and paragraph number and wrap them in curly brackets (`{}`).
+
 ### § 2.0 Help Structures
 
 #### § Access Modifier
 
-An access modifier is a sequence of tokens that define the access modifier of a structure. It can be either `public` or `private`, `protected`.
+An access modifier is a sequence of tokens that define the access modifier of a structure. It can be either `public`, `private`, or `protected`.
 
 _Sample code:_
 
@@ -62,12 +66,25 @@ int
 _Token Definition:_
 
 ```tokens
-(<KEYWORD_UNSIGNED>) <KEYWORD_BYTE> | (<KEYWORD_UNSIGNED>) <KEYWORD_SHORT> | (<KEYWORD_UNSIGNED>) <KEYWORD_INT> | (<KEYWORD_UNSIGNED>) <KEYWORD_LONG> | <KEYWORD_FLOAT> | <KEYWORD_DOUBLE> | <KEYWORD_BOOLEAN> | <KEYWORD_CHAR> | <IDENTIFIER>
+<IDENTIFIER>
 ```
 
-In this section we will define all the different structures that we refer to in the parser.
-When we describe structures, we wil wrap token types in square brackets (`<>`) to indicate that they are tokens.
-We will refer to other structures by their name and paragraph number and wrap them in curly brackets (`{}`).
+There are also some special identifiers reserved for the primitive types:
+
+| Identifier | Type             |
+| ---------- | ---------------- |
+| `byte`     | Byte (int8)      |
+| `short`    | Short (int16)    |
+| `int`      | Int (int32)      |
+| `long`     | Long (int64)     |
+| `float`    | Float (float32)  |
+| `double`   | Double (float64) |
+| `boolean`  | Boolean          |
+| `char`     | Char             |
+| `ubyte`    | UByte (uint8)    |
+| `ushort`   | UShort (uint16)  |
+| `uint`     | UInt (uint32)    |
+| `ulong`    | ULong (uint64)   |
 
 ### § 2.1 Statements
 
@@ -399,6 +416,22 @@ _Token Definition:_
 {§2.2 Values} <BIT_SHIFT_RIGHT> {§2.2 Values}
 ```
 
+##### § Bitwise Unsigned Shift Right (ushr)
+
+A bitwise unsigned shift right is a sequence of two values that are separated by a `>>>` token.
+
+_Sample code:_
+
+```shake
+1 >>> 2
+```
+
+_Token Definition:_
+
+```tokens
+{§2.2 Values} <BIT_UNSIGNED_SHIFT_RIGHT> {§2.2 Values}
+```
+
 ##### § Unary Plus
 
 A unary minus is a sequence of two values that are separated by a `+` token.
@@ -593,36 +626,72 @@ _Token Definition:_
 
 ### § 2.4 Variable Declaration [Local]
 
+#### Var
+
 A variable declaration is a sequence of tokens that declare a variable. It consists of a type, a name and an optional value.
 
 _Sample code:_
 
 ```shake
-int a
-int b = 1
+var a: int
+var b = 1
 ```
 
 _Token Definition:_
 
 ```tokens
-{Type} <IDENTIFIER> (<ASSIGN> {§2.2 Values})?
+<KEYWORD_VAR> <IDENTIFIER> (<COLON> {Type})? (<ASSIGN> {§2.2 Values})?
+```
+
+#### Val
+
+A value declaration is a sequence of tokens that declare a value. It consists of a type, a name and a value.
+
+_Sample code:_
+
+```shake
+val a: int = 1
+```
+
+_Token Definition:_
+
+```tokens
+<KEYWORD_VAL> <IDENTIFIER> <COLON> {Type} <ASSIGN> {§2.2 Values}
 ```
 
 ### § 2.5 Field Declaration [Global]
+
+#### Var
 
 A field declaration is a sequence of tokens that declare a field. It consists of a type, a name and an optional value.
 
 _Sample code:_
 
 ```shake
-int a
-int b = 1
+var a: int
+var b = 1
 ```
 
 _Token Definition_
 
 ```tokens
-{Access} {Type} <IDENTIFIER> (<ASSIGN> {§2.2 Values})?
+{Access} <KEYWORD_VAR> <IDENTIFIER> (<COLON> {Type})? (<ASSIGN> {§2.2 Values})?
+```
+
+#### Val
+
+A value declaration is a sequence of tokens that declare a value. It consists of a type, a name and a value.
+
+_Sample code:_
+
+```shake
+val a: int = 1
+```
+
+_Token Definition:_
+
+```tokens
+{Access} <KEYWORD_VAL> <IDENTIFIER> <COLON> {Type} <ASSIGN> {§2.2 Values}
 ```
 
 ### § 2.6 Function Declaration
@@ -678,8 +747,42 @@ _Token Definition:_
 <KEYWORD_CLASS>
 <IDENTIFIER>
 <LCURLY>
-  ({§2.5 Field Declaration [Global]} | {§2.6 Function Declaration})*
+  ({§2.5 Field Declaration [Global]} | {§2.6 Function Declaration} | {§2.7 Class Declaration} | §2.7.1 Constructor Declaration)*
 <RCURLY>
+```
+
+#### § Constructor Declaration
+
+A constructor declaration is a sequence of tokens that declare a constructor. It consists of an optional access modifier,
+the constructor keyword, optionally a name, a list of parameters and a body.
+
+_Sample code:_
+
+```shake
+constructor() {
+  this.a = 1
+}
+
+constructor test(int a) {
+  this.a = a
+}
+```
+
+_Token Definition:_
+
+```tokens
+{Access}
+<KEYWORD_CONSTRUCTOR>
+<IDENTIFIER>?
+<LPAREN>
+  (
+    {§2.4 Variable Declaration [Local]}
+    (
+      <COMMA>
+      {§2.4 Variable Declaration [Local]}
+    )*
+  )?
+<RPAREN> {Block}
 ```
 
 ### § 2.8 Block
@@ -805,4 +908,36 @@ _Token Definition:_
 
 ```tokens
 <KEYWORD_CONTINUE>
+```
+
+#### § 2.15 Import Statement
+
+An import statement is a sequence of tokens that form an import statement. It consists of a list of identifiers.
+
+_Sample code:_
+
+```shake
+import io.github.shakelang.shake
+```
+
+_Token Definition:_
+
+```tokens
+<KEYWORD_IMPORT> <IDENTIFIER> (<DOT> <IDENTIFIER>)* (<DOT> <STAR>)?
+```
+
+#### § 2.16 Package Statement
+
+A package statement is a sequence of tokens that form a package statement. It consists of a list of identifiers.
+
+_Sample code:_
+
+```shake
+package io.github.shakelang.shake
+```
+
+_Token Definition:_
+
+```tokens
+<KEYWORD_PACKAGE> <IDENTIFIER> (<DOT> <IDENTIFIER>)*
 ```
