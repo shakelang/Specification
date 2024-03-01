@@ -18,7 +18,7 @@
 }
 
 /* Adjusting for dark mode with a deeper and more intense orange/red palette */
-[data-theme='dark'] {
+[data-theme="dark"] {
   --ifm-color-primary: #b33b1e; /* primary color in dark mode - dark red */
   --ifm-color-primary-dark: #9c2f19; /* darker shade in dark mode */
   --ifm-color-primary-darker: #852417; /* even darker shade in dark mode */
@@ -30,14 +30,14 @@
 }
 
 :root,
-html, 
+html,
 body {
-  overflow-x: hidden!important;
-  max-width: 100%!important;
-  width: 100%!important;
+  overflow-x: hidden !important;
+  max-width: 100% !important;
+  width: 100% !important;
 }
 
 .height-80px {
-  height: 80px!important;
-  width: auto!important;
+  height: 80px !important;
+  width: auto !important;
 }
