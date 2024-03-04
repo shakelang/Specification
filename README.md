@@ -1,3 +1,6 @@
+[![CI](https://github.com/shakelang/specification/actions/workflows/ci.yml/badge.svg)](https://github.com/shakelang/specification/actions/workflows/ci.yml)
+[![Deploy](https://github.com/shakelang/specification/actions/workflows/publish.yml/badge.svg)](https://github.com/shakelang/specification/actions/workflows/publish.yml)
+
 # Website
 
 This website is built using [Docusaurus](https://docusaurus.io/), a modern static website generator.
