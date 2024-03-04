@@ -192,10 +192,6 @@ const config: Config = {
               label: "Cookie Policy",
               href: "https://www.iubenda.com/privacy-policy/10891491/cookie-policy",
             },
-            {
-              label: "Terms and Conditions",
-              href: "https://www.iubenda.com/terms-and-conditions/10891491",
-            },
           ],
         },
       ],
