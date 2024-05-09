@@ -1,0 +1,780 @@
+---
+title: Data Interpretation
+position: 1
+---
+
+# Data Interpretation
+
+When we are working with data in form of bytes, we often need to interpret this data in a specific way.
+Two bytes can represent a short, four bytes can represent an integer, and so on.
+
+## Source Types
+
+Primitives extends the functionality of the following types to allow for easy interpretation of data:
+
+- `ByteArray`
+- `Array<Byte>`
+- `List<Byte>` >> _`MutableList<Byte>`_
+
+All operations are available for all three types.
+
+## Target Types
+
+All data interpretations support the following target types:
+
+<table>
+
+<thead>
+
+<tr>
+
+<th>Target Type</th>
+<th>Alias</th>
+<th>Size</th>
+<th>Sample</th>
+
+</tr>
+
+</thead>
+
+<tbody>
+
+  <tr>
+    <td> `Byte` </td>
+    <td> - </td>
+    <td> 1 </td>
+
+    <td>
+      ```kt
+      val bytes = byteArrayOf(0x01)
+      val byte = bytes.toByte() // >> 0x01
+      ```
+    </td>
+
+  </tr>
+
+  <tr>
+    <td>
+      `ShortBE`
+      <p style={{
+        "font-size": "10px"
+      }}>
+        _(short, big endian)_
+      </p>
+    </td>
+    <td> - </td>
+    <td> 2 </td>
+
+    <td>
+      ```kt
+      val bytes = byteArrayOf(0x01, 0x02)
+      val byte = bytes.toByte() // >> 0x0102
+      ```
+    </td>
+
+  </tr>
+
+  <tr>
+    <td> 
+      `ShortLE`
+      <p style={{
+        "font-size": "10px"
+      }}>
+        _(short, little endian)_
+      </p>
+    </td>
+    <td> - </td>
+    <td> 2 </td>
+
+    <td>
+      ```kt
+      val bytes = byteArrayOf(0x01, 0x02)
+      val byte = bytes.toByte() // >> 0x0201
+      ```
+    </td>
+
+  </tr>
+
+  <tr>
+    <td> 
+      `Short`
+      <p style={{
+        "font-size": "10px"
+      }}>
+        _(short, big endian)_
+      </p>
+    </td>
+    <td> - </td>
+    <td> 2 </td>
+
+    <td>
+      ```kt
+      val bytes = byteArrayOf(0x01, 0x02)
+      val short = bytes.toShort() // >> 0x0102
+      ```
+    </td>
+
+  </tr>
+
+  <tr>
+    <td> 
+      `IntBE`
+      <p style={{
+        "font-size": "10px"
+      }}>
+        _(integer, big endian)_
+      </p>
+    </td>
+    <td> - </td>
+    <td> 4 </td>
+
+    <td>
+      ```kt
+      val bytes = byteArrayOf(0x01, 0x02, 0x03, 0x04)
+      val short = bytes.toInt() // >> 0x01020304
+      ```
+    </td>
+
+  </tr>
+
+  <tr>
+    <td> 
+      `IntLE`
+      <p style={{
+        "font-size": "10px"
+      }}>
+        _(integer, little endian)_
+      </p>
+    </td>
+    <td> - </td>
+    <td> 4 </td>
+
+    <td>
+      ```kt
+      val bytes = byteArrayOf(0x01, 0x02, 0x03, 0x04)
+      val short = bytes.toInt() // >> 0x04030201
+      ```
+    </td>
+
+  </tr>
+
+  <tr>
+    <td> 
+      `Int`
+      <p style={{
+        "font-size": "10px"
+      }}>
+        _(integer, big endian)_
+      </p>
+    </td>
+    <td> - </td>
+    <td> 4 </td>
+
+    <td>
+      ```kt
+      val bytes = byteArrayOf(0x01, 0x02, 0x03, 0x04)
+      val short = bytes.toInt() // >> 0x01020304
+      ```
+    </td>
+
+  </tr>
+
+  <tr>
+    <td> 
+      `LongBE`
+      <p style={{
+        "font-size": "10px"
+      }}>
+        _(long, big endian)_
+      </p>
+    </td>
+    <td> - </td>
+    <td> 8 </td>
+
+    <td>
+      ```kt
+      val bytes = byteArrayOf(0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08)
+      val short = bytes.toLong() // >> 0x0102030405060708
+      ```
+    </td>
+
+  </tr>
+
+  <tr>
+    <td> 
+      `LongLE`
+      <p style={{
+        "font-size": "10px"
+      }}>
+        _(long, little endian)_
+      </p>
+    </td>
+    <td> - </td>
+    <td> 8 </td>
+
+    <td>
+      ```kt
+      val bytes = byteArrayOf(0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08)
+      val short = bytes.toLong() // >> 0x0807060504030201
+      ```
+    </td>
+
+  </tr>
+
+  <tr>
+    <td> 
+      `Long`
+      <p style={{
+        "font-size": "10px"
+      }}>
+        _(long, big endian)_
+      </p>
+    </td>
+    <td> - </td>
+    <td> 8 </td>
+
+    <td>
+      ```kt
+      val bytes = byteArrayOf(0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08)
+      val short = bytes.toLong() // >> 0x0102030405060708
+      ```
+    </td>
+
+  </tr>
+
+  <tr>
+    <td> 
+      `FloatBE`
+      <p style={{
+        "font-size": "10px"
+      }}>
+        _(float, big endian)_
+      </p>
+    </td>
+    <td> - </td>
+    <td> 4 </td>
+
+    <td>
+      ```kt
+      val bytes = byteArrayOf(0x3F, 0x80, 0x00, 0x00)
+      val short = bytes.toFloat() // >> 1.0
+      ```
+    </td>
+
+  </tr>
+
+  <tr>
+    <td> 
+      `FloatLE`
+      <p style={{
+        "font-size": "10px"
+      }}>
+        _(float, little endian)_
+      </p>
+    </td>
+    <td> - </td>
+    <td> 4 </td>
+
+    <td>
+      ```kt
+      val bytes = byteArrayOf(0x00, 0x00, 0x80, 0x3F)
+      val short = bytes.toFloat() // >> 1.0
+      ```
+    </td>
+
+  </tr>
+
+  <tr>
+    <td> 
+      `Float`
+      <p style={{
+        "font-size": "10px"
+      }}>
+        _(float, big endian)_
+      </p>
+    </td>
+    <td> - </td>
+    <td> 4 </td>
+
+    <td>
+      ```kt
+      val bytes = byteArrayOf(0x3F, 0x80, 0x00, 0x00)
+      val short = bytes.toFloat() // >> 1.0
+      ```
+    </td>
+
+  </tr>
+
+  <tr>
+    <td> 
+      `DoubleBE`
+      <p style={{
+        "font-size": "10px"
+      }}>
+        _(double, big endian)_
+      </p>
+    </td>
+    <td> - </td>
+    <td> 8 </td>
+
+    <td>
+      ```kt
+      val bytes = byteArrayOf(0x3F, 0xF0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00)
+      val short = bytes.toDouble() // >> 1.0
+      ```
+    </td>
+
+  </tr>
+
+  <tr>
+    <td> 
+      `DoubleLE`
+      <p style={{
+        "font-size": "10px"
+      }}>
+        _(double, little endian)_
+      </p>
+    </td>
+    <td> - </td>
+    <td> 8 </td>
+
+    <td>
+      ```kt
+      val bytes = byteArrayOf(0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF0, 0x3F)
+      val short = bytes.toDouble() // >> 1.0
+      ```
+    </td>
+
+  </tr>
+
+  <tr>
+    <td> 
+      `Double`
+      <p style={{
+        "font-size": "10px"
+      }}>
+        _(double, big endian)_
+      </p>
+    </td>
+    <td> - </td>
+    <td> 8 </td>
+
+    <td>
+      ```kt
+      val bytes = byteArrayOf(0x3F, 0xF0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00)
+      val short = bytes.toDouble() // >> 1.0
+      ```
+    </td>
+
+  </tr>
+
+  <tr>
+    <td> 
+      `UByte`
+    </td>
+    <td> `UnsignedByte` </td>
+    <td> 1 </td>
+
+    <td>
+      ```kt
+      val bytes = byteArrayOf(0x01)
+      val byte = bytes.toUByte() // >> 0x01
+      ```
+    </td>
+
+  </tr>
+
+  <tr>
+    <td> 
+      `UShortBE`
+      <p style={{
+        "font-size": "10px"
+      }}>
+        _(unsigned short, big endian)_
+      </p>
+    </td>
+    <td> `UnsignedShortBE` </td>
+    <td> 2 </td>
+
+    <td>
+      ```kt
+      val bytes = byteArrayOf(0x01, 0x02)
+      val byte = bytes.toUShort() // >> 0x0102
+      ```
+    </td>
+
+  </tr>
+
+  <tr>
+    <td> 
+      `UShortLE`
+      <p style={{
+        "font-size": "10px"
+      }}>
+        _(unsigned short, little endian)_
+      </p>
+    </td>
+    <td> `UnsignedShortLE` </td>
+    <td> 2 </td>
+
+    <td>
+      ```kt
+      val bytes = byteArrayOf(0x01, 0x02)
+      val byte = bytes.toUShort() // >> 0x0201
+      ```
+    </td>
+
+  </tr>
+
+  <tr>
+    <td> 
+      `UShort`
+      <p style={{
+        "font-size": "10px"
+      }}>
+        _(unsigned short, big endian)_
+      </p>
+    </td>
+    <td> `UnsignedShort` </td>
+    <td> 2 </td>
+
+    <td>
+      ```kt
+      val bytes = byteArrayOf(0x01, 0x02)
+      val short = bytes.toUShort() // >> 0x0102
+      ```
+    </td>
+
+  </tr>
+
+  <tr>
+    <td> 
+      `UIntBE`
+      <p style={{
+        "font-size": "10px"
+      }}>
+        _(unsigned integer, big endian)_
+      </p>
+    </td>
+    <td> `UnsignedIntBE` </td>
+    <td> 4 </td>
+
+    <td>
+      ```kt
+      val bytes = byteArrayOf(0x01, 0x02, 0x03, 0x04)
+      val short = bytes.toUInt() // >> 0x01020304
+      ```
+    </td>
+
+  </tr>
+
+  <tr>
+    <td> 
+      `UIntLE`
+      <p style={{
+        "font-size": "10px"
+      }}>
+        _(unsigned integer, little endian)_
+      </p>
+    </td>
+    <td> `UnsignedIntLE` </td>
+    <td> 4 </td>
+
+    <td>
+      ```kt
+      val bytes = byteArrayOf(0x01, 0x02, 0x03, 0x04)
+      val short = bytes.toUInt() // >> 0x04030201
+      ```
+    </td>
+
+  </tr>
+
+  <tr>
+    <td> 
+      `UInt`
+      <p style={{
+        "font-size": "10px"
+      }}>
+        _(unsigned integer, big endian)_
+      </p>
+    </td>
+    <td> `UnsignedInt` </td>
+    <td> 4 </td>
+
+    <td>
+      ```kt
+      val bytes = byteArrayOf(0x01, 0x02, 0x03, 0x04)
+      val short = bytes.toUInt() // >> 0x01020304
+      ```
+    </td>
+
+  </tr>
+
+  <tr>
+    <td> 
+      `ULongBE`
+      <p style={{
+        "font-size": "10px"
+      }}>
+        _(unsigned long, big endian)_
+      </p>
+    </td>
+    <td> `UnsignedLongBE` </td>
+    <td> 8 </td>
+
+    <td>
+      ```kt
+      val bytes = byteArrayOf(0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08)
+      val short = bytes.toULong() // >> 0x0102030405060708
+      ```
+    </td>
+
+  </tr>
+
+  <tr>
+    <td> 
+      `ULongLE`
+      <p style={{
+        "font-size": "10px"
+      }}>
+        _(unsigned long, little endian)_
+      </p>
+    </td>
+    <td> `UnsignedLongLE` </td>
+    <td> 8 </td>
+
+    <td>
+      ```kt
+      val bytes = byteArrayOf(0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08)
+      val short = bytes.toULong() // >> 0x0807060504030201
+      ```
+    </td>
+
+  </tr>
+
+  <tr>
+    <td> 
+      `ULong`
+      <p style={{
+        "font-size": "10px"
+      }}>
+        _(unsigned long, big endian)_
+      </p>
+    </td>
+    <td> `UnsignedLong` </td>
+    <td> 8 </td>
+
+    <td>
+      ```kt
+      val bytes = byteArrayOf(0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08)
+      val short = bytes.toULong() // >> 0x0102030405060708
+      ```
+    </td>
+
+  </tr>
+
+</tbody>
+
+</table>
+
+## Operations
+
+### to
+
+The to function converts the data to a type. This function needs the Array/ByteArray/List to be of the correct size.
+
+```kt
+import com.shakelang.util.primitives.bytes.toShort
+
+val bytes = byteArrayOf(0x01, 0x02)
+val short = bytes.toShort()
+```
+
+[Works with all target types](#target-types)
+
+<details>
+  <summary>See all functions</summary>
+
+- `toByte()` - Converts the data to a `Byte`: `[0x01]` >> `0x01`
+- `toShortBE()` - Converts the data to a `Short` _(big endian)_: `[0x01, 0x02]` >> `0x0102`
+- `toShortLE()` - Converts the data to a `Short` _(little endian)_: `[0x01, 0x02]` >> `0x0201`
+- `toShort()` - Converts the data to a `Short` _(big endian)_: `[0x01, 0x02]` >> `0x0102`
+- `toIntBE()` - Converts the data to a `Int` _(big endian)_: `[0x01, 0x02, 0x03, 0x04]` >> `0x01020304`
+- `toIntLE()` - Converts the data to a `Int` _(little endian)_: `[0x01, 0x02, 0x03, 0x04]` >> `0x04030201`
+- `toInt()` - Converts the data to a `Int` _(big endian)_: `[0x01, 0x02, 0x03, 0x04]` >> `0x01020304`
+- `toLongBE()` - Converts the data to a `Long` _(big endian)_: `[0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08]` >> `0x0102030405060708`
+- `toLongLE()` - Converts the data to a `Long` _(little endian)_: `[0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08]` >> `0x0807060504030201`
+- `toLong()` - Converts the data to a `Long` _(big endian)_: `[0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08]` >> `0x0102030405060708`
+- `toFloatBE()` - Converts the data to a `Float` _(big endian)_: `[0x3F, 0x80, 0x00, 0x00]` >> `1.0`
+- `toFloatLE()` - Converts the data to a `Float` _(little endian)_: `[0x00, 0x00, 0x80, 0x3F]` >> `1.0`
+- `toFloat()` - Converts the data to a `Float` _(big endian)_: `[0x3F, 0x80, 0x00, 0x00]` >> `1.0`
+- `toDoubleBE()` - Converts the data to a `Double` _(big endian)_: `[0x3F, 0xF0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]` >> `1.0`
+- `toDoubleLE()` - Converts the data to a `Double` _(little endian)_: `[0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF0, 0x3F]` >> `1.0`
+- `toDouble()` - Converts the data to a `Double` _(big endian)_: `[0x3F, 0xF0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]` >> `1.0`
+- `toUByte()` - Converts the data to a `UByte`: `[0x01]` >> `0x01`
+- `toUShortBE()` - Converts the data to a `UShort` _(big endian)_: `[0x01, 0x02]` >> `0x0102`
+- `toUShortLE()` - Converts the data to a `UShort` _(little endian)_: `[0x01, 0x02]` >> `0x0201`
+- `toUShort()` - Converts the data to a `UShort` _(big endian)_: `[0x01, 0x02]` >> `0x0102`
+- `toUIntBE()` - Converts the data to a `UInt` _(big endian)_: `[0x01, 0x02, 0x03, 0x04]` >> `0x01020304`
+- `toUIntLE()` - Converts the data to a `UInt` _(little endian)_: `[0x01, 0x02, 0x03, 0x04]` >> `0x04030201`
+- `toUInt()` - Converts the data to a `UInt` _(big endian)_: `[0x01, 0x02, 0x03, 0x04]` >> `0x01020304`
+- `toULongBE()` - Converts the data to a `ULong` _(big endian)_: `[0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08]` >> `0x0102030405060708`
+- `toULongLE()` - Converts the data to a `ULong` _(little endian)_: `[0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08]` >> `0x0807060504030201`
+- `toULong()` - Converts the data to a `ULong` _(big endian)_: `[0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08]` >> `0x0102030405060708`
+
+</details>
+
+### get
+
+The get function gets a value from the data at a specific index.
+
+```kt
+import com.shakelang.util.primitives.bytes.getShort
+
+val bytes = byteArrayOf(0x01, 0x02)
+val short = bytes.getShort(0)
+```
+
+```kt
+import com.shakelang.util.primitives.bytes.getShort
+
+val bytes = byteArrayOf(0x01, 0x02, 0x03, 0x04)
+
+val short1 = bytes.getShort(1) // >> 0x0203
+val short2 = bytes.getShort(0) // >> 0x0102
+```
+
+[Works with all target types](#target-types)
+
+<details>
+  <summary>See all functions</summary>
+
+- `getByte(index: Int)` - Gets a `Byte` at the index: `[0x01]` >> `0x01`
+- `getShortBE(index: Int)` - Gets a `Short` _(big endian)_ at the index: `[0x01, 0x02]` >> `0x0102`
+- `getShortLE(index: Int)` - Gets a `Short` _(little endian)_ at the index: `[0x01, 0x02]` >> `0x0201`
+- `getShort(index: Int)` - Gets a `Short` _(big endian)_ at the index: `[0x01, 0x02]` >> `0x0102`
+- `getIntBE(index: Int)` - Gets a `Int` _(big endian)_ at the index: `[0x01, 0x02, 0x03, 0x04]` >> `0x01020304`
+- `getIntLE(index: Int)` - Gets a `Int` _(little endian)_ at the index: `[0x01, 0x02, 0x03, 0x04]` >> `0x04030201`
+- `getInt(index: Int)` - Gets a `Int` _(big endian)_ at the index: `[0x01, 0x02, 0x03, 0x04]` >> `0x01020304`
+- `getLongBE(index: Int)` - Gets a `Long` _(big endian)_ at the index: `[0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08]` >> `0x0102030405060708`
+- `getLongLE(index: Int)` - Gets a `Long` _(little endian)_ at the index: `[0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08]` >> `0x0807060504030201`
+- `getLong(index: Int)` - Gets a `Long` _(big endian)_ at the index: `[0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08]` >> `0x0102030405060708`
+- `getFloatBE(index: Int)` - Gets a `Float` _(big endian)_ at the index: `[0x3F, 0x80, 0x00, 0x00]` >> `1.0`
+- `getFloatLE(index: Int)` - Gets a `Float` _(little endian)_ at the index: `[0x00, 0x00, 0x80, 0x3F]` >> `1.0`
+- `getFloat(index: Int)` - Gets a `Float` _(big endian)_ at the index: `[0x3F, 0x80, 0x00, 0x00]` >> `1.0`
+- `getDoubleBE(index: Int)` - Gets a `Double` _(big endian)_ at the index: `[0x3F, 0xF0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]` >> `1.0`
+- `getDoubleLE(index: Int)` - Gets a `Double` _(little endian)_ at the index: `[0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF0, 0x3F]` >> `1.0`
+- `getDouble(index: Int)` - Gets a `Double` _(big endian)_ at the index: `[0x3F, 0xF0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]` >> `1.0`
+- `getUByte(index: Int)` - Gets a `UByte` at the index: `[0x01]` >> `0x01`
+- `getUShortBE(index: Int)` - Gets a `UShort` _(big endian)_ at the index: `[0x01, 0x02]` >> `0x0102`
+- `getUShortLE(index: Int)` - Gets a `UShort` _(little endian)_ at the index: `[0x01, 0x02]` >> `0x0201`
+- `getUShort(index: Int)` - Gets a `UShort` _(big endian)_ at the index: `[0x01, 0x02]` >> `0x0102`
+- `getUIntBE(index: Int)` - Gets a `UInt` _(big endian)_ at the index: `[0x01, 0x02, 0x03, 0x04]` >> `0x01020304`
+- `getUIntLE(index: Int)` - Gets a `UInt` _(little endian)_ at the index: `[0x01, 0x02, 0x03, 0x04]` >> `0x04030201`
+- `getUInt(index: Int)` - Gets a `UInt` _(big endian)_ at the index: `[0x01, 0x02, 0x03, 0x04]` >> `0x01020304`
+- `getULongBE(index: Int)` - Gets a `ULong` _(big endian)_ at the index: `[0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08]` >> `0x0102030405060708`
+- `getULongLE(index: Int)` - Gets a `ULong` _(little endian)_ at the index: `[0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08]` >> `0x0807060504030201`
+- `getULong(index: Int)` - Gets a `ULong` _(big endian)_ at the index: `[0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08]` >> `0x0102030405060708`
+
+</details>
+
+### set
+
+The set function sets a value at a specific index.
+This function is not available on `List<Byte>` as it is immutable, but it is available on `MutableList<Byte>`.
+
+```kt
+import com.shakelang.util.primitives.bytes.setShort
+
+val bytes = byteArrayOf(0x01, 0x02)
+bytes.setShort(0, 0x0304)
+```
+
+```kt
+import com.shakelang.util.primitives.bytes.setShort
+
+val bytes = byteArrayOf(0x01, 0x02, 0x03, 0x04)
+
+bytes.setShort(1, 0x0506) // >> [0x01, 0x05, 0x06, 0x04]
+```
+
+[Works with all target types](#target-types)
+
+<details>
+  <summary>See all functions</summary>
+
+- `setByte(index: Int, value: Byte)` - Sets a `Byte` at the index: `[0x01]` >> `0x01`
+- `setShortBE(index: Int, value: Short)` - Sets a `Short` _(big endian)_ at the index: `[0x01, 0x02]` >> `0x0102`
+- `setShortLE(index: Int, value: Short)` - Sets a `Short` _(little endian)_ at the index: `[0x01, 0x02]` >> `0x0201`
+- `setShort(index: Int, value: Short)` - Sets a `Short` _(big endian)_ at the index: `[0x01, 0x02]` >> `0x0102`
+- `setIntBE(index: Int, value: Int)` - Sets a `Int` _(big endian)_ at the index: `[0x01, 0x02, 0x03, 0x04]` >> `0x01020304`
+- `setIntLE(index: Int, value: Int)` - Sets a `Int` _(little endian)_ at the index: `[0x01, 0x02, 0x03, 0x04]` >> `0x04030201`
+- `setInt(index: Int, value: Int)` - Sets a `Int` _(big endian)_ at the index: `[0x01, 0x02, 0x03, 0x04]` >> `0x01020304`
+- `setLongBE(index: Int, value: Long)` - Sets a `Long` _(big endian)_ at the index: `[0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08]` >> `0x0102030405060708`
+- `setLongLE(index: Int, value: Long)` - Sets a `Long` _(little endian)_ at the index: `[0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08]` >> `0x0807060504030201`
+- `setLong(index: Int, value: Long)` - Sets a `Long` _(big endian)_ at the index: `[0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08]` >> `0x0102030405060708`
+- `setFloatBE(index: Int, value: Float)` - Sets a `Float` _(big endian)_ at the index: `[0x3F, 0x80, 0x00, 0x00]` >> `1.0`
+- `setFloatLE(index: Int, value: Float)` - Sets a `Float` _(little endian)_ at the index: `[0x00, 0x00, 0x80, 0x3F]` >> `1.0`
+- `setFloat(index: Int, value: Float)` - Sets a `Float` _(big endian)_ at the index: `[0x3F, 0x80, 0x00, 0x00]` >> `1.0`
+- `setDoubleBE(index: Int, value: Double)` - Sets a `Double` _(big endian)_ at the index: `[0x3F, 0xF0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]` >> `1.0`
+- `setDoubleLE(index: Int, value: Double)` - Sets a `Double` _(little endian)_ at the index: `[0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF0, 0x3F]` >> `1.0`
+- `setDouble(index: Int, value: Double)` - Sets a `Double` _(big endian)_ at the index: `[0x3F, 0xF0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]` >> `1.0`
+- `setUByte(index: Int, value: UByte)` - Sets a `UByte` at the index: `[0x01]` >> `0x01`
+- `setUShortBE(index: Int, value: UShort)` - Sets a `UShort` _(big endian)_ at the index: `[0x01, 0x02]` >> `0x0102`
+- `setUShortLE(index: Int, value: UShort)` - Sets a `UShort` _(little endian)_ at the index: `[0x01, 0x02]` >> `0x0201`
+- `setUShort(index: Int, value: UShort)` - Sets a `UShort` _(big endian)_ at the index: `[0x01, 0x02]` >> `0x0102`
+- `setUIntBE(index: Int, value: UInt)` - Sets a `UInt` _(big endian)_ at the index: `[0x01, 0x02, 0x03, 0x04]` >> `0x01020304`
+- `setUIntLE(index: Int, value: UInt)` - Sets a `UInt` _(little endian)_ at the index: `[0x01, 0x02, 0x03, 0x04]` >> `0x04030201`
+- `setUInt(index: Int, value: UInt)` - Sets a `UInt` _(big endian)_ at the index: `[0x01, 0x02, 0x03, 0x04]` >> `0x01020304`
+- `setULongBE(index: Int, value: ULong)` - Sets a `ULong` _(big endian)_ at the index: `[0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08]` >> `0x0102030405060708`
+- `setULongLE(index: Int, value: ULong)` - Sets a `ULong` _(little endian)_ at the index: `[0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08]` >> `0x0807060504030201`
+- `setULong(index: Int, value: ULong)` - Sets a `ULong` _(big endian)_ at the index: `[0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08]` >> `0x0102030405060708`
+
+</details>
+
+### append
+
+This only works on `MutableList<Byte>` (array size is fixed, `List<Byte>` is immutable).
+
+The append function appends a value to the end of the list.
+
+```kt
+import com.shakelang.util.primitives.bytes.appendShort
+
+val bytes = mutableListOf<Byte>(0x01, 0x02)
+bytes.appendShort(0x0304) // >> [0x01, 0x02, 0x03, 0x04]
+```
+
+[Works with all target types](#target-types)
+
+<details>
+  <summary>See all functions</summary>
+
+- `appendByte(value: Byte)` - Appends a `Byte` to the list: `[0x01]` >> `0x01`
+- `appendShortBE(value: Short)` - Appends a `Short` _(big endian)_ to the list: `[0x01, 0x02]` >> `0x0102`
+- `appendShortLE(value: Short)` - Appends a `Short` _(little endian)_ to the list: `[0x01, 0x02]` >> `0x0201`
+- `appendShort(value: Short)` - Appends a `Short` _(big endian)_ to the list: `[0x01, 0x02]` >> `0x0102`
+- `appendIntBE(value: Int)` - Appends a `Int` _(big endian)_ to the list: `[0x01, 0x02, 0x03, 0x04]` >> `0x01020304`
+- `appendIntLE(value: Int)` - Appends a `Int` _(little endian)_ to the list: `[0x01, 0x02, 0x03, 0x04]` >> `0x04030201`
+- `appendInt(value: Int)` - Appends a `Int` _(big endian)_ to the list: `[0x01, 0x02, 0x03, 0x04]` >> `0x01020304`
+- `appendLongBE(value: Long)` - Appends a `Long` _(big endian)_ to the list: `[0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08]` >> `0x0102030405060708`
+- `appendLongLE(value: Long)` - Appends a `Long` _(little endian)_ to the list: `[0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08]` >> `0x0807060504030201`
+- `appendLong(value: Long)` - Appends a `Long` _(big endian)_ to the list: `[0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08]` >> `0x0102030405060708`
+- `appendFloatBE(value: Float)` - Appends a `Float` _(big endian)_ to the list: `[0x3F, 0x80, 0x00, 0x00]` >> `1.0`
+- `appendFloatLE(value: Float)` - Appends a `Float` _(little endian)_ to the list: `[0x00, 0x00, 0x80, 0x3F]` >> `1.0`
+- `appendFloat(value: Float)` - Appends a `Float` _(big endian)_ to the list: `[0x3F, 0x80, 0x00, 0x00]` >> `1.0`
+- `appendDoubleBE(value: Double)` - Appends a `Double` _(big endian)_ to the list: `[0x3F, 0xF0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]` >> `1.0`
+- `appendDoubleLE(value: Double)` - Appends a `Double` _(little endian)_ to the list: `[0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0xF0, 0x3F]` >> `1.0`
+- `appendDouble(value: Double)` - Appends a `Double` _(big endian)_ to the list: `[0x3F, 0xF0, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00]` >> `1.0`
+- `appendUByte(value: UByte)` - Appends a `UByte` to the list: `[0x01]` >> `0x01`
+- `appendUShortBE(value: UShort)` - Appends a `UShort` _(big endian)_ to the list: `[0x01, 0x02]` >> `0x0102`
+- `appendUShortLE(value: UShort)` - Appends a `UShort` _(little endian)_ to the list: `[0x01, 0x02]` >> `0x0201`
+- `appendUShort(value: UShort)` - Appends a `UShort` _(big endian)_ to the list: `[0x01, 0x02]` >> `0x0102`
+- `appendUIntBE(value: UInt)` - Appends a `UInt` _(big endian)_ to the list: `[0x01, 0x02, 0x03, 0x04]` >> `0x01020304`
+- `appendUIntLE(value: UInt)` - Appends a `UInt` _(little endian)_ to the list: `[0x01, 0x02, 0x03, 0x04]` >> `0x04030201`
+- `appendUInt(value: UInt)` - Appends a `UInt` _(big endian)_ to the list: `[0x01, 0x02, 0x03, 0x04]` >> `0x01020304`
+- `appendULongBE(value: ULong)` - Appends a `ULong` _(big endian)_ to the list: `[0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08]` >> `0x0102030405060708`
+- `appendULongLE(value: ULong)` - Appends a `ULong` _(little endian)_ to the list: `[0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08]` >> `0x0807060504030201`
+- `appendULong(value: ULong)` - Appends a `ULong` _(big endian)_ to the list: `[0x01, 0x02, 0x03, 0x04, 0x05, 0x06, 0x07, 0x08]` >> `0x0102030405060708`
+
+</details>

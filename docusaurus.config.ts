@@ -25,6 +25,12 @@ const packages: readonly PackageEntry[] = [
     path: "specification/packages/shason",
     url: "packages/shason",
   },
+  {
+    label: "Primitives",
+    id: "packages-primitives",
+    path: "specification/packages/primitives",
+    url: "packages/primitives",
+  },
 ];
 
 const docs: readonly DocEntry[] = [
@@ -46,7 +52,7 @@ const docs: readonly DocEntry[] = [
         id: e.id,
         path: e.path,
         url: e.url,
-      }) satisfies DocEntry,
+      }) satisfies DocEntry
   ),
 ];
 
@@ -114,7 +120,7 @@ const config: Config = {
                 ({
                   to: `/${e.url}`,
                   label: e.label,
-                }) satisfies NavbarItem,
+                }) satisfies NavbarItem
             ),
           ],
         },
@@ -126,7 +132,7 @@ const config: Config = {
                 to: `/${doc.url}${doc.index ? `/${doc.index}` : ""}`,
                 label: doc.label,
                 position: "left",
-              }) satisfies NavbarItem,
+              }) satisfies NavbarItem
           ),
         {
           href: "https://github.com/shakelang/shake",
