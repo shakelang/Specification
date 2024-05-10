@@ -1,0 +1,66 @@
+---
+sidebar_position: 1
+title: Input Streams
+---
+
+# Input Streams
+
+Input streams are used to read data from a source. For example, you could stream data from a file, a network
+connection, or a byte array. CommonIO provides a common interface for reading data from different sources.
+
+## The `InputStream` class
+
+The `InputStream` class is the an abstract class that represents an input stream of bytes.
+
+```kotlin
+expect class InputStream() {
+
+    abstract fun read(): Int
+
+    open fun available(): Int
+    open fun close()
+    open fun mark(readlimit: Int)
+    open fun markSupported(): Boolean
+    open fun read(b: ByteArray): Int
+    open fun read(b: ByteArray, off: Int, len: Int): Int
+    open fun reset()
+    open fun skip(n: Long): Long
+    open fun readNBytes(n: Int): ByteArray
+    open fun readNBytes(b: ByteArray, off: Int, len: Int): Int
+}
+```
+
+(This class mirrors the `java.io.InputStream` class. Every `java.io.InputStream` can be used as
+`com.shakelang.util.io.streaming.input.bytes.InputStream` and vice versa.)
+
+## Implementations
+
+CommonIO provides several implementations of the `InputStream` class:
+
+- `BufferedInputStream` - A buffered input stream that reads data from an underlying input stream.
+- `ByteArrayInputStream` - An input stream that reads data from a byte array.
+- `CountingInputStream` - An input stream that counts the number of bytes read.
+- `DataInputStream` - An input stream that expands the data reading capabilities of another input stream.
+
+## Extension Functions
+
+CommonIO provides several extension functions to help you get started in a more functional way:
+
+- `InputStream.bufferedStream` - Returns a buffered input stream that reads data from this input stream.
+- `InputStream.asBufferedStream()` - Returns a buffered input stream that reads data from this input stream.
+- `InputStream.countingStream` - Returns an input stream that counts the number of bytes read.
+- `InputStream.asCountingStream()` - Returns an input stream that counts the number of bytes read.
+- `InputStream.dataStream` - Returns an input stream that expands the data reading capabilities of this input stream.
+- `InputStream.asDataStream()` - Returns an input stream that expands the data reading capabilities of this input stream.
+- `ByteArray.inputStream()` - Returns an input stream that reads data from this byte array.
+- `ByteArray.bufferedStream()` - Returns a buffered input stream that reads data from this byte array.
+- `ByteArray.countingStream()` - Returns an input stream that counts the number of bytes read from this byte array.
+- `ByteArray.dataStream()` - Returns an input stream that expands the data reading capabilities of this byte array.
+- `List<Byte>.inputStream()` - Returns an input stream that reads data from this list of bytes.
+- `List<Byte>.bufferedStream()` - Returns a buffered input stream that reads data from this list of bytes.
+- `List<Byte>.countingStream()` - Returns an input stream that counts the number of bytes read from this list of bytes.
+- `List<Byte>.dataStream()` - Returns an input stream that expands the data reading capabilities of this list of bytes.
+- `CharSequence.byteInputStream()` - Returns an input stream that reads data from this character sequence.
+- `CharSequence.byteBufferedStream()` - Returns a buffered input stream that reads data from this character sequence.
+- `CharSequence.byteCountingStream()` - Returns an input stream that counts the number of bytes read from this character sequence.
+- `CharSequence.byteDataStream()` - Returns an input stream that expands the data reading capabilities of this character sequence.

@@ -1,0 +1,55 @@
+---
+sidebar_position: 3
+title: DataInputStream
+---
+
+# DataInputStream
+
+An input stream that expands the data reading capabilities of another input stream.
+
+## The `DataInputStream` class
+
+The `DataInputStream` class is a subclass of `InputStream` that reads data from an underlying input stream and provides additional methods for reading primitive data types.
+
+```kotlin
+val inputStream: InputStream = ...
+val dataStream = inputStream.dataStream
+```
+
+It has all the methods of the `InputStream` class.
+
+## Additional methods
+
+The `DataInputStream` class provides additional methods for reading primitive data types:
+
+- `readByte()`: Reads a signed 8-bit integer
+- `readShort()`: Reads a signed 16-bit integer in big-endian byte order.
+- `readShortBE()`: Reads a signed 16-bit integer in big-endian byte order.
+- `readShortLE()`: Reads a signed 16-bit integer in little-endian byte order.
+- `readInt()`: Reads a signed 32-bit integer in big-endian byte order.
+- `readIntBE()`: Reads a signed 32-bit integer in big-endian byte order.
+- `readIntLE()`: Reads a signed 32-bit integer in little-endian byte order.
+- `readLong()`: Reads a signed 64-bit integer in big-endian byte order.
+- `readLongBE()`: Reads a signed 64-bit integer in big-endian byte order.
+- `readLongLE()`: Reads a signed 64-bit integer in little-endian byte order.
+- `readFloat()`: Reads a 32-bit floating point number in big-endian byte order.
+- `readFloatBE()`: Reads a 32-bit floating point number in big-endian byte order.
+- `readFloatLE()`: Reads a 32-bit floating point number in little-endian byte order.
+- `readDouble()`: Reads a 64-bit floating point number in big-endian byte order.
+- `readDoubleBE()`: Reads a 64-bit floating point number in big-endian byte order.
+- `readDoubleLE()`: Reads a 64-bit floating point number in little-endian byte order.
+- `readUTF(amount: Int)`: Reads a UTF-8 encoded string of the specified length.
+- `readUTF()`: Reads a UTF-8 encoded string (length is prefixed as a unsigned 16-bit integer (big-endian) (ushort)).
+- `readUTF8(amount: Int)`: Reads a UTF-8 encoded string of the specified length.
+- `readUTF8()`: Reads a UTF-8 encoded string (length is prefixed as a unsigned 16-bit integer (big-endian) (ushort)).
+- `readUTF16(amount: Int)`: Reads a UTF-16 encoded string of the specified length.
+- `readUTF16()`: Reads a UTF-16 encoded string (length is prefixed as a unsigned 16-bit integer (big-endian) (ushort)).
+
+## Example
+
+```kotlin
+val inputStream = ByteArrayInputStream(byteArrayOf(0x01, 0x02, 0x03, 0x04, 0x00, 0x0B, 0x68, 0x65, 0x6c, 0x6c, 0x6f, 0x20, 0x77, 0x6f, 0x72, 0x6c, 0x64))
+val dataStream = inputStream.dataStream
+val magic = dataStream.readInt() // 0x01020304
+val string = dataStream.readUTF() // "hello world"
+```

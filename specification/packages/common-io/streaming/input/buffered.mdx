@@ -1,0 +1,44 @@
+---
+sidebar_position: 2
+title: BufferedInputStream
+---
+
+# BufferedInputStream
+
+A buffered input stream that reads data from an underlying input stream. Instead of reading one byte at a time
+from the underlying input stream, `BufferedInputStream` reads a larger block of bytes into an internal buffer.
+This can improve the performance of reading data from the underlying input stream.
+
+## The `BufferedInputStream` class
+
+The `BufferedInputStream` class is a subclass of `InputStream` that reads data from an underlying input stream.
+It provides a buffer for reading data from the underlying input stream.
+
+```kotlin
+val inputStream: InputStream = ...
+val bufferedStream = inputStream.bufferedStream
+```
+
+It has all the methods of the `InputStream` class.
+
+The default buffer size is 8192 bytes. You can modify the size of the buffer by passing the buffer size as a
+parameter to the constructor:
+
+```kotlin
+val inputStream: InputStream = ...
+val bufferedStream = BufferedInputStream(inputStream, bufferSize = 1024)
+```
+
+The buffer size must be greater than zero. It is a good practice to use a buffer size that is a power of 2.
+
+To choose an appropriate buffer size, you can experiment with different buffer sizes and measure the performance.
+Generally speaking, a larger buffer size can improve the performance of reading data from the underlying input,
+while using more memory. A smaller buffer size can reduce memory usage but will result in more frequent reads and
+therefore slower performance. The default buffer size of 8192 (8 KB) is a good starting point.
+
+## When to use `BufferedInputStream`
+
+The real benefit of `BufferedInputStream` is that it reads data from the underlying input stream in larger blocks.
+This **can** improve the performance of reading data from the underlying input stream. It is recommended to use
+`BufferedInputStream` when you read data from sources with high latency, such as network connections or files.
+But if you read data from a byte array or a `ByteArrayInputStream`, you don't need to use `BufferedInputStream`.

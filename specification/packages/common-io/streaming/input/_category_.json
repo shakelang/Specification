@@ -1,0 +1,8 @@
+{
+  "label": "InputStream",
+  "position": 2,
+  "link": {
+    "type": "generated-index",
+    "description": "The InputStream class and its implementations provide a way to read data from a stream."
+  }
+}

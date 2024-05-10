@@ -1,0 +1,27 @@
+---
+sidebar_position: 3
+title: CountingInputStream
+---
+
+# CountingInputStream
+
+An input stream that counts the number of bytes read from an underlying input stream.
+
+## The `CountingInputStream` class
+
+The `CountingInputStream` class is a subclass of `InputStream` that reads data from an underlying input stream and counts the number of bytes read.
+
+```kotlin
+val inputStream: InputStream = ...
+val countingStream = inputStream.countingStream
+```
+
+It has all the methods of the `InputStream` class.
+
+The `CountingInputStream` class provides a method to get the number of bytes read:
+
+```kotlin
+val inputStream: InputStream = ...
+val countingStream = inputStream.countingStream
+val bytesRead = countingStream.count
+```
