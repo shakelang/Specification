@@ -1,0 +1,118 @@
+---
+sidebar_position: 3
+title: Working with Bits
+---
+
+# Working with Bits
+
+## Introduction
+
+Every primitive data-type is a collection of bits. The `Bits` module provides a set of functions to work with bits.
+
+| Datatype | `Bits` |
+| -------- | ------ |
+| `Byte`   | 8      |
+| `Short`  | 16     |
+| `Int`    | 32     |
+| `Long`   | 64     |
+| `Float`  | 32     |
+| `Double` | 64     |
+| `UByte`  | 8      |
+| `UShort` | 16     |
+| `UInt`   | 32     |
+| `ULong`  | 64     |
+| `Char`   | 16     |
+
+_**Note**: This table only shows data-types supported by `Bits` module. `Boolean` is not supported,
+as booleans are implemented as one byte, but acts as a single bit and you can't modify individual bits._
+
+## Getting Access
+
+### bit&#123;n&#125;
+
+You can access the nth bit of a value using the `bit{n}` value, it returns the value of the nth bit.
+This provides a dedicated property for each bit of each data-type and is extremely fast.
+
+```kotlin
+import com.shakelang.util.primitives.bits.*
+val value: Int = 1
+val bit0 = value.bit0 // true (1)
+val bit1 = value.bit1 // false (0)
+```
+
+<details>
+
+<summary>View all bit properties</summary>
+
+- Byte.bit&#123;0-7&#125; e.g. `value.bit0`, `value.bit1`, ..., `value.bit7`
+- Short.bit&#123;0-15&#125; e.g. `value.bit0`, `value.bit1`, ..., `value.bit15`
+- Int.bit&#123;0-31&#125; e.g. `value.bit0`, `value.bit1`, ..., `value.bit31`
+- Long.bit&#123;0-63&#125; e.g. `value.bit0`, `value.bit1`, ..., `value.bit63`
+- Float.bit&#123;0-31&#125; e.g. `value.bit0`, `value.bit1`, ..., `value.bit31`
+- Double.bit&#123;0-63&#125; e.g. `value.bit0`, `value.bit1`, ..., `value.bit63`
+- UByte.bit&#123;0-7&#125; e.g. `value.bit0`, `value.bit1`, ..., `value.bit7`
+- UShort.bit&#123;0-15&#125; e.g. `value.bit0`, `value.bit1`, ..., `value.bit15`
+- UInt.bit&#123;0-31&#125; e.g. `value.bit0`, `value.bit1`, ..., `value.bit31`
+- ULong.bit&#123;0-63&#125; e.g. `value.bit0`, `value.bit1`, ..., `value.bit63`
+- Char.bit&#123;0-15&#125; e.g. `value.bit0`, `value.bit1`, ..., `value.bit15`
+
+</details>
+
+### bit(n)
+
+You can access the nth bit of a value using the `bit(n)` function, it returns the value of the nth bit.
+This provides a function, which is slower than the property, but allows you to access bits dynamically.
+
+```kotlin
+import com.shakelang.util.primitives.bits.*
+val value: Int = 1
+val bit0 = value.bit(0) // true (1)
+val bit1 = value.bit(1) // false (0)
+```
+
+## Modifying Bits
+
+_Primitive data-types are immutable, so you can't change the value of a bit directly. You can create a new value with the bit changed.
+Therefor, the `Bits` module provides a module to `modify` the value of a bit and return the changed value.
+For this reason the methods are prefixed with `with` instead of `set`._
+
+### withBit&#123;n&#125;(value)
+
+You can set the nth bit of a value using the `setBit{n}(value)` function, it sets the nth bit to the given value.
+This provides a dedicated function for each bit of each data-type and is extremely fast.
+
+```kotlin
+import com.shakelang.util.primitives.bits.*
+var value: Int = 1
+value = value.setBit0(false) // 0
+value = value.setBit1(true) // 2
+```
+
+<details>
+
+<summary>View all setBit functions</summary>
+
+- Byte.setBit&#123;0-7&#125;(value) e.g. `value.setBit0(true)`, `value.setBit1(false)`, ..., `value.setBit7(true)`
+- Short.setBit&#123;0-15&#125;(value) e.g. `value.setBit0(true)`, `value.setBit1(false)`, ..., `value.setBit15(true)`
+- Int.setBit&#123;0-31&#125;(value) e.g. `value.setBit0(true)`, `value.setBit1(false)`, ..., `value.setBit31(true)`
+- Long.setBit&#123;0-63&#125;(value) e.g. `value.setBit0(true)`, `value.setBit1(false)`, ..., `value.setBit63(true)`
+- Float.setBit&#123;0-31&#125;(value) e.g. `value.setBit0(true)`, `value.setBit1(false)`, ..., `value.setBit31(true)`
+- Double.setBit&#123;0-63&#125;(value) e.g. `value.setBit0(true)`, `value.setBit1(false)`, ..., `value.setBit63(true)`
+- UByte.setBit&#123;0-7&#125;(value) e.g. `value.setBit0(true)`, `value.setBit1(false)`, ..., `value.setBit7(true)`
+- UShort.setBit&#123;0-15&#125;(value) e.g. `value.setBit0(true)`, `value.setBit1(false)`, ..., `value.setBit15(true)`
+- UInt.setBit&#123;0-31&#125;(value) e.g. `value.setBit0(true)`, `value.setBit1(false)`, ..., `value.setBit31(true)`
+- ULong.setBit&#123;0-63&#125;(value) e.g. `value.setBit0(true)`, `value.setBit1(false)`, ..., `value.setBit63(true)`
+- Char.setBit&#123;0-15&#125;(value) e.g. `value.setBit0(true)`, `value.setBit1(false)`, ..., `value.setBit15(true)`
+
+</details>
+
+### setBit(n, value)
+
+You can set the nth bit of a value using the `setBit(n, value)` function, it sets the nth bit to the given value.
+
+```kotlin
+import com.shakelang.util.primitives.bits.*
+var value: Int = 1
+value = value.setBit(0, false) // 0
+value = value.setBit(1, true) // 2
+```
