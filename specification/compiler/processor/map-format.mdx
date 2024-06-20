@@ -1,0 +1,74 @@
+---
+position: 3
+title: Processor Map Format
+tags: [processor, specification, spec, compiler]
+---
+
+To not have to always compile all files from source again, the processor is able to save a map of the files it has compiled.
+This map is stored in a binary format.
+The file format is defined using the following structure:
+
+```c
+
+struct Utf8String {
+  uint16_t length;
+  uint8_t data[length];
+};
+
+struct ProcessorMap {
+  uint32_t magic;
+  uint16_t major;
+  uint16_t minor;
+
+  uint16_t package_count;
+  Package packages[package_count];
+};
+
+struct Package {
+  Utf8String name;
+
+  uint16_t subpackage_count;
+  Package subpackages[subpackage_count];
+
+  uint16_t class_count;
+  Class classes[class_count];
+
+  uint16_t method_count;
+  Method functions[method_count];
+
+  uint16_t field_count;
+  Field fields[field_count];
+};
+
+struct Class {
+  Utf8String name;
+  uint16_t flags;
+  Utf8String super_class;
+
+  uint16_t interface_count;
+  Utf8String interfaces[interface_count];
+
+  uint16_t class_count;
+  Class classes[class_count];
+
+  uint16_t constructor_count;
+  Method constructors[constructor_count];
+
+  uint16_t method_count;
+  Method methods[method_count];
+
+  uint16_t field_count;
+  Field fields[field_count];
+};
+
+struct Method {
+  Utf8String signature;
+  uint16_t flags;
+};
+
+struct Field {
+  Utf8String name;
+  Utf8String type;
+  uint16_t flags;
+};
+```
