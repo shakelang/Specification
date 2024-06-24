@@ -685,6 +685,13 @@ For example we have the type `shake.lang.String` which is not generic and would 
 The type `shake.lang.List<shake.lang.String>` would be represented as `Lshake/lang/List@Lshake/lang/String;;`.
 The type `shake.lang.Map<shake.lang.String, byte>` would be represented as `Lshake/lang/Map@Lshake/lang/String;+byte;`.
 
+### Generic Type Descriptor
+
+The generic type descriptor is used to represent a generic type. It starts with the character 'G', followed by the qualified signature of the owner (class or method), the '#'
+character and the name of the generic type. It ends with a ';'.
+
+For example the generic type `T` in the class `shake.lang.List` would be represented as `Gshake/lang/List#T;`.
+
 ### Array Type Descriptor
 
 To represent an array of something, we add a `[` to the start of the type. For example the type `int[]` would be represented as `[I`.
