@@ -33,41 +33,34 @@ _Ranking will make some difference in the lexer implementation, e.g. `*=` must b
   <li> Colon (`:`) </li>
   <li> Dot (`.`) </li>
   <li>
-    Numbers (floating point, integer, binary, hexadecimal) (eg. `1`, `1.0`) 
-    <br/>
+    Numbers (floating point, integer, binary, hexadecimal) (eg. `1`, `1.0`)
     Implementation by checking whether the first character is a digit (`0-9`). Does not capture signs (`+`, `-`)
   </li>
   <li> 
     Identifier (eg. `a`, `b`)
-    <br/>
     Implementation by checking whether the first character is a letter (`a-z`, `A-Z`) or an underscore (`_`).
     It is allowed, but not required, to contain digits (`0-9`) as first character, as they are captured by the number token,
     so for example javascripts "\\w" regex would be fine for this token.
   </li>
   <li> 
     Identifier 2 (eg. `&#96;a&#96;`, `&#96;b&#96;`) 
-    <br/>
     Implementation by checking whether the first character is a backtick (`&#96;`).
   </li>
   <li>
     String (eg. `"abc"`) 
-    <br/>
     Implementation by checking whether the first character is a double quote (`"`).
   </li>
   <li> 
     Character (eg. `'a'`) 
-    <br/>
     Implementation by checking whether the first character is a single quote (`'`).
   </li>
   <li> 
     Skip single line comment (eg. `// abc`) 
-    <br/>
     Implementation by checking whether the first two characters are a double slash (`//`).
     Then just skip until the next `\n` (Also works with windows line endings, as `\r` is skipped as well)
   </li>
   <li> 
     Skip multi line comment (eg. `/* abc */`) 
-    <br/>
     Implementation by checking whether the first two characters are a slash and a star (`/*`).
     Then just skip until the next `*/`
   </li>
