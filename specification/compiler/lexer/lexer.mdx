@@ -25,46 +25,88 @@ The lexer is implemented in the [`lexer` package](https://github.com/shakelang/s
 
 _Ranking will make some difference in the lexer implementation, e.g. `*=` must be checked before `*`. This is a sample ranking. Note that this is not the only possible ranking, but it is the one used in the lexer implementation._
 
-| Step | Description                                            | Value                            |
-| ---- | ------------------------------------------------------ | -------------------------------- |
-| 1.   | Skip whitespace (if existing)                          | eg. ` `, `\\t`                   |
-| 2.   | Line Separator                                         | `\\n`                            |
-| 3.   | Semicolon                                              | `;`                              |
-| 4.   | Comma                                                  | `,`                              |
-| 5.   | Dot                                                    | `.`                              |
-| 6.   | Numbers (floating point, integer, binary, hexadecimal) | eg. `1`, `1.0`                   |
-| 7.   | Identifier                                             | eg. `a`, `b`                     |
-| 8.   | String                                                 | eg. `"abc"`                      |
-| 9.   | Identifier 2                                           | eg. `&#96;a&#96;`, `&#96;b&#96;` |
-| 10.  | Character                                              | eg. `'a'`                        |
-| 11.  | Skip single line comment                               | eg. `// abc`                     |
-| 12.  | Skip multi line comment                                | eg. `/* abc */`                  |
-| 13.  | Pow Assignment                                         | `**=`                            |
-| 14.  | Mod Assignment                                         | `%=`                             |
-| 15.  | Div Assignment                                         | `/=`                             |
-| 16.  | Mul Assignment                                         | `*=`                             |
-| 17.  | Sub Assignment                                         | `-=`                             |
-| 18.  | Add Assignment                                         | `+=`                             |
-| 19.  | Increment                                              | `++`                             |
-| 20.  | Decrement                                              | `--`                             |
-| 21.  | Power                                                  | `**`                             |
-| 22.  | Modulo                                                 | `%`                              |
-| 23.  | Division                                               | `/`                              |
-| 24.  | Multiplication                                         | `*`                              |
-| 25.  | Subtraction                                            | `-`                              |
-| 26.  | Addition                                               | `+`                              |
-| 27.  | Logical XOR                                            | `^^`                             |
-| 28.  | Logical OR                                             | `&#124;&#124;`                   |
-| 29.  | Logical AND                                            | `&&`                             |
-| 30.  | Equals                                                 | `==`                             |
-| 31.  | Greater Than Or Equal                                  | `>=`                             |
-| 32.  | Less Than Or Equal                                     | `<=`                             |
-| 33.  | Greater Than                                           | `>`                              |
-| 34.  | Less Than                                              | `<`                              |
-| 35.  | Assignment                                             | `=`                              |
-| 36.  | LParen                                                 | `(`                              |
-| 37.  | RParen                                                 | `)`                              |
-| 38.  | LCurl                                                  | `{`                              |
-| 39.  | RCurl                                                  | `}`                              |
-| 40.  | LBracket                                               | `[`                              |
-| 41.  | RBracket                                               | `]`                              |
+<ol>
+  <li> Skip whitespace (if existing) (eg. ` `, `\t`) </li>
+  <li> Line Separator (`\n`) </li>
+  <li> Semicolon (`;`) </li>
+  <li> Comma (`,`) </li>
+  <li> Colon (`:`) </li>
+  <li> Dot (`.`) </li>
+  <li>
+    Numbers (floating point, integer, binary, hexadecimal) (eg. `1`, `1.0`) 
+    <br/>
+    Implementation by checking whether the first character is a digit (`0-9`). Does not capture signs (`+`, `-`)
+  </li>
+  <li> 
+    Identifier (eg. `a`, `b`)
+    <br/>
+    Implementation by checking whether the first character is a letter (`a-z`, `A-Z`) or an underscore (`_`).
+    It is allowed, but not required, to contain digits (`0-9`) as first character, as they are captured by the number token,
+    so for example javascripts "\\w" regex would be fine for this token.
+  </li>
+  <li> 
+    Identifier 2 (eg. `&#96;a&#96;`, `&#96;b&#96;`) 
+    <br/>
+    Implementation by checking whether the first character is a backtick (`&#96;`).
+  </li>
+  <li>
+    String (eg. `"abc"`) 
+    <br/>
+    Implementation by checking whether the first character is a double quote (`"`).
+  </li>
+  <li> 
+    Character (eg. `'a'`) 
+    <br/>
+    Implementation by checking whether the first character is a single quote (`'`).
+  </li>
+  <li> 
+    Skip single line comment (eg. `// abc`) 
+    <br/>
+    Implementation by checking whether the first two characters are a double slash (`//`).
+    Then just skip until the next `\n` (Also works with windows line endings, as `\r` is skipped as well)
+  </li>
+  <li> 
+    Skip multi line comment (eg. `/* abc */`) 
+    <br/>
+    Implementation by checking whether the first two characters are a slash and a star (`/*`).
+    Then just skip until the next `*/`
+  </li>
+  <li> Pow Assignment (`**=`) </li>
+  <li> Mod Assignment (`%=`) </li>
+  <li> Div Assignment (`/=`) </li>
+  <li> Mul Assignment (`*=`) </li>
+  <li> Sub Assignment (`-=`) </li>
+  <li> Add Assignment (`+=`) </li>
+  <li> Increment (`++`) </li>
+  <li> Decrement (`--`) </li>
+  <li> Power (`**`) </li>
+  <li> Modulo (`%`) </li>
+  <li> Division (`/`) </li>
+  <li> Multiplication (`*`) </li>
+  <li> Subtraction (`-`) </li>
+  <li> Addition (`+`) </li>
+  <li> Logical OR (`||`) </li>
+  <li> Logical AND (`&&`) </li>
+  <li> Logical XOR (`^^`) </li>
+  <li> Equals (`==`) </li>
+  <li> Greater Than Or Equal (`>=`) </li>
+  <li> Less Than Or Equal (`<=`) </li>
+  <li> Not Equal (`!=`) </li>
+  <li> Greater Than (`>`) </li>
+  <li> Less Than (`<`) </li>
+  <li> Not (`!`) </li>
+  <li> Bitwise NAND (`~&`) </li>
+  <li> Bitwise NOR (`~|`) </li>
+  <li> `BIT_XNOR` (`~^`) </li>
+  <li> Bitwise NOT (`~`) </li>
+  <li> Bitwise AND (`&`) </li>
+  <li> Bitwise OR (`|`) </li>
+  <li> Bitwise XOR (`^`) </li>
+  <li> Assignment (`=`) </li>
+  <li> LParen (`(`) </li>
+  <li> RParen (`)`) </li>
+  <li> LCurl (`{`) </li>
+  <li> RCurl (`}`) </li>
+  <li> LBracket (`[`) </li>
+  <li> RBracket (`]`) </li>
+</ol>
