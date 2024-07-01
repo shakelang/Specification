@@ -29,41 +29,39 @@ There are two variants of token types, there are types that always have the same
 | ADD                  | Addition                  | `+`            |
 | ADD_ASSIGN           | Addition Assignment       | `+=`           |
 | ASSIGN               | Assignment                | `=`            |
-| BIGGER               | Bigger                    | `>`            |
-| BIGGER_EQUALS        | Bigger Equals             | `>=`           |
-| BITWISE_AND          | Bitwise And               | `&`            |
-| BITWISE_AND_ASSIGN   | Bitwise And Assignment    | `&=`           |
-| BITWISE_NOT          | Bitwise Not               | `~`            |
-| BITWISE_NAND         | Bitwise Not And           | `~&`           |
-| BITWISE_NOR          | Bitwise Not Or            | `~&#124;`      |
-| BITWISE_XNOR         | Bitwise Not Xor           | `~^`           |
-| BITWISE_OR           | Bitwise Or                | `&#124;`       |
-| BITWISE_OR_ASSIGN    | Bitwise Or Assignment     | `&#124;=`      |
-| BITWISE_XOR          | Bitwise Xor               | `^`            |
-| BITWISE_XOR_ASSIGN   | Bitwise Xor Assignment    | `^=`           |
+| BIT_AND              | Bitwise And               | `&`            |
+| BIT_AND_ASSIGN       | Bitwise And Assignment    | `&=`           |
+| BIT_NAND             | Bitwise Not And           | `~&`           |
+| BIT_NOR              | Bitwise Not Or            | `~&#124;`      |
+| BIT_NOT              | Bitwise Not               | `~`            |
+| BIT_OR               | Bitwise Or                | `&#124;`       |
+| BIT_OR_ASSIGN        | Bitwise Or Assignment     | `&#124;=`      |
+| BIT_XNOR             | Bitwise Not Xor           | `~^`           |
+| BIT_XOR              | Bitwise Xor               | `^`            |
+| BIT_XOR_ASSIGN       | Bitwise Xor Assignment    | `^=`           |
 | COLON                | Colon                     | `:`            |
 | COMMA                | Comma                     | `,`            |
 | DECR                 | Decrement                 | `--`           |
 | DIV                  | Division                  | `/`            |
 | DIV_ASSIGN           | Division Assignment       | `/=`           |
 | DOT                  | Dot                       | `.`            |
-| EQ_EQUALS            | Equals                    | `==`           |
+| EOF                  | End of File               |                |
+| EQ                   | Equals                    | `==`           |
+| GT                   | Greater Than              | `>`            |
+| GTE                  | Greater Than or Equal     | `>=`           |
 | INCR                 | Increment                 | `++`           |
 | KEYWORD_ABSTRACT     | Abstract Keyword          | `abstract`     |
 | KEYWORD_AS           | As Keyword                | `as`           |
-| KEYWORD_BOOLEAN      | Boolean Keyword           | `boolean`      |
-| KEYWORD_CHAR         | Char Keyword              | `char`         |
 | KEYWORD_CLASS        | Class Keyword             | `class`        |
 | KEYWORD_CONST        | Const Keyword             | `const`        |
 | KEYWORD_CONSTRUCTOR  | Constructor Keyword       | `constructor`  |
 | KEYWORD_DO           | Do Keyword                | `do`           |
-| KEYWORD_DYNAMIC      | Dynamic Keyword           | `dynamic`      |
 | KEYWORD_ELSE         | Else Keyword              | `else`         |
 | KEYWORD_ENUM         | Enum Keyword              | `enum`         |
 | KEYWORD_FALSE        | False Keyword             | `false`        |
 | KEYWORD_FINAL        | Final Keyword             | `final`        |
 | KEYWORD_FOR          | For Keyword               | `for`          |
-| KEYWORD_FUNCTION     | Function Keyword          | `function`     |
+| KEYWORD_FUN          | Fun Keyword               | `fun`          |
 | KEYWORD_IF           | If Keyword                | `if`           |
 | KEYWORD_IMPORT       | Import Keyword            | `import`       |
 | KEYWORD_IN           | In Keyword                | `in`           |
@@ -71,7 +69,6 @@ There are two variants of token types, there are types that always have the same
 | KEYWORD_INSTANCEOF   | Instanceof Keyword        | `instanceof`   |
 | KEYWORD_INTERFACE    | Interface Keyword         | `interface`    |
 | KEYWORD_NATIVE       | Native Keyword            | `native`       |
-| KEYWORD_NEW          | New Keyword               | `new`          |
 | KEYWORD_NULL         | Null Keyword              | `null`         |
 | KEYWORD_OBJECT       | Object Keyword            | `object`       |
 | KEYWORD_OPERATOR     | Operator Keyword          | `operator`     |
@@ -92,23 +89,24 @@ There are two variants of token types, there are types that always have the same
 | LCURL                | Left Curly Brace          | `{`            |
 | LINE_SEPARATOR       | Line Separator            | `\n`           |
 | LOGICAL_AND          | Logical And               | `&&`           |
+| LOGICAL_NOT          | Logical Not               | `!`            |
 | LOGICAL_OR           | Logical Or                | `&#124;&#124;` |
 | LOGICAL_XOR          | Logical Xor               | `^`            |
 | LPAREN               | Left Parenthesis          | `(`            |
 | LSQBR                | Left Square Bracket       | `[`            |
+| LT                   | Less Than                 | `<`            |
+| LTE                  | Less Then or Equal        | `<=`           |
 | MOD                  | Modulo                    | `%`            |
 | MOD_ASSIGN           | Modulo Assignment         | `%=`           |
 | MUL                  | Multiplication            | `*`            |
 | MUL_ASSIGN           | Multiplication Assignment | `*=`           |
-| NONE                 | None                      |                |
+| NEQ                  | Assert not equal          | `!=`           |
 | POW                  | Power                     | `**`           |
 | POW_ASSIGN           | Power Assignment          | `**=`          |
 | RCURL                | Right Curly Brace         | `}`            |
 | RPAREN               | Right Parenthesis         | `)`            |
 | RSQBR                | Right Square Bracket      | `]`            |
 | SEMICOLON            | Semicolon                 | `;`            |
-| SMALLER              | Smaller                   | `<`            |
-| SMALLER_EQUALS       | Smaller Equals            | `<=`           |
 | SUB                  | Subtraction               | `-`            |
 | SUB_ASSIGN           | Subtraction Assignment    | `-=`           |
 
