@@ -64,7 +64,7 @@ const docs: readonly DocEntry[] = [
         id: e.id,
         path: e.path,
         url: e.url,
-      }) satisfies DocEntry
+      }) satisfies DocEntry,
   ),
 ];
 
@@ -130,7 +130,7 @@ const config: Config = {
                 to: `/${doc.url}${doc.index ? `/${doc.index}` : ""}`,
                 label: doc.label,
                 position: "left",
-              }) satisfies NavbarItem
+              }) satisfies NavbarItem,
           ),
 
         {
@@ -143,7 +143,7 @@ const config: Config = {
                 ({
                   to: `/${e.url}`,
                   label: e.label,
-                }) satisfies NavbarItem
+                }) satisfies NavbarItem,
             ),
           ],
         },
