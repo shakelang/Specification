@@ -1,0 +1,288 @@
+---
+position: 3
+title: Arithmetic Operators
+---
+
+## § 1 Arithmetic Operators
+
+### § 1.1 Addition
+
+`+`: Adds two numbers.
+
+```shake
+val a: int = 10
+val b: int = 20
+val c: int = a + b // c = 30
+```
+
+### § 1.2 Subtraction
+
+`-`: Subtracts two numbers.
+
+```shake
+val a: int = 20
+val b: int = 10
+val c: int = a - b // c = 10
+```
+
+### § 1.3 Multiplication
+
+`*`: Multiplies two numbers.
+
+```shake
+val a: int = 10
+val b: int = 20
+val c: int = a * b // c = 200
+```
+
+### § 1.4 Division
+
+`/`: Divides two numbers.
+
+```shake
+val a: int = 20
+val b: int = 10
+val c: int = a / b // c = 2
+```
+
+### § 1.5 Modulo
+
+`%`: Returns the remainder of the division of two numbers.
+
+```shake
+val a: int = 20
+val b: int = 10
+val c: int = a % b // c = 0
+```
+
+### § 1.6 Power
+
+`**`: Raises the first number to the power of the second number.
+
+```shake
+val a: int = 2
+val b: int = 3
+val c: int = a ** b // c = 8
+```
+
+### § 1.7 Parentheses
+
+`(` `)`: Parentheses are used to group expressions and have the highest precedence.
+
+```shake
+val a: int = 10
+val b: int = 20
+val c: int = (a + b) * 2 // c = 60
+```
+
+### § 1.8 Shift Operators
+
+`<<`, `>>`, `>>>`: Shifts the bits of the first number by the second number.
+
+```shake
+val a: int = 2
+val b: int = 1
+val c: int = a << b // c = 4
+```
+
+### § 1.9 Increment and Decrement
+
+`++`, `--`: Increments and decrements a number by one.
+
+```shake
+var a: int = 10
+a++ // a = 11, >> 10
+
+var b: int = 10
+++b // b = 11, >> 11
+```
+
+```shake
+var a: int = 10
+a-- // a = 9, >> 10
+
+var b: int = 10
+--b // b = 9, >> 9
+```
+
+### § 1.10 Bitwise Operators
+
+`&`, `|`, `^`, `~`: Perform bitwise AND, OR, XOR, and NOT operations on two numbers.
+
+```shake
+val a: int = 0b101
+val b: int = 0b110
+val c: int = a & b // c = 0b100
+val d: int = a | b // d = 0b111
+val e: int = a ^ b // e = 0b011
+val f: int = ~a // f = 0b11111111111111111111111111111010
+```
+
+### § 1.11 Logical Operators
+
+`&&`, `||`, `^^`: Perform logical AND, OR, and XOR operations on two boolean values.
+
+```shake
+val a: bool = true
+val b: bool = false
+val c: bool = a && b // c = false
+val d: bool = a || b // d = true
+val e: bool = a ^^ b // e = true
+```
+
+### § 1.12 Comparison Operators
+
+`<`, `<=`, `>`, `>=`: Compare two numbers.
+
+```shake
+val a: int = 10
+val b: int = 20
+val c: bool = a < b // c = true
+```
+
+### § 1.13 Equality Operators
+
+`==`, `!=`: Compare two values for equality.
+
+```shake
+val a: int = 10
+val b: int = 20
+val c: bool = a == b // c = false
+val d: bool = a != b // d = true
+```
+
+### § 1.14 Conditional Operator
+
+`?:`: Ternary conditional operator.
+
+```shake
+val a: int? = null
+val b: int? = 20
+val c: int = a ?: b // c = 20
+```
+
+### § 1.15 Assignment Operators
+
+`=`, `+=`, `-=`, `*=`, `/=`, `%=`, `<<=`, `>>=`, `&=`, `^=`, `|=`: Assign a value to a variable.
+
+```shake
+var a: int = 10
+a += 5 // a = 15
+
+var b: int = 20
+b -= 5 // b = 15
+
+var c: int = 10
+c *= 2 // c = 20
+
+var d: int = 20
+d /= 2 // d = 10
+
+var e: int = 20
+e %= 3 // e = 2
+
+var f: int = 2
+f <<= 1 // f = 4
+
+var g: int = 4
+g >>= 1 // g = 2
+
+var h: int = 0b101
+h &= 0b110 // h = 0b100
+
+var i: int = 0b101
+i |= 0b110 // i = 0b111
+
+var j: int = 0b101
+j ^= 0b110 // j = 0b011
+```
+
+## § 2 Theoretical Order of Operators
+
+### Literals
+
+Literals are the highest precedence and are parsed first. They could be identifiers, numbers, strings, characters, true, false, null.
+
+### Parentheses
+
+`(` `)`: Parentheses are used to group expressions and have the highest precedence.
+
+### Unary Operators
+
+`+`, `-` (positive and negative), ! (logical NOT), ~ (bitwise NOT).
+
+### Mandatory Operators
+
+`++`, `--` (increment and decrement).
+
+### Call Operator and Property Access
+
+`.` (dot), `[]` (brackets), `()` (call).
+
+### Cast Operator
+
+`as` (cast).
+
+### Power Operator
+
+`**` (power).
+
+### Multiplicative Operators
+
+`*` (multiplication), `/` (division), `%` (modulo).
+
+### Additive Operators
+
+`+` (addition), `-` (subtraction).
+
+### Shift Operators
+
+`<<` (left shift), `>>` (right shift), `>>>` (unsigned right shift)
+
+### Relational Operators
+
+`<`, `<=` (less than, less than or equal to), `>`, `>=` (greater than, greater than or equal to).
+
+### Equality Operators
+
+`==` (equal to), `!=` (not equal to).
+
+### Bitwise AND / NAND
+
+`&` (bitwise AND), `&~` (bitwise NAND).
+
+### Bitwise XOR / XNOR
+
+`^` (bitwise XOR), `^~` (bitwise XNOR).
+
+### Bitwise OR / NOR
+
+`|` (bitwise OR), `|~` (bitwise NOR).
+
+### Logical AND
+
+`&&`
+
+### Logical XOR
+
+`^^`
+
+### Logical OR
+
+`||`
+
+### Conditional (Ternary) Operator
+
+`? :`, `?:`
+
+### Assignment Operators
+
+`=`, `+=`, `-=`, `*=`, `/=`, `%=`, `<<=`, `>>=`, `&=`, `^=`, `|=`
+
+```
+
+```
+
+```
+
+```
