@@ -1,0 +1,175 @@
+# Methods / Functions
+
+## §1 Function Declaration
+
+A function is a block of code that performs a specific task.
+They can be built in a class (methods) or outside of a class (functions).
+
+### §1.1 Function Syntax
+
+```shake
+fun function_name(parameter1: type, parameter2: type, ...): return_type {
+    // code block
+}
+```
+
+### §1.2 Method Syntax
+
+```shake
+class ClassName {
+    fun method_name(parameter1: type, parameter2: type, ...): return_type {
+        // code block
+    }
+}
+```
+
+#### §1.2.1 Method Implicit Parameters
+
+A method has an implicit parameter called `this` that refers to the object that the method is called on.
+Via `this`, you can access the object's fields and methods. It also has an implicit parameter called `super`
+That refers to the superclass of the class. In case of multiple inheritance, `super` refers to the first superclass.
+If you want to acces another superclass, you can use the `super` keyword followed by an '@' and the class name.
+
+```shake
+
+interface A {
+    fun foo() {
+        println("A")
+    }
+}
+
+interface B {
+    fun foo() {
+        println("B")
+    }
+}
+
+class C: A, B {
+    override fun foo() {
+        super@A.foo()
+        super@B.foo()
+    }
+}
+```
+
+### §1.3 Void Functions
+
+A function that does not return a value is called a void function. You must not declare the
+void return type for a function explicitly.
+
+```shake
+fun printMessage(message: String)/*: void*/ {
+  println(message)
+}
+```
+
+### $1.4 Return Values
+
+A function can return a value using the `return` keyword.
+
+```shake
+fun add(a: Int, b: Int): Int {
+    return a + b
+}
+```
+
+### §1.5 Function Overloading
+
+Function overloading is a feature that allows creating multiple functions with the same name but
+different parameters.
+
+```shake
+fun add(a: Int, b: Int): Int {
+    return a + b
+}
+
+fun add(a: Double, b: Double): Double {
+    return a + b
+}
+```
+
+### §1.6 Method Overriding
+
+Method overriding is a feature that allows a subclass to provide a specific implementation of a
+method that is already provided by its superclass.
+
+```shake
+class Animal {
+    fun sound() {
+        println("Animal makes a sound")
+    }
+}
+
+class Dog: Animal {
+    override fun sound() {
+        println("Dog barks")
+    }
+}
+```
+
+### §1.7 Default Arguments
+
+You can provide default values for function parameters.
+
+```shake
+fun printMessage(message: String = "Hello") {
+    println(message)
+}
+```
+
+## §2 Function Call
+
+### §2.1 Calling Functions
+
+You can call a function by using its name followed by parentheses.
+
+```shake
+fun printMessage(message: String) {
+    println(message)
+}
+
+printMessage("Hello")
+```
+
+### §2.2 Calling Methods
+
+You can call a method by using the object name followed by a dot and the method name.
+
+```shake
+class Person {
+    fun greet() {
+        println("Hello")
+    }
+}
+
+val person = Person()
+
+person.greet()
+```
+
+### §2.3 Named Arguments
+
+You can pass arguments to a function by specifying the parameter name followed by a colon and the value.
+
+```shake
+fun printMessage(message: String, count: Int) {
+    repeat(count) {
+        println(message)
+    }
+}
+
+printMessage(count = 3, message = "Hello")
+```
+
+### §2.4 Returning Values
+
+A return value can be assigned to a variable.
+
+```shake
+fun add(a: Int, b: Int): Int {
+    return a + b
+}
+
+val result = add(1, 2)
+println(result) // Output: 3
+```
