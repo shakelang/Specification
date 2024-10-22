@@ -1,0 +1,350 @@
+---
+position: 4
+title: Classes, Interfaces, and Inheritance
+---
+
+# Classes, Interfaces, and Inheritance
+
+## § 1 Classes
+
+### § 1.1 Introduction
+
+A class is a blueprint for creating objects (a particular data structure),
+providing initial values for state (member variables or attributes),
+and implementations of behavior (member functions or methods).
+The user-defined objects are created using the class keyword.
+
+```shake
+class Animal {
+  // ...
+}
+```
+
+### § 1.2 Class Members
+
+A class can contain the following members:
+
+- Fields
+- Methods
+- Constructors
+
+### § 1.3 Fields
+
+Fields are variables that belong to an object.
+They can be of any data type.
+
+```shake
+class Animal {
+  val name: String
+  var age: Int
+}
+```
+
+### § 1.4 Methods
+
+Methods are functions that belong to an object.
+They can be of any data type.
+
+See [Functions](functions) for more information about methods and functions.
+
+```shake
+class Animal {
+  fun makeSound(): String {
+    return "Animal sound"
+  }
+}
+```
+
+### § 1.5 Constructors
+
+A constructor is a special member function that is called when an object is created.
+It is used to initialize the object.
+
+```shake
+class Animal {
+
+  val name: String
+  var age: Int
+
+  constructor(name: String, age: Int) {
+    this.name = name
+    this.age = age
+  }
+}
+```
+
+#### § 1.5.1 Constructor overloading
+
+A class can have multiple constructors with different parameters.
+This is called constructor overloading.
+
+```shake
+class Animal {
+
+  val name: String
+  var age: Int
+
+  constructor(name: String, age: Int) {
+    this.name = name
+    this.age = age
+  }
+
+  constructor(name: String) {
+    this.name = name
+    this.age = 0
+  }
+}
+```
+
+#### § 1.5.2 Named constructors
+
+In addition a class can have named constructors. This might be helpfull when you want to
+create a constructor with a different functionality, but same parameters as the default constructor.
+It also helps with implicit documentation.
+
+```shake
+class Animal {
+
+  val name: String
+  var age: Int
+
+  constructor(name: String, age: Int) {
+    this.name = name
+    this.age = age
+  }
+
+  constructor newBorn(name: String) {
+    this.name = name
+    this.age = 0
+  }
+}
+```
+
+#### § 1.5.3 Primary constructor
+
+A class can have a primary constructor that is defined in the class header.
+The primary constructor can have default values for parameters.
+In this case, the primary constructor MUST be referenced in the secondary constructors.
+
+```shake
+class Animal(val name: String, var age: Int = 0) {
+  // ...
+}
+```
+
+To add a body to the primary constructor, you can use the `init` block.
+
+```shake
+
+class Animal(val name: String, var age: Int = 0) {
+  init {
+    println("Animal $name created")
+  }
+}
+```
+
+### § 1.6 Inheritance
+
+Inheritance is a mechanism in which one class acquires the properties and behavior of another class.
+The class that inherits the properties and behavior is called the subclass or derived class.
+The class whose properties and behavior are inherited is called the superclass or base class.
+
+A class can ONLY inherit from one superclass.
+
+```shake
+
+class Animal {
+  fun makeSound(): String {
+    return "Animal sound"
+  }
+}
+
+class Dog: Animal {
+  fun makeSound(): String {
+    return "Dog barks"
+  }
+}
+```
+
+#### § 1.6.1 Inheritance with constructors
+
+When a class inherits from another class, it must call the constructor of the superclass.
+
+```shake
+class Animal(val name: String) {
+  fun makeSound(): String {
+    return "Animal sound"
+  }
+}
+
+class Dog(name: String): Animal(name) {
+  fun makeSound(): String {
+    return "Dog barks"
+  }
+}
+```
+
+#### § 1.6.2 Overriding methods
+
+A subclass can provide a specific implementation of a method that is already provided by its superclass.
+This is called method overriding.
+
+```shake
+class Animal {
+  fun makeSound(): String {
+    return "Animal sound"
+  }
+}
+
+class Dog: Animal {
+  override fun makeSound(): String {
+    return "Dog barks"
+  }
+}
+```
+
+#### § 1.6.3 Accessing superclass methods
+
+A subclass can access the methods of its superclass using the `super` keyword.
+
+```shake
+class Animal {
+  fun makeSound(): String {
+    return "Animal sound"
+  }
+}
+
+class Dog: Animal {
+  override fun makeSound(): String {
+    return super.makeSound() + " and Dog barks"
+  }
+}
+```
+
+#### § 1.6.4 Final methods
+
+A method can be marked as `final` to prevent it from being overridden in a subclass.
+
+```shake
+class Animal {
+  final fun makeSound(): String {
+    return "Animal sound"
+  }
+}
+
+class Dog: Animal {
+
+  // This will cause a compilation error
+  override fun makeSound(): String {
+    return "Dog barks"
+  }
+}
+```
+
+### 1.7 Abstract classes
+
+An abstract class is a class that cannot
+be instantiated and is used to define the structure of other classes.
+It can contain abstract methods that must be implemented by the subclass.
+
+```shake
+abstract class Animal {
+  abstract fun makeSound(): String
+}
+```
+
+## § 2 Interfaces
+
+An interface is a contract that defines the behavior of a class.
+It contains abstract methods that must be implemented by the class that implements the interface.
+
+```shake
+interface Animal {
+  fun makeSound(): String
+}
+```
+
+### § 2.1 Implementing an interface
+
+A class can implement an interface by using the `:` symbol followed by the interface name.
+
+```shake
+class Dog: Animal {
+  fun makeSound(): String {
+    return "Dog barks"
+  }
+}
+```
+
+### § 2.2 Multiple interfaces
+
+A class can implement multiple interfaces by separating them with a comma in addition to the superclass.
+
+```shake
+class Animal {
+  fun makeSound(): String {
+    return "Animal sound"
+  }
+}
+
+interface Pet {
+  fun play(): String
+}
+
+interface Walk {
+  fun walk(): String
+}
+
+class Dog: Animal, Pet, Walk {
+  fun makeSound(): String {
+    return "Dog barks"
+  }
+
+  fun play(): String {
+    return "Dog plays"
+  }
+
+  fun walk(): String {
+    return "Dog walks"
+  }
+}
+```
+
+### § 2.3 Default methods
+
+An interface can have default methods that are implemented in the interface.
+A class that implements the interface can override the default method.
+
+```shake
+
+interface Animal {
+  fun makeSound(): String {
+    return "Animal sound"
+  }
+}
+
+```
+
+Note: Interface defaults are always open and cannot be marked as `final`.
+Note: In case of multiple default implementations, the class must override the method.
+Example:
+
+```shake
+interface Animal {
+  fun makeSound(): String {
+    return "Animal sound"
+  }
+}
+
+interface Pet {
+  fun makeSound(): String {
+    return "Pet sound"
+  }
+}
+
+class Dog: Animal, Pet {
+  override fun makeSound(): String {
+    return super@Animal.makeSound() + " and " + super@Pet.makeSound()
+  }
+}
+```
