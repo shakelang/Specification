@@ -41,6 +41,12 @@ const packages: readonly PackageEntry[] = [
 
 const docs: readonly DocEntry[] = [
   {
+    label: "Language Features",
+    id: "language-features",
+    path: "specification/language-features",
+    url: "language-features",
+  },
+  {
     label: "Bytecode",
     id: "bytecode",
     path: "specification/bytecode",
@@ -58,7 +64,7 @@ const docs: readonly DocEntry[] = [
         id: e.id,
         path: e.path,
         url: e.url,
-      }) satisfies DocEntry,
+      }) satisfies DocEntry
   ),
 ];
 
@@ -116,6 +122,17 @@ const config: Config = {
           label: "Website",
           position: "left",
         },
+        ...docs
+          .filter((doc) => doc.label)
+          .map(
+            (doc) =>
+              ({
+                to: `/${doc.url}${doc.index ? `/${doc.index}` : ""}`,
+                label: doc.label,
+                position: "left",
+              }) satisfies NavbarItem
+          ),
+
         {
           to: "/",
           label: "Packages",
@@ -126,20 +143,10 @@ const config: Config = {
                 ({
                   to: `/${e.url}`,
                   label: e.label,
-                }) satisfies NavbarItem,
+                }) satisfies NavbarItem
             ),
           ],
         },
-        ...docs
-          .filter((doc) => doc.label)
-          .map(
-            (doc) =>
-              ({
-                to: `/${doc.url}${doc.index ? `/${doc.index}` : ""}`,
-                label: doc.label,
-                position: "left",
-              }) satisfies NavbarItem,
-          ),
         {
           href: "https://github.com/shakelang/shake",
           label: "GitHub",
