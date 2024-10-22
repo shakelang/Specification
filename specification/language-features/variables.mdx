@@ -1,0 +1,134 @@
+# Shake Variables
+
+Variables in shake are defined using the `var` and `val` keywords.
+`var` is used to define a variable that can be reassigned,
+while `val` is used to define a variable that cannot be reassigned.
+
+## § 1 Variable Declaration
+
+### § 1.1 `var` Keyword
+
+The `var` keyword is used to declare a variable that can be reassigned.
+The syntax is as follows:
+
+```shake
+var variableName: Type = value
+```
+
+### § 1.2 `val` Keyword
+
+The `val` keyword is used to declare a variable that cannot be reassigned.
+
+```shake
+val variableName: Type = value
+```
+
+## § 2 Variable Types
+
+### § 2.1 Primitive Types
+
+Shake supports the following builtin (primitive) data types:
+
+- `byte` - 8-bit signed integer
+- `short` - 16-bit signed integer
+- `int` - 32-bit signed integer
+- `long` - 64-bit signed integer
+- `float` - 32-bit floating point number
+- `double` - 64-bit floating point number
+- `ubyte` - 8-bit unsigned integer
+- `ushort` - 16-bit unsigned integer
+- `uint` - 32-bit unsigned integer
+- `ulong` - 64-bit unsigned integer
+- `char` - 16-bit unicode character (UTF-16)
+- `boolean` - boolean value
+
+### § 2.2 Custom Types
+
+Custom types can be defined using the `class` keyword.
+
+```shake
+class ClassName {
+    // class body
+}
+```
+
+### § 2.3 Type Inference
+
+Shake supports type inference, which means that you don't have to specify the type of a variable explicitly.
+The type of the variable is inferred from the value assigned to it.
+
+```shake
+var x = 10 // x is of type int
+val y = "Hello" // y is of type string
+```
+
+### Common Types / Structures
+
+- `String` - A sequence of characters
+- `Array<T>` - An array of elements of type `T`
+  _Note_ Arrays are not implemented via a built-in type, but are instead implemented as a library type.
+
+## § 3 Variable Scope
+
+Variables in shake have block scope.
+This means that a variable declared inside a block is only accessible within that block.
+
+```shake
+{
+    var x = 10
+    println(x) // 10
+}
+```
+
+## § 4 Constants
+
+Constants are declared using the `const` keyword.
+A constant is a variable whose value cannot be changed once it is assigned.
+
+```shake
+const val PI: double = 3.14159
+```
+
+## § 5 Nullability
+
+By default, variables in shake are non-nullable.
+This means that a variable cannot be assigned a `null` value unless it is explicitly declared as nullable.
+
+```shake
+var x: int? = null
+```
+
+## § 6 Type Casting
+
+Type casting is the process of converting a variable from one type to another.
+Shake supports both implicit and explicit type casting.
+
+### § 6.1 Implicit Type Casting
+
+Implicit type casting is done automatically by the compiler when it is safe to do so.
+
+```shake
+var x: int = 10
+var y: double = x // Implicit type casting
+```
+
+### § 6.2 Explicit Type Casting
+
+Explicit type casting is done manually by the programmer using the `as` keyword.
+
+```shake
+var x: double = 10.5
+var y: int = x as int // Explicit type casting
+```
+
+## § 7 Type Checking
+
+Type checking is the process of verifying that a variable is of a certain type.
+Shake supports the `is` operator for type checking.
+
+```shake
+var x: int = 10
+if (x is int) {
+    println("x is an integer")
+}
+```
