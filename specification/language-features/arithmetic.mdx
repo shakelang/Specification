@@ -199,90 +199,121 @@ j ^= 0b110 // j = 0b011
 
 ## § 2 Theoretical Order of Operators
 
-### Literals
+#### Literals
 
 Literals are the highest precedence and are parsed first. They could be identifiers, numbers, strings, characters, true, false, null.
 
-### Parentheses
+#### Parentheses
 
 `(` `)`: Parentheses are used to group expressions and have the highest precedence.
 
-### Unary Operators
+#### Unary Operators
 
 `+`, `-` (positive and negative), ! (logical NOT), ~ (bitwise NOT).
 
-### Mandatory Operators
+#### Mandatory Operators
 
 `++`, `--` (increment and decrement).
 
-### Call Operator and Property Access
+#### Call Operator and Property Access
 
 `.` (dot), `[]` (brackets), `()` (call).
 
-### Cast Operator
+#### Cast Operator
 
 `as` (cast).
 
-### Power Operator
+#### Power Operator
 
 `**` (power).
 
-### Multiplicative Operators
+#### Multiplicative Operators
 
 `*` (multiplication), `/` (division), `%` (modulo).
 
-### Additive Operators
+#### Additive Operators
 
 `+` (addition), `-` (subtraction).
 
-### Shift Operators
+#### Shift Operators
 
 `<<` (left shift), `>>` (right shift), `>>>` (unsigned right shift)
 
-### Relational Operators
+#### Relational Operators
 
 `<`, `<=` (less than, less than or equal to), `>`, `>=` (greater than, greater than or equal to).
 
-### Equality Operators
+#### Equality Operators
 
 `==` (equal to), `!=` (not equal to).
 
-### Bitwise AND / NAND
+#### Bitwise AND / NAND
 
 `&` (bitwise AND), `&~` (bitwise NAND).
 
-### Bitwise XOR / XNOR
+#### Bitwise XOR / XNOR
 
 `^` (bitwise XOR), `^~` (bitwise XNOR).
 
-### Bitwise OR / NOR
+#### Bitwise OR / NOR
 
 `|` (bitwise OR), `|~` (bitwise NOR).
 
-### Logical AND
+#### Logical AND
 
 `&&`
 
-### Logical XOR
+#### Logical XOR
 
 `^^`
 
-### Logical OR
+#### Logical OR
 
 `||`
 
-### Conditional (Ternary) Operator
+#### Conditional (Ternary) Operator
 
-`? :`, `?:`
+`?:`
 
-### Assignment Operators
+#### Assignment Operators
 
 `=`, `+=`, `-=`, `*=`, `/=`, `%=`, `<<=`, `>>=`, `&=`, `^=`, `|=`
 
+## Technical Implementation of operators
+
+In the decorated AST we do not have operators, but we have function calls.
+So technically even a simple integer addition `a + b` is implemented by using
+operator overloading.
+
+These primitive operators are implemented as functions in the standard library.
+They are defined as `native operator fun`. Most of these primitive operator
+functions will then be inlined by the compiler.
+
+e.g.
+
+```shake
+1 + 2
 ```
 
+will be transformed to
+
+```shake
+// native operator fun int.plus(other: int): int
+1.plus(2)
 ```
 
+which will then be inlined by the generator.
+
+```bytecode
+ipush 1
+ipush 2
+iadd
 ```
 
+instead of
+
+```bytecode
+ipush 1
+ipush 2
+call {int.plus signature}
 ```
