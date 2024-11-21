@@ -17,7 +17,7 @@
   "dependencies": {
     "@docusaurus/core": "^3.3.2",
     "@docusaurus/preset-classic": "^3.6.2",
-    "@emotion/react": "^11.13.3",
+    "@emotion/react": "^11.13.5",
     "@emotion/styled": "^11.13.0",
     "@mdx-js/react": "^3.1.0",
     "@microsoft/eslint-formatter-sarif": "^3.1.0",
